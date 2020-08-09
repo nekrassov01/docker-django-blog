@@ -1,0 +1,14 @@
+*.pyc
+*.pyo
+*~
+/.vscode
+__pycache__
+.DS_Store
+.env
+/django/static
+/django/media
+/django/.env
+db.sqlite3
+Pipfile
+Pipfile.lock
+client_secrets.p12

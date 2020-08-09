@@ -1,0 +1,64 @@
+version: "3.7"
+services:
+  django:
+    build: ./build/django
+    container_name: django.application
+    restart: always
+    volumes:
+      - ./django:/django
+      - socket:/var/run/uwsgi
+      - static:/django/static
+      - media:/django/media
+    depends_on:
+      - postgres
+    environment:
+      TZ: ${TZ}
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+  nginx:
+    build: ./build/nginx
+    container_name: django.webserver
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./nginx/uwsgi_params:/etc/nginx/uwsgi_params
+      - socket:/var/run/uwsgi
+      - static:/django/static
+      - media:/django/media
+    depends_on:
+      - django
+    environment:
+      TZ: ${TZ}
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+  postgres:
+    image: postgres:${POSTGRES_VERSION}
+    container_name: django.database
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - data:/var/lib/postgresql/data
+    environment:
+      TZ: ${TZ}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+volumes:
+  data:
+  socket:
+  static:
+  media:
