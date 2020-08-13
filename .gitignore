@@ -12,4 +12,3 @@ db.sqlite3
 /django/config/settings.py_
 /nginx/conf.d/default.conf_
 /nginx/letsencrypt/
-*default.conf_
