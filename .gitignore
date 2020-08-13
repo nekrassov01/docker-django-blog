@@ -6,10 +6,10 @@ __pycache__
 .DS_Store
 .env
 db.sqlite3
+/django/.env
 /django/static/
 /django/media/
-/django/.env
+/django/config/settings.py_
+/nginx/conf.d/default.conf_
 /nginx/letsencrypt/
-/nginx/django/
-default.conf_
-settings.py_
+*default.conf_
