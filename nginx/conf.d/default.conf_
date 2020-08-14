@@ -18,10 +18,10 @@ server {
     }
 
     location /static {
-        alias /django/static;
+        alias /static;
     }
 
     location /media {
-        alias /django/media;
+        alias /media;
     }
 }
