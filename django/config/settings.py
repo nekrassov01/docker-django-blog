@@ -3,6 +3,7 @@ import os
 import environ
 
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
+PROJECT_NAME = os.path.basename(BASE_DIR) 
 
 env = environ.Env()
 env.read_env(os.path.join(BASE_DIR,'.env'))
@@ -117,8 +118,10 @@ LOGGING = {
     'handlers': {
         'file': {
             'level': 'INFO', 
-            'class': 'logging.handlers.RotatingFileHandler', 
-            'filename': '/var/log/{}/app.log'.format(PROJECT_NAME), 
+            'class': 'logging.handlers.TimedRotatingFileHandler', 
+            'filename': '/django/log/app.log',
+            'when': 'D',
+            'interval': 30, 
             'formatter': 'production',
         },
     },
