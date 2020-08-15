@@ -2,26 +2,27 @@ from pathlib import Path
 import os
 import environ
 
-BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
-PROJECT_NAME = os.path.basename(BASE_DIR) 
+# Base
+
+#BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 env = environ.Env()
 env.read_env(os.path.join(BASE_DIR,'.env'))
 
-SECRET_KEY = env('SECRET_KEY')
-
-DEBUG = env('DEBUG')
-
-ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
+# Application
 
 INSTALLED_APPS = [
-    'blog.apps.BlogConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
+    'blog.apps.BlogConfig',
+    'django_summernote',
 ]
 
 MIDDLEWARE = [
@@ -32,6 +33,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.sites.middleware.CurrentSiteMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -39,7 +41,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -47,6 +49,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                #'blog.context_processors.common',
             ],
         },
     },
@@ -54,7 +57,13 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-DATABASES = {'default': env.db()}
+# Database
+
+DATABASES = {
+    'default': env.db()
+}
+
+# Password Validation
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -71,27 +80,23 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Locales
+
 LANGUAGE_CODE = env('LANGUAGE_CODE')
-
 TIME_ZONE = env('TIME_ZONE')
-
 USE_I18N = env('USE_I18N')
-
 USE_L10N = env('USE_L10N')
-
 USE_TZ = env('USE_TZ')
 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, "static/")
-
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
-
-INTERNAL_IPS = env.list('INTERNAL_IPS')
+# sites Flamework
 
 SITE_ID = env('SITE_ID')
 
+# ClickJacking Protection
+
 X_FRAME_OPTIONS = env('X_FRAME_OPTIONS')
+
+# django-summernote
 
 SUMMERNOTE_CONFIG = {
     'summernote': {
@@ -100,41 +105,21 @@ SUMMERNOTE_CONFIG = {
     },
 }
 
+# Email
+
 EMAIL_HOST = env('EMAIL_HOST')
 EMAIL_HOST_USER = env('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = env('EMAIL_PORT')
 EMAIL_USE_TLS = env('EMAIL_USE_TLS')
 
-LOGGING = {
-    'version': 1, 
-    'disable_existing_loggers': False,  
-    'formatters': {
-        'production': {
-            'format': '%(asctime)s [%(levelname)s] %(process)d %(thread)d '
-                      '%(pathname)s:%(lineno)d %(message)s'
-        },
-    },
-    'handlers': {
-        'file': {
-            'level': 'INFO', 
-            'class': 'logging.handlers.TimedRotatingFileHandler', 
-            'filename': '/django/log/app.log',
-            'when': 'D',
-            'interval': 30, 
-            'formatter': 'production',
-        },
-    },
-    'loggers': {
-        '': {
-            'handlers': ['file'], 
-            'level': 'INFO', 
-            'propagate': False,
-        },
-        'django': {
-            'handlers': ['file'], 
-            'level': 'INFO', 
-            'propagate': False,
-        },
-    },
-}
+# Static Files
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
+STATIC_ROOT = '/static'
+
+# Media Files
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = '/media'
