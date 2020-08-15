@@ -13,4 +13,4 @@ db.sqlite3
 /nginx/letsencrypt/
 /nginx/log
 /django/blog/fixtures/text/
-/django/blog/janome/userdic.csv
+/django/blog/janome/
