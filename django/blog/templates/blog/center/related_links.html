@@ -1,0 +1,15 @@
+{% load filter %}
+                      {% if related_links %}
+                      <div class="row no-gutters">
+                        <div class="related-links text-center pt-5 pb-2 w-100">
+                          <h5 class="m-0 p-0">参考にしたサイト</h5>
+                        </div>
+                        <div class="row no-gutters w-100">
+                          <div class="related-link m-0 px-0 pt-2 pb-5 w-100">
+                            {% for related_link in related_links %}
+                            <div><i class="fas fa-link ml-1 mr-2"></i><a class="related-link-item" href="{{ related_link.link }}" target="_blank">{{ related_link.link }}</a></div>
+                            {% endfor %}
+                          </div>
+                        </div>
+                      </div>
+                      {% endif %}

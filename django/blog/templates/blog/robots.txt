@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /feed/
+Disallow: /draft/
+Disallow: /ping/
+Disallow: /snippet/
+Disallow: /admin/
+Sitemap: https://minbase.io/sitemap.xml

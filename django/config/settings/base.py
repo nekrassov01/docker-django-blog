@@ -13,6 +13,7 @@ env.read_env(os.path.join(BASE_DIR,'.env'))
 # Application
 
 INSTALLED_APPS = [
+    'blog.apps.BlogConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -21,7 +22,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django.contrib.sitemaps',
-    'blog.apps.BlogConfig',
     'django_summernote',
 ]
 
@@ -49,7 +49,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                #'blog.context_processors.common',
+                'blog.context_processors.common',
             ],
         },
     },

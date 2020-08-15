@@ -1,0 +1,14 @@
+{% load filter %}
+                        <div class="row m-0 p-0 w-100">
+                          <div class="sns-badge-group col mb-2 p-0">
+                            <a class="hatena-badge rounded-0 d-inline-block float-right ml-2 mt-2 px-2" href="https://b.hatena.ne.jp/entry/{{ request.scheme }}://{{ request.get_host }}{{ request.path }}" target="_blank" rel="nofollow">
+                              <span class="badge hatena-badge-item mr-1 p-0"><i class="icon-hatenabookmark mr-1 p-0"></i>はてブ</span>
+                            </a>
+                            <a class="facebook-badge rounded-0 d-inline-block float-right ml-2 mt-2 px-2" href="https://www.facebook.com/sharer/sharer.php?u={{ request.scheme }}://{{ request.get_host }}{{ request.path }}" target="_blank" rel="nofollow">
+                              <span class="badge facebook-badge-item mr-1 p-0"><i class="icon-facebook mr-1 p-0"></i>Facebook</span>
+                            </a>
+                            <a class="twitter-badge rounded-0 d-inline-block float-right ml-2 mt-2 px-2" href="https://twitter.com/share?url={{ request.scheme }}://{{ request.get_host }}{{ request.path }}&text={{ label }} - {{ request.site.name }}" target="_blank" rel="nofollow">
+                              <span class="badge twitter-badge-item mr-1 p-0"><i class="icon-twitter mr-1 p-0"></i>Twitter</span>
+                            </a>
+                          </div>
+                        </div>

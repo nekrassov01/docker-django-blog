@@ -1,0 +1,24 @@
+{% load filter %}
+                      {% if related_posts %}
+                      <div class="row no-gutters">
+                        <div class="related-posts text-center pt-5 pb-2 w-100">
+                          <h5 class="m-0 p-0">関連する記事</h5>
+                        </div>
+                        <div class="row no-gutters w-100">
+                          {% for related_post in related_posts %}
+                          <a class="related-post col-12 col-lg-6 p-3" href="{% url 'blog:detail' related_post.pk %}">
+                            <div class="row no-gutters">
+                              <div class="related-img col-12">
+                                <img src="" data-src="{{ related_post.eyecatch.url }}" class="lozad w-100" alt="eyecatch">
+                              </div>
+                              <div class="related-post-body col-12 p-3">
+                                <h4 class="related-post-title m-0 pb-2">{{ related_post.title | truncatechars_ja:68 }}</h4>
+                                <span class="related-post-date mr-2"><i class="far fa-clock mr-1 p-0"></i>{{ related_post.published_at | date:"Y-m-d" }}</span>
+                                <span class="related-post-category mr-2"><i class="far fa-sticky-note mr-1 p-0"></i>{{ related_post.category.name }}</span>
+                              </div>
+                            </div>
+                          </a>
+                          {% endfor %}
+                        </div>
+                      </div>
+                      {% endif %}

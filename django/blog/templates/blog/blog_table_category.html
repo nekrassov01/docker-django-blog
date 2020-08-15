@@ -1,0 +1,28 @@
+{% extends 'blog/blog_single.html' %}
+{% load static %}
+{% load filter %}
+
+                      {% block single %}
+                      <div class="table-responsive">
+                        <table class="table table-bordered table-striped table-hover dt-responsive nowrap m-0 w-100" id="category-table">
+                          <thead>
+                            <tr>
+                              <th>#</th>
+                              <th>カテゴリー名</th>
+                              <th>記事数</th>
+                              <th>タグ数</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {% for category in category_list %}
+                            <tr>
+                              <td class="position-relative"><a href="{% url 'blog:category_post' category.slug %}" class="stretched-link">{{ forloop.counter }}</a></td>
+                              <td class="position-relative"><a href="{% url 'blog:category_post' category.slug %}" class="stretched-link">{{ category.name }}</a></td>
+                              <td class="position-relative"><a href="{% url 'blog:category_post' category.slug %}" class="stretched-link">{{ category.post_count }}</a></td>
+                              <td class="position-relative"><a href="{% url 'blog:category_post' category.slug %}" class="stretched-link">{{ category.tag_count }}</a></td>
+                            </tr>
+                            {% endfor %}
+                          </tbody>
+                        </table>
+                      </div>
+                      {% endblock %}

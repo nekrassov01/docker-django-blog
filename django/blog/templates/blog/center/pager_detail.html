@@ -1,0 +1,7 @@
+{% load filter %}
+                <nav class="pager pager-detail m-0 py-3 w-100">
+                  <div class="pagination row no-gutters">
+                    {% if prev %}<a class="col text-left" href="{% url 'blog:detail' prev.pk %}"><div class="font-weight-bold"><i class="fas fa-caret-left mr-2"></i>前へ</div></a>{% endif %}
+                    {% if next %}<a class="col text-right" href="{% url 'blog:detail' next.pk %}"><div class="font-weight-bold">次へ<i class="fas fa-caret-right ml-2"></i></div></a>{% endif %}
+                  </div>
+                </nav>

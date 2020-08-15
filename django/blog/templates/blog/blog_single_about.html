@@ -1,0 +1,26 @@
+{% extends 'blog/blog_single.html' %}
+{% load static %}
+{% load filter %}
+
+                      {% block single %}
+                      <div class="row m-0 p-0">
+                        <div class="single-badge-group col mb-2 p-0">
+                          <div class="date-badge rounded-0 d-inline-block float-right ml-2 mt-2 px-2">
+                            <span class="badge single-badge-item mr-1 p-0"><i class="fas fa-sync-alt mr-1 p-0"></i>{{ request.site.aboutsite.updated_at | date:"Y-m-d" }}</span>
+                          </div>
+                          <div class="date-badge rounded-0 d-inline-block float-right ml-2 mt-2 px-2">
+                            <span class="badge single-badge-item mr-1 p-0"><i class="far fa-clock mr-1 p-0"></i>{{ request.site.aboutsite.created_at | date:"Y-m-d" }}</span>
+                          </div>
+                          {% if request.user.is_authenticated %}
+                          <a class="admin-badge rounded-0 d-inline-block float-right ml-2 mt-2 px-2" href="{% url 'admin:sites_site_change' 1 %}#aboutsite-group" target="_blank">
+                            <span class="badge single-badge-item mr-1 p-0"><i class="fas fa-pen-nib mr-1 p-0"></i>EDIT</span>
+                          </a>
+                          {% endif %}
+                        </div>
+                      </div>
+                      <img src="" data-src="{{ request.site.aboutsite.site_image.url }}" class="lozad mb-3 w-100" alt="site"> 
+                      <div class="single-text mt-3 py-3 w-auto">
+                        <div class="m-0 p-0">{{ request.site.aboutsite.site_text | safe }}</div> 
+                        <div class="m-0 p-0">{{ request.site.aboutsite.author_text | safe }}</div>
+                      </div>
+                      {% endblock %}

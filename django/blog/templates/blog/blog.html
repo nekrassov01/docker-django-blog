@@ -1,0 +1,42 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% load filter %}
+
+      {% block content %}
+
+            <div class="center-parts col-md-9 p-3 pr-lg-5 pb-lg-5">
+              <div class="row no-gutters">
+              {% block main %}
+              {% endblock %}
+              </div>
+            </div>
+
+            <div class="side-parts col p-3">
+
+              {% block search_form %}
+              {% include 'blog/sidebar/search_form.html' %}
+              {% endblock %}
+
+              {% block popular_posts %}
+              {% include 'blog/sidebar/popular_posts.html' %}
+              {% endblock %}
+
+              {% block recent_posts %}
+              {% include 'blog/sidebar/recent_posts.html' %}
+              {% endblock %}
+
+              {% block side_categories %}
+              {% include 'blog/sidebar/side_categories.html' %}
+              {% endblock %}
+
+              {% block side_tags %}
+              {% include 'blog/sidebar/side_tags.html' %}
+              {% endblock %}
+
+              {% block side_archives %}
+              {% include 'blog/sidebar/side_archives.html' %}
+              {% endblock %}
+
+            </div>
+
+      {% endblock %}

@@ -1,0 +1,296 @@
+{% load static %}
+{% load filter %}
+<!doctype html>
+<html lang="ja">
+
+  <head">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="keyword" content="{% block meta_keyword %}{{ request.site.sitedetail.keyword }}{% endblock %}">
+    <meta name="description" content="{% block meta_description %}{{ request.site.sitedetail.description }}{% endblock %}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="{% block ogp_title %}{{ request.site.name }}{% endblock %}">
+    <meta property="og:description" content="{% block ogp_description %}{{ request.site.sitedetail.description }}{% endblock %}">
+    <meta property="og:image" content="{% block ogp_image %}{{ request.site.aboutsite.site_image.url }}{% endblock %}">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="og:locale" content="ja_JP">
+    <meta property="og:site_name" content="{{ request.site.name }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/styles/nord.min.css">
+    <link rel="stylesheet" href="{% static 'blog/css/style.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'blog/icon/fonts.css' %}" type="text/css">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <style>.breadcrumb-item + .breadcrumb-item::before {content: ">";}</style>
+    <title>{% block meta_title %}{{ request.site.name }}{% endblock %}</title>
+  </head>
+
+  <body>
+    <div class="content-wrapper">
+      <div class="container-fluid d-flex flex-column p-0" style="min-height: 100vh">
+
+        <div class="header-block align-items-start">
+        {% block header %}
+        {% include 'blog/header/header.html' %}
+        {% endblock %}
+        </div>
+
+        <div class="container max-width mb-auto">
+
+          <div class="breadcrumb-block row align-items-start pb-lg-5">
+            <div class="col m-0 p-0">
+              <nav aria-label="breadcrumb-list">
+                <ol class="breadcrumb m-0 px-3 py-2 rounded-0 bg-transparent">
+                  {% if request.path == '/' %}
+                  <li class="breadcrumb-item">記事一覧</li>
+                  {% else %}
+                  <li class="breadcrumb-item"><a href="{% url 'blog:index' %}">記事一覧</a></li>
+                  {% endif %}
+                  {% block breadcrumb %}{% endblock %}
+                </ol>
+              </nav>
+            </div>
+          </div>
+
+          <div class="contents-block row align-items-start">
+          {% block content %}{% endblock %}
+          </div>
+
+        </div>
+
+        <div class="footer-block align-items-end pt-lg-5 mt-auto">
+        {% block footer %}
+        {% include 'blog/footer/footer.html' %}
+        {% endblock %}
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/languages/powershell.min.js" charset="UTF-8"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/languages/dos.min.js" charset="UTF-8"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/languages/vbscript.min.js" charset="UTF-8"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/languages/dockerfile.min.js" charset="UTF-8"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/languages/django.min.js" charset="UTF-8"></script>
+        <script src="https://unpkg.com/clipboard@2/dist/clipboard.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-colorschemes"></script>
+        <script src="https://d3js.org/d3.v5.min.js" charset="utf-8"></script>
+        <script src="{% static 'blog/js/d3.layout.cloud.js' %}"></script>
+        <script src="{% static 'blog/js/toc.min.js' %}"></script>
+        <script>new ClipboardJS('#copy-button');</script>
+        <script>
+          const observer = lozad();
+          observer.observe();
+        </script>
+        <script>
+          window.WebFontConfig = {
+            google: {families: ['Amatic SC', 'Lato', 'Kosugi Maru']},
+            active: function() {
+              sessionStorage.fonts = true;
+            }
+          };
+          (function() {
+            var wf = document.createElement('script');
+            wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+            wf.type = 'text/javascript';
+            wf.async = 'true';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(wf, s);
+          })();
+        </script>
+        {% if '/detail/' in request.path %}
+        <script>
+          jQuery('#toc').toc({
+            'container': '.single-text',
+            'selectors': 'h4, h5',
+          });
+        </script>
+        {% endif %}
+        {% if '/detail/' in request.path or '/snippet/' == request.path  %}
+        <script>
+          hljs.initHighlightingOnLoad();
+        </script>
+        {% endif %}
+        {% if '/graph/' == request.path %}
+        <script> 
+          var ctx = document.getElementById('category-post').getContext('2d');
+          var data = [
+              [{% for k, v in category_post_dict.items %}'{{ k }}',{% endfor %}],
+              [{% for k, v in category_post_dict.items %}{{ v }},{% endfor %}],
+            ]
+          var category_post = new Chart(ctx, {
+            type: 'polarArea',
+            data: {
+              labels: data[0],
+              datasets: [
+                {
+                  data: data[1],
+                },
+              ]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: {
+                colorschemes: {
+                  scheme: 'brewer.Paired12',
+                }
+              }
+            }
+          });
+          var ctx = document.getElementById('category-tag').getContext('2d');
+          var data = [
+              [{% for k, v in category_tag_dict.items %}'{{ k }}',{% endfor %}],
+              [{% for k, v in category_tag_dict.items %}{{ v }},{% endfor %}],
+            ]
+          var category_tag = new Chart(ctx, {
+            type: 'pie',
+            data: {
+              labels: data[0],
+              datasets: [
+                {
+                  data: data[1],
+                },
+              ]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: {
+                colorschemes: {
+                  scheme: 'tableau.SunsetSunrise7',
+                }
+              }
+            }
+          });
+          var ctx = document.getElementById('tag-post').getContext('2d');
+          var data = [
+              [{% for k, v in tag_post_dict.items %}'{{ k }}',{% endfor %}],
+              [{% for k, v in tag_post_dict.items %}{{ v }},{% endfor %}],
+            ]
+          var tag_post = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+              labels: data[0],
+              datasets: [
+                {
+                  data: data[1],
+                },
+              ]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: {
+                colorschemes: {
+                  scheme: 'tableau.Classic20',
+                }
+              }
+            }
+          });
+          var ctx = document.getElementById('post-monthly').getContext('2d');
+          var post_monthly = new Chart(ctx, {
+            type: 'line',
+            data: {
+              labels: [{% for month in month_list %}'{{ month }}',{% endfor %}],
+              datasets: [
+                {% for category_name in category_list %}
+                {
+                  label: '{{ category_name }}',
+                  fill: false,
+                  data: [
+                    {% for label in month_list %}{% for date, category, month_post in month_post_list %}{% if category == category_name %}{% if date == label %}{{ month_post }},{% endif %}{% endif %}{% endfor %}{% endfor %}
+                  ],
+                },
+                {% endfor %}
+              ]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: true,
+              plugins: {
+                colorschemes: {
+                  scheme: 'tableau.ClassicBlueRed12',
+                }
+              },
+              scales: {
+                xAxes: [{
+                  scaleLabel: {
+                    display: true,
+                    labelString: '年月',
+                  },
+                  ticks: {
+                    maxRotation:45,
+                    minRotation:45,
+                  },
+                }],
+                yAxes: [{
+                  scaleLabel: {
+                    display: true,
+                    labelString: '記事数',
+                  },
+                  ticks: {
+                    min: 0,
+                    stepSize: 1,
+                  }
+                }],
+              },
+            }
+          });
+        </script>
+        <script>
+          var width = 800;
+          var height = 400;
+          var target_id = '#wordcloud';
+          var data = [{% for k, v in word_dict.items %}{"word": "{{ k }}","count": {{ v }},},{% endfor %}]
+          function draw_wordcloud(data){
+            var random = d3.randomIrwinHall(2);
+            var countMax = d3.max(data, function(d){ return d.count } );
+            var sizeScale = d3.scaleLinear().domain([0, countMax ]).range([10, 100])
+            var words = data.map(function(d) {
+              return {
+                text: d.word,
+                size: sizeScale(d.count)
+              };
+            });
+            d3.layout.cloud().size([width, height])
+              .words(words)
+              .rotate(function() { return (~~(Math.random() * 6) - 3) * 0; })
+              .font(['Lato', 'Kosugi Maru'])
+              .fontSize(function(d) { return d.size; })
+              .on("end", draw)
+              .start();
+            return words;
+            function draw(words) {
+              d3.select(target_id)
+                .append("svg")
+                  .attr("class", "ui fluid image")
+                  .attr("viewBox", "0 0 " + width + " " + height )
+                  .attr("width", "100%")
+                  .attr("height", "100%")
+                .append("g")
+                  .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
+                .selectAll("text")
+                  .data(words)
+                .enter().append("text")
+                  .style("font-size", function(d) { return d.size + "px"; })
+                  .style("font-family", ['Lato', 'kosugi Maru'])
+                  .style("fill", function(d, i) { return d3.schemeCategory10[i % 10]; })
+                  .attr("text-anchor", "middle")
+                  .attr("transform", function(d) { return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")"; })
+                  .text(function(d) { return d.text; })
+            }
+          }
+          draw_wordcloud(data)
+        </script>
+        {% endif %}
+      </div>
+    </div>
+  </body>
+
+</html>

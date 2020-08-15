@@ -1,0 +1,56 @@
+{% extends 'blog/blog.html' %}
+{% load static %}
+{% load filter %}
+
+      {% block meta_keyword %}{{ post.get_keyword }}{% endblock %}
+      {% block meta_description %}{{ post.description }}{% endblock %}
+      {% block meta_title %}{{ post.title }} | {{ block.super }}{% endblock %}
+
+      {% block ogp_image %}{{ post.eyecatch.url }}{% endblock %}
+      {% block ogp_description %}{{ post.description }}{% endblock %}
+      {% block ogp_title %}{{ post.title }} | {{ block.super }}{% endblock %}
+
+                  {% block breadcrumb %}
+                  {{ block.super }}
+                  <li class="breadcrumb-item">{{ post.title | truncatechars_ja:96 }}</li>
+                  {% endblock %}
+
+                {% block main %}
+                <div class="single d-block col-12 shadow-0 rounded-0 mb-3 p-lg-4">
+                  <div class="row no-gutters">
+                    <div class="single-title col-12 text-center px-4 px-md-5 pt-5 pb-3 h-100">
+                      <h2 class="m-0 p-0"><a href="{% url 'blog:detail' post.pk %}">{% if request.user.is_authenticated and not post.is_public %}[下書き] {% endif %}{{ label }}</a></h2>
+                    </div>
+                    <div class="single-body p-3 p-lg-4 w-100">
+                      {% include 'blog/center/badge_date.html' %}
+                      {% if post.eyecatch %}
+                      <div class-"single-img">
+                        <img src="" data-src="{{ post.eyecatch.url }}" class="lozad w-100" alt="eyecatch">
+                      </div>
+                      {% endif %}
+                      <div class="row no-gutters">
+                        <div class="single-description mx-1 my-4 py-4 w-100">{{ post.description | linebreaksbr | safe }}</div>
+                        {% include 'blog/center/badge_sns.html' %}
+                        {% if post.text %}
+                        <div class="single-toc description col-12 rounded-0 py-4 w-100" id="toc"></div>
+                        <div class="single-text col-12 my-4 py-4 w-100">{{ post.text | safe }}</div>
+                        {% endif %}
+                      </div>
+                      {% block related_links %}
+                      {% include 'blog/center/related_links.html' %}
+                      {% endblock %}
+                      {% block related_tags %}
+                      {% include 'blog/center/related_tags.html' %}
+                      {% endblock %}
+                      {% block related_posts %}
+                      {% include 'blog/center/related_posts.html' %}
+                      {% endblock %}
+                    </div>
+                  </div>
+                </div>
+
+                {% block pager %}
+                {% include 'blog/center/pager_detail.html' %}
+                {% endblock %}
+
+                {% endblock %}

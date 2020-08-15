@@ -1,0 +1,28 @@
+{% extends 'blog/blog_single.html' %}
+{% load static %}
+{% load filter %}
+
+                      {% block single %}
+                      <div class="table-responsive">
+                        <table class="table table-bordered table-striped table-hover dt-responsive nowrap m-0 w-100" id="archive-table">
+                          <thead>
+                            <tr>
+                              <th>#</th>
+                              <th>年</th>
+                              <th>月</th>
+                              <th>記事数</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {% for date in object_list %}
+                            <tr>
+                              <td class="position-relative"><a class="stretched-link">{{ forloop.counter }}</a></td>
+                              <td class="position-relative"><a href="{% url 'blog:archive_year' date.month|date:'Y' %}" class="stretched-link">{{ date.month | date:'Y' }}</a></td>
+                              <td class="position-relative"><a href="{% url 'blog:archive_month' date.month|date:'Y' date.month|date:'m' %}" class="stretched-link">{{ date.month | date:'m' }}</a></td>
+                              <td class="position-relative"><a class="stretched-link">{{ date.count }}</a></td>
+                            </tr>
+                            {% endfor %}
+                          </tbody>
+                        </table>
+                      </div>
+                      {% endblock %}

@@ -1,0 +1,30 @@
+{% load filter %}
+              <div class="side-bar-parts shadow-0 mx-0 mt-0 mb-5 p-0">
+                <div class="side-bar-parts-header-archive text-center p-3">
+                  <h5 class="m-0 p-0">アーカイブ</h5>
+                </div>
+                <div class="side-bar-parts-body-archive">
+                  <ul class="list-unstyled list-item m-0 p-0">
+                    {% for archive in archives %}
+                    <a class="col m-0 p-0" href="{% url 'blog:archive_month' archive.month|date:'Y' archive.month|date:'m' %}">
+                      <div class="archive row m-0 p-2">
+                        <div class="archive-body col m-0 p-0">
+                          <i class="fas fa-archive mr-1"></i>
+                          <span class="archive-item">{{ archive.month | date:"Y 年 m 月" }}</span>
+                          <span class="archive-count float-right text-right rounded-0 m-0 px-2 py-1">{{ archive.count }}</span>
+                        </div>
+                      </div>
+                    </a>
+                    {% endfor %}
+                  </ul>
+                </div>
+                <div class="side-bar-parts-footer-archive">
+                  <a class="col m-0 p-0" href="{% url 'blog:archive' %}">
+                    <div class="archive text-center m-0 p-2">
+                      <div class="archive-body m-0 p-0">
+                        <span class="archive-item">すべて見る</span>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>

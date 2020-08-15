@@ -1,0 +1,50 @@
+{% load filter %}
+                {% if is_paginated %}
+                <div class="mx-auto">
+                  <nav class="pager pager-list m-0 py-3">
+                    <ul class="pagination m-0 p-0">
+
+                      {% if page_obj.has_previous %}
+                      <li class="page-item">
+                        <a class="page-link rounded-0 text-center" href="?{% replace_url request 'page' page_obj.previous_page_number %}">
+                          <span aria-hidden="true"><i class="fas fa-caret-left"></i></span>
+                        </a>
+                      </li>
+                      {% endif %}
+
+                      {% for num in page_obj.paginator.page_range %}
+                      {# 対象ページが現在のページの場合はアクティブ #}
+                      {% if num == page_obj.number %}
+                      <li class="page-item active">
+                        <a class="page-link rounded-0 text-center" href="?{% replace_url request 'page' num %}">{{ num }}</a>
+                      </li>
+                      {# 対象ページが現在のページ-2以上、かつ現在のページ+2以下の場合は表示 #}
+                      {% elif num >= page_obj.number|add:-2 and num <= page_obj.number|add:2 %}
+                      <li class="page-item">
+                        <a class="page-link rounded-0 text-center" href="?{% replace_url request 'page' num %}">{{ num }}</a>
+                      </li>
+                      {# 対象ページが5以下、現在のページが2以下の場合は表示 #}
+                      {% elif num <= 5 and page_obj.number <= 2 %}
+                      <li class="page-item">
+                        <a class="page-link rounded-0 text-center" href="?{% replace_url request 'page' num %}">{{ num }}</a>
+                      </li>
+                      {# 対象ページが最大ページ-4以上、現在のページが最大ページ-1以上の場合は表示 #}
+                      {% elif num >= page_obj.paginator.num_pages|add:-4 and page_obj.number >= page_obj.paginator.num_pages|add:-1 %}
+                      <li class="page-item">
+                        <a class="page-link rounded-0 text-center" href="?{% replace_url request 'page' num %}">{{ num }}</a>
+                      </li>
+                      {% endif %}
+                      {% endfor %}
+
+                      {% if page_obj.has_next %}
+                      <li class="page-item">
+                        <a class="page-link rounded-0 text-center" href="?{% replace_url request 'page' page_obj.next_page_number %}">
+                          <span aria-hidden="true"><i class="fas fa-caret-right"></i></span>
+                        </a>
+                      </li>
+                      {% endif %}
+
+                    </ul>
+                  </nav>
+                </div>
+                {% endif %}

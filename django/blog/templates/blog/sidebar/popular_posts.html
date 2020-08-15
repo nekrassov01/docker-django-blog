@@ -1,0 +1,32 @@
+{% load filter %}  
+              <div class="side-bar-parts shadow-0 mx-0 mt-0 mb-5 p-0">
+                <div class="side-bar-parts-header-recent text-center p-3">
+                  <h5 class="m-0 p-0">人気の記事</h5>
+                </div>
+                <div class="side-bar-parts-body-recent">
+                  <ul class="list-unstyled list-item m-0 p-0">
+                    {% for recent_post in recent_posts %}
+                    <a href="{% url 'blog:detail' recent_post.pk %}">
+                      <div class="side-card row no-gutters px-2 pt-2 pb-3 pb-md-2 pb-lg-3">
+                        <div class="side-card-info col-12 d-lg-block d-md-none mb-2 px-2">
+                          <span class="side-card-number mr-3"><i class="fas fa-sort-numeric-up mr-1 p-0"></i>{{ forloop.counter }}</span>
+                          <span class="side-card-category mr-3"><i class="far fa-sticky-note mr-1 p-0"></i>{{ recent_post.category.name }}</span>
+                          <span class="side-card-date"><i class="far fa-clock mr-1 p-0"></i>{{ recent_post.published_at | date:"Y-m-d" }}</span>
+                        </div>
+                        {% if recent_post.eyecatch %}
+                        <div class="col-5 d-lg-block d-md-none">
+                          <img src="" data-src="{{ recent_post.eyecatch.url }}" class="lozad w-100" alt="eyecatch">
+                        </div>
+                        {% endif %}
+                        <div class="side-card-body col pl-2 pl-md-0 pl-lg-2">
+                          <p class="side-card-title m-0 p-0">{{ recent_post.title | truncatechars_ja:66 }}</p>
+                        </div>
+                        <div class="side-card-info-md col-12 d-none d-md-block d-lg-none m-0 p-0">
+                          <span class="side-card-date-md float-right"><i class="far fa-clock mr-1 p-0"></i>{{ recent_post.published_at | date:"Y-m-d" }}</span>
+                        </div>
+                      </div>
+                    </a>
+                    {% endfor %}
+                  </ul>
+                </div>
+              </div>

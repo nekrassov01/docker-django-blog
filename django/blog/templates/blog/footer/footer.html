@@ -1,0 +1,18 @@
+{% load filter %}
+          <div class="nav-container container-fluid p-0">
+            <div class="container max-width p-0">
+              <ul class="list-group list-group-horizontal-lg px-3 py-2">
+                <li class="list-group-item border-0 rounded-0 text-left bg-transparent ml-0 mr-3 my-0 p-0"><a class="text-light" href="{% url 'blog:about' %}">このサイトについて</a></li>
+                <li class="list-group-item border-0 rounded-0 text-left bg-transparent ml-0 mr-3 my-0 p-0"><a class="text-light" href="{% url 'blog:policy' %}">プライバシーポリシー</a></li>
+                <li class="list-group-item border-0 rounded-0 text-left bg-transparent ml-0 mr-3 my-0 p-0"><a class="text-light" href="{% url 'blog:contact_form' %}">お問い合わせ</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="footer container-fruid m-0 p-0">
+            <div class="footer-item p-3">
+              <span>Copyright &copy; {% now "Y" %} {{ request.site.name }}</span>
+              <a class="float-right" href="#header">
+                <div class="text-light"><i class="fas fa-caret-up"></i></div>
+              </a>
+            </div>
+          </div>

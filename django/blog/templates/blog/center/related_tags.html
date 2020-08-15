@@ -1,0 +1,17 @@
+{% load filter %}
+                      {% if related_tags %}
+                      <div class="row no-gutters">
+                        <div class="related-tags text-center pt-5 pb-2 w-100">
+                          <h5 class="m-0 p-0">関連するタグ</h5>
+                        </div>
+                        <div class="row no-gutters w-100">
+                          <div class="related-tag single-badge-group col m-0 px-0 pt-2 pb-5 w-100">
+                            {% for tag in post.tag.all %}
+                            <a class="tag-badge rounded-pill d-inline-block mr-1 mt-2 px-2" href="{% url 'blog:tag_post' tag.slug %}">
+                              <span class="badge single-badge-item mr-1 p-0"><i class="fas fa-tag mr-1 p-0"></i>{{ tag.name }}</span>
+                            </a>
+                            {% endfor %}
+                          </div>
+                        </div>
+                      </div>
+                      {% endif %}

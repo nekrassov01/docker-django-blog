@@ -1,0 +1,67 @@
+{% extends 'blog/blog.html' %}
+{% load static %}
+{% load filter %}
+
+      {% block meta_title %}{{ label }} | {{ block.super }}{% endblock %}
+      {% block ogp_title %}{{ label }} | {{ block.super }}{% endblock %}
+
+      {% block breadcrumb %}
+                  {{ block.super }}
+                  {% if '/draft/' not in request.path and query %}
+                  <li class="breadcrumb-item">[ {{ query }} ] の検索結果</li>
+                  {% elif '/draft/' in request.path and query %}
+                  <li class="breadcrumb-item"><a href="{% url 'blog:draft' %}">下書き一覧</a></li>
+                  <li class="breadcrumb-item">[ {{ query }} ] の検索結果</li>
+                  {% elif '/draft/' in request.path and not query %}
+                  <li class="breadcrumb-item">下書き一覧</li>
+                  {% elif request.path == '/' %}
+                  {% else %}
+                  <li class="breadcrumb-item">{{ label }}</li>
+                  {% endif %}
+      {% endblock %}
+
+      {% block main %}
+                {% for post in post_list %}
+                <a href="{% url 'blog:detail' post.pk %}" class="post-card rounded-0 m-0 p-4">
+                  <div class="card-title mb-4 pb-3">
+                    <h4 class="m-0 p-0">{% if request.user.is_authenticated and not post.is_public %}[下書き] {% endif %}{{ post.title | truncatechars_ja:70}}</h4>
+                  </div>
+                  <div class="row no-gutters">
+                    {% if post.eyecatch %}
+                    <div class="card-img col-lg-5">
+                      <img src="" data-src="{{ post.eyecatch.url }}" class="lozad w-100" alt="eyecatch">
+                    </div>
+                    {% endif %}
+                    <div class="card-body col-lg-7 pt-3 pb-0 pl-lg-3 pt-lg-0">
+                      <div class="row no-gutters">
+                        <p class="card-text m-0">{{ post.description | safe | truncatechars_ja:176}}</p>
+                        <div class="card-badge-group">
+                          <div class="date-badge rounded-0 d-inline-block float-right ml-2 mt-3 px-2"> 
+                            <span class="badge card-badge-item mr-1 my-0 p-0"><i class="far fa-clock mr-1 p-0"></i>{{ post.published_at | date:"Y-m-d" }}</span>
+                          </div>
+                          <div class="date-badge rounded-0 d-inline-block float-right ml-2 mt-3 px-2">
+                            <span class="badge card-badge-item mr-1 my-0 p-0"><i class="far fa-sticky-note mr-1 p-0"></i>{{ post.category.name }}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+                {% empty %}
+                {% if '/draft/' not in request.path and query %}
+                <span class="col">検索ワード [ {{ query }} ] はどの投稿のタイトル、本文、説明にもヒットしませんでした。</span>
+                {% elif '/draft/' in request.path and query %}
+                <span class="col">検索ワード [ {{ query }} ] はどの下書きのタイトル、本文、説明にもヒットしませんでした。</span>
+                {% elif '/draft/' in request.path and not query %}
+                <span class="col">下書きがありません。</span>
+                {% else %}
+                <span class="col">記事が公開されていません。</span>
+                {% endif %}
+                {% endfor %}
+
+                {% if post_list %}
+                {% block pager %}
+                {% include 'blog/center/pager_list.html' %}
+                {% endblock %}
+                {% endif %}
+      {% endblock %}

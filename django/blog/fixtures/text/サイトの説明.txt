@@ -1,0 +1,50 @@
+<p class="mx-1 p-0">
+当サイトは技術ブログです。技術以外の雑記もありますが、メインは技術的な記事です。
+</p>
+
+<div class="head-h4 row no-gutters mt-5 mb-3 pt-2 px-2 w-100"><h4>
+内容
+</h4></div>
+
+<p class="mx-1 p-0">
+主に以下の内容で構成されています。
+</p>
+
+<ul>
+<li>仕事や個人開発で触れた技術のノート</li>
+<li>AWS 等、 IaaS サービスのユースケースや備忘録</li>
+<li>興味のある技術の「やってみた」系記事</li>
+<li>インフラ関連の構築ノウハウ</li>
+<li>これらを組み合わせたチュートリアル</li>
+<li>技術以外の雑記や所感</li>
+</ul>
+
+<div class="head-h4 row no-gutters mt-5 mb-3 pt-2 px-2 w-100"><h4>
+動機
+</h4></div>
+
+<p class="mx-1 p-0">
+当サイトを構築した動機です。
+</p>
+
+<ul>
+<li>技術ブログを自作したかった</li>
+<li>Webフレームワークを勉強したかった</li>
+<li>企業インフラを管理・運用することで得たノウハウを蓄積する場所が欲しかった</li>
+<li>調べた技術を書き溜めておくことで有用な技術ノートが作れると思った</li>
+</ul>
+
+<div class="head-h4 row no-gutters mt-5 mb-3 pt-2 px-2 w-100"><h4>
+技術
+</h4></div>
+
+<p class="mx-1 p-0">
+ざっくり以下の技術で当サイトを構築しました。
+</p>
+
+<ul>
+<li>Amazon EC2</li>
+<li>Docker</li>
+<li>Python, Django</li>
+<li>Bootstrap4</li>
+</ul>

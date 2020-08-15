@@ -1,0 +1,12 @@
+<div class="head-h4 row no-gutters mt-5 mb-3 pt-2 px-2 w-100"><h4>
+自己紹介
+</h4></div>
+
+<div class="m-0 p-0">
+  <div class="row ml-1 w-100"><div class="col-2 m-0 p-0">名前: </div><div class="col m-0 p-0">nekrassov01</div></div>
+  <div class="row ml-1 w-100"><div class="col-2 m-0 p-0">職業: </div><div class="col m-0 p-0">インフラ寄りの社内 SE</div></div>
+  <div class="row ml-1 w-100"><div class="col-2 m-0 p-0">スキル: </div><div class="col m-0 p-0">PowerShell, Python, Django, Docker, AWS, Windows, Linux</div></div>
+  <div class="row ml-1 w-100"><div class="col-2 m-0 p-0">得意: </div><div class="col m-0 p-0">PowerShell や Python を用いた自動化</div></div>
+  <div class="row ml-1 w-100"><div class="col-2 m-0 p-0">目標: </div><div class="col m-0 p-0">基盤技術をちゃんと身につけること, フルスタックエンジニアになること</div></div>
+  <div class="row ml-1 w-100"><div class="col-2 m-0 p-0">その他: </div><div class="col m-0 p-0">30後半, 一児の父</div></div>
+</div>
