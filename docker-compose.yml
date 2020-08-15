@@ -8,8 +8,8 @@ services:
       - ./django:/django:rw
       - socket_app:/var/run/uwsgi
       - socket_db:/var/run/postgresql
-      - static:/static:rw
-      - media:/media:rw
+      - static:/static
+      - media:/media
     depends_on:
       - postgres
     environment:
@@ -32,8 +32,8 @@ services:
       - ./nginx/uwsgi_params:/etc/nginx/uwsgi_params
       - ./nginx/letsencrypt:/etc/letsencrypt
       - socket_app:/var/run/uwsgi
-      - static:/static:rw
-      - media:/media:rw
+      - static:/static
+      - media:/media
     depends_on:
       - django
     environment:
@@ -60,7 +60,12 @@ services:
         max-file: "3"
 volumes:
   data:
+    driver: local
   socket_app:
+    driver: local
   socket_db:
+    driver: local
   static:
+    driver: local
   media:
+    driver: local
