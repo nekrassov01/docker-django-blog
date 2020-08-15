@@ -10,7 +10,7 @@ db.sqlite3
 /django/.env
 /django/log
 /django/config/settings.py_
-/nginx/letsencrypt/
-/nginx/log
 /django/blog/fixtures/text/
 /django/blog/janome/
+/nginx/letsencrypt/
+/nginx/log
