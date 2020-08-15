@@ -46,7 +46,6 @@ class TagSitemap(Sitemap):
     def location(self, obj):
         return reverse_lazy('blog:tag_post', kwargs={'tag': obj.slug})
 
-
 class PostArchiveYearSitemap(Sitemap):
     changefreq = 'monthly'
     priority = 0.5

@@ -11,7 +11,7 @@ def load_fixture(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('app', '0001_initial'),
+        ('blog', '0001_initial'),
     ]
 
     operations = [

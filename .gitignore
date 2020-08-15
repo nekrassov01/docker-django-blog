@@ -12,3 +12,5 @@ db.sqlite3
 /django/config/settings.py_
 /nginx/letsencrypt/
 /nginx/log
+/django/blog/fixtures/text/
+/django/blog/janome/userdic.csv

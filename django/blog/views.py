@@ -237,7 +237,7 @@ def ping(request):
     except Exception:
         raise
     else:
-        return redirect('blog:blog', permanent=True)
+        return redirect('blog:index', permanent=True)
 
 """ 問い合わせフォーム """
 class ContactFormView(generic.edit.FormView):
