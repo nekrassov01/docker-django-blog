@@ -1,8 +1,10 @@
+from django.conf import settings
 from django.utils import timezone
 from django.db.models import Count, Q
 from django.db.models.functions import TruncMonth
 from .models import Base, Post, Category, Tag, SiteDetail, AboutSite, PrivacyPolicy, Snippet, Image, Link
 
+""" すべてのページで呼ぶコンテキスト """
 def common(request):
     context = {
         #'popular_posts': PopularPost.objects.order_by('-page_view')[:5],
@@ -17,3 +19,7 @@ def common(request):
         #'advertisements': Advertisements.objects.all(),
     }
     return context
+
+""" デバッグ判定 """
+def is_debug(request):
+    return {"DEBUG": settings.DEBUG}
