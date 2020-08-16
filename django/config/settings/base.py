@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.sitemaps',
     'django_summernote',
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [

@@ -49,13 +49,13 @@
                 </a>
                 {% empty %}
                 {% if '/draft/' not in request.path and query %}
-                <span class="col">検索ワード [ {{ query }} ] はどの投稿のタイトル、本文、説明にもヒットしませんでした。</span>
+                <span class="col pb-3">検索ワード [ {{ query }} ] はどの投稿のタイトル、本文、説明にもヒットしませんでした。</span>
                 {% elif '/draft/' in request.path and query %}
-                <span class="col">検索ワード [ {{ query }} ] はどの下書きのタイトル、本文、説明にもヒットしませんでした。</span>
+                <span class="col pb-3">検索ワード [ {{ query }} ] はどの下書きのタイトル、本文、説明にもヒットしませんでした。</span>
                 {% elif '/draft/' in request.path and not query %}
-                <span class="col">下書きがありません。</span>
+                <span class="col pb-3">下書きがありません。</span>
                 {% else %}
-                <span class="col">記事が公開されていません。</span>
+                <span class="col pb-3">記事が公開されていません。</span>
                 {% endif %}
                 {% endfor %}
 

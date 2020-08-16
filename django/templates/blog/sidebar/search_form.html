@@ -5,6 +5,6 @@
                 {% else %}
                 <form method="GET" class="input-group h-100" action="{% url 'blog:index' %}">
                 {% endif %}
-                  <input type="text" placeholder="サイト内検索" name="query" class="form-control searchform rounded-0 h-auto" value="{{ request.GET.get }}">
+                  <input type="text" placeholder="検索" name="query" class="form-control searchform rounded-0 h-auto" value="{{ request.GET.get }}">
                 </form>
               </div>

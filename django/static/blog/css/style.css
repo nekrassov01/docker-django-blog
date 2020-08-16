@@ -22,7 +22,7 @@ body
     overflow: hidden;
     background-color: #f1f1f1;
     color: #444444;
-    font-family: 'Lato', 'Kosugi Maru', sans-serif;
+    font-family: 'Lato', 'Kosugi', sans-serif;
     line-height: 1.5;
 }
 
@@ -144,7 +144,7 @@ form & button
 
 .btn-default
 {
-    border: solid 2px #ececec;
+    border: solid 2px #233142;
     background-color: #233142;
 }
 
