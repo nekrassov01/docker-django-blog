@@ -125,3 +125,8 @@ CLOUDINARY_STORAGE = {
     'API_SECRET': env('CLOUDINARY_API_SECRET'),
     'SECURE': env.get_value('CLOUDINARY_SECURE', bool),
 }
+
+# Google Analytics Reporting API
+SERVICE_ACCOUNT_EMAIL = env('SERVICE_ACCOUNT_EMAIL')
+VIEW_ID = env('VIEW_ID')
+KEY_FILE_LOCATION = os.path.join(BASE_DIR, 'client_secrets.p12')

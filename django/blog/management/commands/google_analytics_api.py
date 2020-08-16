@@ -10,14 +10,10 @@ from oauth2client import client
 from oauth2client import file
 from oauth2client import tools
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-KEY_FILE_LOCATION = os.path.join(BASE_DIR, 'client_secrets.p12')
+from django.conf import settings
+
 SCOPES = ['https://www.googleapis.com/auth/analytics.readonly']
 DISCOVERY_URI = ('https://analyticsreporting.googleapis.com/$discovery/rest')
-
-# Google Analytics Reporting API
-SERVICE_ACCOUNT_EMAIL = 'nekrassov01@bubbly-trail-286614.iam.gserviceaccount.com'
-VIEW_ID = '226616382'
 
 def initialize_analyticsreporting():
     """Initializes an analyticsreporting service object.
@@ -28,7 +24,10 @@ def initialize_analyticsreporting():
     """
 
     credentials = ServiceAccountCredentials.from_p12_keyfile(
-        SERVICE_ACCOUNT_EMAIL, KEY_FILE_LOCATION, scopes=SCOPES)
+        settings.SERVICE_ACCOUNT_EMAIL,
+        settings.KEY_FILE_LOCATION,
+        scopes=SCOPES
+    )
 
     http = credentials.authorize(httplib2.Http())
 
@@ -45,7 +44,7 @@ def get_report(analytics):
         body={
             'reportRequests': [
                 {
-                    'viewId': VIEW_ID,
+                    'viewId': settings.VIEW_ID,
                     'pageSize': 10,
                     'dateRanges': [
                         {'startDate': '7daysAgo', 'endDate': 'today'}
