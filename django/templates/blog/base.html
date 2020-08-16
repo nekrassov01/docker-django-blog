@@ -4,16 +4,7 @@
 <html lang="ja">
 
   <head>
-    {% if not DEBUG %}
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-175529035-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'UA-175529035-1');
-    </script>
-    {% endif %}
+    {% block google_analytics %}{% if not DEBUG %}{{ request.site.sitedetail.google_analytics_html | safe }}{% endif %}{% endblock %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="keyword" content="{% block meta_keyword %}{{ request.site.sitedetail.keyword }}{% endblock %}">
