@@ -271,6 +271,7 @@ badge
 {
     background-color: #f7f8fa;
     border: solid 1px #f7f8fa;
+    font-weight: bold;
 }
 
 .tag-badge
