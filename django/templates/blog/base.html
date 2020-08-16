@@ -67,7 +67,7 @@
         {% endblock %}
         </div>
 
-        {% bootstrap_javascript jquery='slim' %}
+{% bootstrap_javascript jquery='slim' %}
         <script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/highlight.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/languages/powershell.min.js" charset="UTF-8"></script>
@@ -84,7 +84,8 @@
         <script>new ClipboardJS('#copy-button');</script>
         <script>
           window.WebFontConfig = {
-            google: {families: ['Amatic SC', 'Lato', 'Kosugi']},
+            //google: {families: ['Amatic SC', 'Lato', 'Kosugi']},
+            google: {families: ['Amatic SC']},
             active: function() {
               sessionStorage.fonts = true;
             }

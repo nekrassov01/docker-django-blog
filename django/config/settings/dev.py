@@ -1,13 +1,11 @@
 from .base import *
 
 # Base
-
 SECRET_KEY = env('SECRET_KEY')
 DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 # Logging
-
 LOGGING = {
     'version': 1, 
     'disable_existing_loggers': False,  
@@ -44,7 +42,6 @@ LOGGING = {
 }
 
 # django-debug-toolbar
-
 if DEBUG:
     def show_toolbar(request):
         return True

@@ -12,29 +12,26 @@ LOGGING = {
     'version': 1, 
     'disable_existing_loggers': False,  
     'formatters': {
-        'production': {
+        'develop': {
             'format': '%(asctime)s [%(levelname)s] %(process)d %(thread)d '
                       '%(pathname)s:%(lineno)d %(message)s'
         },
     },
     'handlers': {
-        'file': {
+        'console': {
             'level': 'INFO', 
-            'class': 'logging.handlers.TimedRotatingFileHandler', 
-            'filename': '/django/log/app.log',
-            'when': 'D',
-            'interval': 30, 
-            'formatter': 'production',
+            'class': 'logging.StreamHandler', 
+            'formatter': 'develop',
         },
     },
     'loggers': {
         '': {
-            'handlers': ['file'], 
+            'handlers': ['console'], 
             'level': 'INFO', 
             'propagate': False,
         },
         'django': {
-            'handlers': ['file'], 
+            'handlers': ['console'], 
             'level': 'INFO', 
             'propagate': False,
         },

@@ -4,12 +4,12 @@
 base
 ------------------------------------------- */
 
-/* variation color: f76b8a => f76b8a */
-
 html
 {
     overflow-y: scroll;
     visibility: hidden;
+    font-feature-settings: "palt";
+    letter-spacing: .8px;
 }
 
 html.wf-active
@@ -22,7 +22,8 @@ body
     overflow: hidden;
     background-color: #f1f1f1;
     color: #444444;
-    font-family: 'Lato', 'Kosugi', sans-serif;
+    /*font-family: 'Lato', 'Kosugi Maru', sans-serif;*/
+    font-family: -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", "Helvetica Neue", HelveticaNeue, YuGothic, "Yu Gothic Medium", "Yu Gothic", Verdana, Meiryo, sans-serif;
     line-height: 1.5;
 }
 
@@ -88,7 +89,7 @@ breadcrumb list
 
 li.breadcrumb-item a:hover
 {
-    color: #f76b8a;
+    color: #65a6ff;
 }
 
 /* -------------------------------------------
@@ -134,7 +135,7 @@ pagination
 
 .pager-detail a:hover
 {
-    color: #f76b8a;
+    color: #65a6ff;
 }
 
 
@@ -144,13 +145,12 @@ form & button
 
 .btn-default
 {
-    border: solid 2px #233142;
     background-color: #233142;
 }
 
 .searchform
 {
-    border: solid 2px #ffffff;
+    border: solid 2px #ececec;
     background-color: #ffffff;  
     font-size: 90%;
 }
@@ -187,7 +187,7 @@ toc & heading
 
 #toc li a:hover
 {
-    color: #f76b8a;
+    color: #65a6ff;
     transition: all 0.3s;
 }
 
@@ -264,15 +264,20 @@ badge
 
 .date-badge,
 .category-badge,
-.tag-badge,
 .admin-badge,
 .twitter-badge,
 .facebook-badge,
 .hatena-badge
 {
+    background-color: #f7f8fa;
+    border: solid 1px #f7f8fa;
+}
+
+.tag-badge
+{
     background-color: #f1f1f1;
-    border: solid 1px #f1f1f1;
-}    
+    border: solid 1px #f1f1f1;  
+}
 
 .card-badge-item,
 .single-badge-item,
@@ -283,7 +288,7 @@ badge
     font-size: 100%;
     font-weight: lighter;
     display: inline-block;
-    vertical-align: -5%;
+    vertical-align: 0%;
 }
 
 .date-badge i,
@@ -291,7 +296,7 @@ badge
 .tag-badge i,
 .admin-badge i
 {
-    color: #f76b8a;
+    color: #65a6ff;
 }
 
 .twitter-badge i
@@ -313,7 +318,7 @@ badge
 .tag-badge:hover,
 .admin-badge:hover
 {
-    border: solid 1px #f76b8a;
+    border: solid 1px #65a6ff;
 }
 
 .twitter-badge:hover
@@ -337,13 +342,13 @@ post list card
 
 .post-card
 {
-    outline: solid 2px #f1f1f1;
+    outline: solid 6px #f1f1f1;
     background-color: #ffffff;
 }
 
 .post-card:hover .card-title
 {
-    color: #f76b8a;
+    color: #65a6ff;
     transition: all 0.3s;
 }
 
@@ -385,7 +390,7 @@ post details
 
 .single-title a:hover
 {
-    color: #f76b8a;
+    color: #65a6ff;
     transition: all 0.3s;
 }
 
@@ -429,7 +434,7 @@ related items for post details
 
 .related-post:hover .related-post-title
 {
-    color: #f76b8a;
+    color: #65a6ff;
     transition: all 0.3s;
 }
 
@@ -457,7 +462,7 @@ related items for post details
 .related-post-date i,
 .related-post-category i
 {
-    color: #f76b8a;
+    color: #65a6ff;
 }
 
 .related-link
@@ -473,7 +478,7 @@ related items for post details
 
 .related-link-item:hover
 {
-    color: #f76b8a;
+    color: #65a6ff;
     transition: all 0.3s;
     text-decoration-line: underline;
 }
@@ -481,7 +486,7 @@ related items for post details
 .related-link i,
 .related-tag i
 {
-    color: #f76b8a;
+    color: #65a6ff;
     font-size: 86%;
     display: inline-block;
     vertical-align: 5%;
@@ -547,14 +552,14 @@ side bar card
 
 .side-card:hover .side-card-title
 {
-    color: #f76b8a;
+    color: #65a6ff;
     transition: all 0.3s;
 }
 
 .side-card-info
 {
     border-bottom: solid 2px #f1f1f1;
-    background-color: #f1f1f1;
+    /*background-color: #f1f1f1;*/
 }
 
 .side-card-info-md
@@ -577,7 +582,7 @@ side bar card
 .side-card-date-md i,
 .side-card-category i
 {
-    color: #f76b8a;
+    color: #65a6ff;
 }
 
 /* -------------------------------------------
@@ -588,7 +593,7 @@ side bar list
 .tag-body i,
 .archive-body i
 {
-    color: #f76b8a;
+    color: #65a6ff;
     font-size: 70%;
     display: inline-block;
     vertical-align: -20%;
@@ -601,7 +606,7 @@ side bar list
     color: #444444;
     font-size: 90%;
     display: inline-block;
-    vertical-align: -15%;
+    vertical-align: -14%;
 }    
 
 .category-count,
@@ -610,8 +615,10 @@ side bar list
     background-color: #f1f1f1;
     border: solid 1px #f1f1f1;
     color: #444444;
-    font-size: 86%;
+    font-size: 92%;
     min-width: 12%;
+    display: inline-block;
+    vertical-align: 50%;
 }
 
 .category a:hover,
@@ -621,7 +628,7 @@ side bar list
 .archive a:hover,
 .archive:hover .archive-item
 {
-    color: #f76b8a;
+    color: #65a6ff;
     transition: all 0.3s;
 }
 
@@ -629,8 +636,8 @@ side bar list
 .tag:hover .tag-count,
 .archive:hover .archive-count
 {
-    background-color: #f76b8a;
-    border: solid 1px #f76b8a;
+    background-color: #65a6ff;
+    border: solid 1px #65a6ff;
     color: #ffffff;
     transition: all 0.3s;
 }
@@ -642,13 +649,13 @@ table
 #category-table tr:hover .stretched-link,
 #tag-table tr:hover .stretched-link
 {
-    color: #f76b8a;
+    color: #65a6ff;
     transition: all 0.3s;
 }
 
 .stretched-link:hover 
 {
-    color: #f76b8a;
+    color: #65a6ff;
     transition: all 0.3s;
 }
 
@@ -687,7 +694,7 @@ snippet
 
 .snippet-title a:hover
 {
-    color: #f76b8a;
+    color: #65a6ff;
     transition: all 0.3s;
 }
 
@@ -734,7 +741,7 @@ graph
 
 .graph-title i
 {
-    color: #f76b8a;
+    color: #65a6ff;
     font-size: 80%;
     display: inline-block;
     vertical-align: middle;
@@ -813,17 +820,11 @@ media query
 {
     html
     {
-        font-size: 90%;
+        font-size: 80%;
     }
     .side-card-title
     {
         font-size: 100%;
-    }
-    #category-table,
-    #tag-table,
-    #archive-table
-    {
-        font-size: 80%;
     }
 }
 
@@ -831,16 +832,10 @@ media query
 {
     html
     {
-        font-size: 70%;
+        font-size: 66%;
     }
     .side-card-title
     {
         font-size: 90%;
-    }
-    #category-table,
-    #tag-table,
-    #archive-table
-    {
-        font-size: 80%;
     }
 }

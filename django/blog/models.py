@@ -69,7 +69,7 @@ class Post(Base):
     category = models.ForeignKey(Category, verbose_name='カテゴリー', null=True, blank=True, on_delete=models.SET_NULL)
     tag = models.ManyToManyField(Tag, verbose_name='タグ', blank=True)
     related_posts = models.ManyToManyField('self', verbose_name='関連記事', blank=True)
-    eyecatch = models.ImageField(verbose_name='アイキャッチ画像', upload_to='image/post/eyecatch/%Y/%m/%d/', default='image/post/default/default.webp', null=True, blank=True)
+    eyecatch = models.ImageField(verbose_name='アイキャッチ画像', upload_to='image/post/eyecatch/%Y/%m/%d/', null=True, blank=True)
     description = models.TextField(verbose_name='説明', blank=True, null=True)
     text = models.TextField(verbose_name='本文', blank=True, null=True)
 
@@ -97,7 +97,7 @@ class Image(Base):
 
     post = models.ForeignKey(Post, verbose_name='記事', on_delete=models.PROTECT)
     title = models.CharField('タイトル', max_length=255, blank=True, help_text='画像のalt属性として利用されます')
-    image = models.ImageField(verbose_name='画像', upload_to='image/post/text/%Y/%m/%d/', default='image/post/default/default.webp', null=True, blank=True, help_text='保存後、本文挿入用HTMLを生成します')
+    image = models.ImageField(verbose_name='画像', upload_to='image/post/text/%Y/%m/%d/', null=True, blank=True, help_text='保存後、本文挿入用HTMLを生成します')
 
     def __str__(self):
         return '本文挿入用HTML: <img src="" data-src="{}" class="lozad py-3 w-100" alt="{}">'.format(self.image.url, self.title)
@@ -143,8 +143,8 @@ class AboutSite(Base):
         verbose_name_plural = 'このサイトについて'
 
     site = models.OneToOneField(Site, verbose_name='サイト', on_delete=models.PROTECT)
-    author_image = models.ImageField(verbose_name='管理者のイメージ', upload_to='image/site/author_image/', default='image/site/author_image/author_image.webp', blank=True, null=True)
-    site_image = models.ImageField(verbose_name='サイトのイメージ', upload_to='image/site/site_image/', default='image/site/site_image/site_image.webp', blank=True, null=True)
+    author_image = models.ImageField(verbose_name='管理者のイメージ', upload_to='image/site/author_image/', blank=True, null=True)
+    site_image = models.ImageField(verbose_name='サイトのイメージ', upload_to='image/site/site_image/', blank=True, null=True)
     author_name = models.CharField(verbose_name='管理者の名前', max_length=255, blank=True, null=True)
     author_text = models.TextField(verbose_name='管理者の説明', blank=True, null=True)
     site_text = models.TextField(verbose_name='サイトの説明', blank=True, null=True)
