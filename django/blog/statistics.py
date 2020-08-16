@@ -9,7 +9,6 @@ from janome.tokenizer import Tokenizer
 from janome.analyzer import Analyzer
 from janome.charfilter import *
 from janome.tokenfilter import *
-import os
 import itertools
 
 """ データ可視化 """
