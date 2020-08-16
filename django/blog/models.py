@@ -178,3 +178,18 @@ class Snippet(Base):
 
     def __str__(self):
         return '{}: {}'.format(self.index, self.name)
+
+""" 人気記事上位10件を Google Analytics Reporting API から取得して格納する """
+class PopularPost(Base):
+    class Meta:
+        db_table = 'popular_post'
+        verbose_name = '人気記事'
+        verbose_name_plural = '人気記事'
+
+    title = models.CharField(verbose_name='タイトル', max_length=128)
+    link = models.URLField(verbose_name='URL', max_length=255)
+    page_view = models.IntegerField(verbose_name='ページビュー')
+
+    def __str__(self):
+        return '{0} ({1}): {2}'.format(
+            self.url, self.title, self.page_view)

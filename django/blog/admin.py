@@ -4,7 +4,7 @@ from django.utils.safestring import mark_safe
 from django.urls import path
 from django.template.response import TemplateResponse
 from django_summernote.admin import SummernoteModelAdmin, SummernoteInlineModelAdmin
-from .models import Base, Post, Category, Tag, SiteDetail, AboutSite, PrivacyPolicy, Snippet, Image, Link
+from .models import Base, Post, Category, Tag, SiteDetail, AboutSite, PrivacyPolicy, Snippet, Image, Link, PopularPost
 
 class SiteDetailInline(admin.StackedInline):
     model = SiteDetail
@@ -100,6 +100,11 @@ class PostAdmin(SummernoteModelAdmin):
     bulk_publish.short_description = '選択された 記事 を公開扱いにする'
     bulk_unpublish.short_description = '選択された 記事 を非公開扱いにする'
 
+class PopularPostAdmin(admin.ModelAdmin):
+    list_display = ('id', 'created_at', 'updated_at', 'title', 'link', 'page_view')
+    ordering = ('-page_view',)
+    readonly_fields = ('id', 'created_at', 'updated_at')
+
 admin.autodiscover()
 admin.site.unregister(Site)
 admin.site.register(Site, SiteAdmin) 
@@ -107,3 +112,4 @@ admin.site.register(Category, CategoryAdmin)
 admin.site.register(Tag, TagAdmin)
 admin.site.register(Snippet, SnippetAdmin)
 admin.site.register(Post, PostAdmin)
+admin.site.register(PopularPost, PopularPostAdmin)

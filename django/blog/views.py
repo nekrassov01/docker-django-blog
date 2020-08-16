@@ -8,7 +8,7 @@ from django.db.models import Q, Count
 from django.db.models.functions import TruncMonth
 from django.urls import reverse_lazy
 from django.http import Http404
-from .models import Post, Category, Tag, SiteDetail, AboutSite, PrivacyPolicy, Snippet, Image, Link
+from .models import Post, Category, Tag, SiteDetail, AboutSite, PrivacyPolicy, Snippet, Image, Link, PopularPost
 from .forms import ContactForm
 
 
