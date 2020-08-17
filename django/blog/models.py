@@ -193,3 +193,69 @@ class PopularPost(Base):
     def __str__(self):
         return '{0} ({1}): {2}'.format(
             self.url, self.title, self.page_view)
+
+""" 自作 Reporting API - 1.カテゴリ別記事数 """
+class CategoryPost(Base):
+    class Meta:
+        db_table = 'category_post'
+        verbose_name = 'レポート - カテゴリ別記事数'
+        verbose_name_plural = 'レポート - カテゴリ別記事数'
+
+    category = models.CharField(verbose_name='カテゴリ名', max_length=255)
+    post_count = models.IntegerField(verbose_name='記事数', null=True, blank=True)
+
+    def __str__(self):
+        return '{}: {}'.format(self.category, self.post_count)
+
+""" 自作 Reporting API - 2.カテゴリ別タグ数 """
+class CategoryTag(Base):
+    class Meta:
+        db_table = 'category_tag'
+        verbose_name = 'レポート - カテゴリ別タグ数'
+        verbose_name_plural = 'レポート - カテゴリ別タグ数'
+
+    category = models.CharField(verbose_name='カテゴリ名', max_length=255, null=True, blank=True)
+    tag_count = models.IntegerField(verbose_name='タグ数', null=True, blank=True)
+
+    def __str__(self):
+        return '{}: {}'.format(self.category, self.tag_count)
+
+""" 自作 Reporting API - 3.タグ別記事数 """
+class TagPost(Base):
+    class Meta:
+        db_table = 'tag_post'
+        verbose_name = 'レポート - タグ別記事数'
+        verbose_name_plural = 'レポート - タグ別記事数'
+
+    tag = models.CharField(verbose_name='タグ名', max_length=255, null=True, blank=True)
+    post_count = models.IntegerField(verbose_name='記事数', null=True, blank=True)
+
+    def __str__(self):
+        return '{}: {}'.format(self.tag, self.post_count)
+
+""" 自作 Reporting API - 4.月別記事数 """
+class MonthPost(Base):
+    class Meta:
+        db_table = 'month_post'
+        verbose_name = 'レポート - 月別記事数'
+        verbose_name_plural = 'レポート - 月別記事数'
+
+    month = models.CharField(verbose_name='年月', max_length=255, null=True, blank=True)
+    category = models.CharField(verbose_name='タグ名', max_length=255, null=True, blank=True)
+    post_count = models.IntegerField(verbose_name='記事数', null=True, blank=True)
+
+    def __str__(self):
+        return '{}: {}'.format(self.month, self.category, self.post_count)
+
+""" 自作 Reporting API - 5.ワードクラウド """
+class WordCloud(Base):
+    class Meta:
+        db_table = 'word_cloud'
+        verbose_name = 'レポート - ワードクラウド'
+        verbose_name_plural = 'レポート - ワードクラウド'
+
+    word = models.CharField(verbose_name='ワード', max_length=255, null=True, blank=True)
+    word_count = models.IntegerField(verbose_name='出現数', null=True, blank=True)
+
+    def __str__(self):
+        return '{}: {}'.format(self.word, self.word_count)

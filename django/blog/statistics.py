@@ -1,4 +1,10 @@
-from django.shortcuts import render
+"""
+開発初期段階では、サイトレポートをVIEWに直書きしていた
+パフォーマンス改善のため、バッチ処理に変更
+このVIEWは今は使われていないが、一応残しておく
+"""
+
+from django.conf import settings
 from django.db.models import Q, Count
 from django.db.models.functions import TruncMonth
 from django.utils import html
@@ -9,7 +15,6 @@ from janome.tokenizer import Tokenizer
 from janome.analyzer import Analyzer
 from janome.charfilter import *
 from janome.tokenfilter import *
-import os
 import itertools
 
 """ データ可視化 """
@@ -117,8 +122,7 @@ def statistics(request):
     """
     
     """ 形態素解析のためのアナライザを定義 """
-    app_name = request.resolver_match.app_name
-    udic_path = os.path.join(app_name, 'janome', 'userdic.csv')
+    udic_path = settings.JANOME_DICTIONARY_PATH
     char_filters = [UnicodeNormalizeCharFilter(), RegexReplaceCharFilter('\,', '')]
     tokenizer = Tokenizer(udic=udic_path, udic_type='simpledic', udic_enc='utf8')
     token_filters = [CompoundNounFilter(), POSKeepFilter(['名詞']), LowerCaseFilter(), TokenCountFilter()]

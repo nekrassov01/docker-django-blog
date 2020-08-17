@@ -9,9 +9,8 @@ from django.db.models import Q, Count
 from django.db.models.functions import TruncMonth
 from django.urls import reverse_lazy
 from django.http import Http404
-from .models import Post, Category, Tag, SiteDetail, AboutSite, PrivacyPolicy, Snippet, Image, Link, PopularPost
+from .models import Post, Category, Tag, SiteDetail, AboutSite, PrivacyPolicy, Snippet, Image, Link, PopularPost, CategoryPost, CategoryTag, TagPost, MonthPost, WordCloud
 from .forms import ContactForm
-
 
 """ リストビューの基底クラス """
 class BaseListView(generic.ListView):
@@ -256,3 +255,28 @@ class ContactFormView(SuccessMessageMixin, generic.edit.FormView):
         context = super().get_context_data(**kwargs)
         context['label'] = self.label
         return context
+
+""" サイトレポート """
+def report(request):
+    label = 'サイトレポート'
+
+    category_post = CategoryPost.objects.all()
+    category_tag = CategoryTag.objects.all()
+    tag_post = TagPost.objects.all()
+    month_post = MonthPost.objects.all()
+    word_cloud = WordCloud.objects.all()
+
+    category_list = list(category_post.values_list('category', flat=True))
+    month_list = sorted(list(set(month_post.values_list('month', flat=True))))
+
+    """ レンダリング """
+    return render(request, 'blog/blog_single_graph.html', {
+        'label': label,
+        'category_list': category_list,
+        'month_list': month_list,     
+        'category_post': category_post,
+        'category_tag': category_tag,
+        'tag_post': tag_post,
+        'month_post': month_post,
+        'word_cloud': word_cloud,
+    })

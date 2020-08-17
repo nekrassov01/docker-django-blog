@@ -4,7 +4,7 @@ from django.utils.safestring import mark_safe
 from django.urls import path
 from django.template.response import TemplateResponse
 from django_summernote.admin import SummernoteModelAdmin, SummernoteInlineModelAdmin
-from .models import Base, Post, Category, Tag, SiteDetail, AboutSite, PrivacyPolicy, Snippet, Image, Link, PopularPost
+from .models import Base, Post, Category, Tag, SiteDetail, AboutSite, PrivacyPolicy, Snippet, Image, Link, CategoryPost, CategoryTag, TagPost, MonthPost, WordCloud
 
 class SiteDetailInline(admin.StackedInline):
     model = SiteDetail
@@ -105,6 +105,31 @@ class PopularPostAdmin(admin.ModelAdmin):
     ordering = ('-page_view',)
     readonly_fields = ('id', 'created_at', 'updated_at')
 
+class CategoryPostAdmin(admin.ModelAdmin):
+    list_display = ('id', 'created_at', 'updated_at', 'category', 'post_count')
+    ordering = ('-post_count',)
+    readonly_fields = ('id', 'created_at', 'updated_at')
+
+class CategoryTagAdmin(admin.ModelAdmin):
+    list_display = ('id', 'created_at', 'updated_at', 'category', 'tag_count')
+    ordering = ('-tag_count',)
+    readonly_fields = ('id', 'created_at', 'updated_at')
+
+class TagPostAdmin(admin.ModelAdmin):
+    list_display = ('id', 'created_at', 'updated_at', 'tag', 'post_count')
+    ordering = ('-post_count',)
+    readonly_fields = ('id', 'created_at', 'updated_at')
+
+class MonthPostAdmin(admin.ModelAdmin):
+    list_display = ('id', 'created_at', 'updated_at', 'month', 'category', 'post_count')
+    ordering = ('month', 'category', 'post_count',)
+    readonly_fields = ('id', 'created_at', 'updated_at')
+
+class WordCloudAdmin(admin.ModelAdmin):
+    list_display = ('id', 'created_at', 'updated_at', 'word', 'word_count')
+    ordering = ('-word_count',)
+    readonly_fields = ('id', 'created_at', 'updated_at')
+
 admin.autodiscover()
 admin.site.unregister(Site)
 admin.site.register(Site, SiteAdmin) 
@@ -112,4 +137,8 @@ admin.site.register(Category, CategoryAdmin)
 admin.site.register(Tag, TagAdmin)
 admin.site.register(Snippet, SnippetAdmin)
 admin.site.register(Post, PostAdmin)
-admin.site.register(PopularPost, PopularPostAdmin)
+admin.site.register(CategoryPost, CategoryPostAdmin)
+admin.site.register(CategoryTag, CategoryTagAdmin)
+admin.site.register(TagPost, TagPostAdmin)
+admin.site.register(MonthPost, MonthPostAdmin)
+admin.site.register(WordCloud, WordCloudAdmin)

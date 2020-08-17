@@ -121,8 +121,8 @@
         <script> 
           var ctx = document.getElementById('category-post').getContext('2d');
           var data = [
-              [{% for k, v in category_post_dict.items %}'{{ k }}',{% endfor %}],
-              [{% for k, v in category_post_dict.items %}{{ v }},{% endfor %}],
+              [{% for row in category_post %}'{{ row.category }}',{% endfor %}],
+              [{% for row in category_post %}{{ row.post_count }},{% endfor %}],
             ]
           var category_post = new Chart(ctx, {
             type: 'polarArea',
@@ -146,8 +146,8 @@
           });
           var ctx = document.getElementById('category-tag').getContext('2d');
           var data = [
-              [{% for k, v in category_tag_dict.items %}'{{ k }}',{% endfor %}],
-              [{% for k, v in category_tag_dict.items %}{{ v }},{% endfor %}],
+              [{% for row in category_tag %}'{{ row.category }}',{% endfor %}],
+              [{% for row in category_tag %}{{ row.tag_count }},{% endfor %}],
             ]
           var category_tag = new Chart(ctx, {
             type: 'pie',
@@ -171,8 +171,8 @@
           });
           var ctx = document.getElementById('tag-post').getContext('2d');
           var data = [
-              [{% for k, v in tag_post_dict.items %}'{{ k }}',{% endfor %}],
-              [{% for k, v in tag_post_dict.items %}{{ v }},{% endfor %}],
+              [{% for row in tag_post %}'{{ row.tag }}',{% endfor %}],
+              [{% for row in tag_post %}{{ row.post_count }},{% endfor %}],
             ]
           var tag_post = new Chart(ctx, {
             type: 'doughnut',
@@ -200,13 +200,11 @@
             data: {
               labels: [{% for month in month_list %}'{{ month }}',{% endfor %}],
               datasets: [
-                {% for category_name in category_list %}
+                {% for category in category_list %}
                 {
-                  label: '{{ category_name }}',
+                  label: '{{ category }}',
                   fill: false,
-                  data: [
-                    {% for label in month_list %}{% for date, category, month_post in month_post_list %}{% if category == category_name %}{% if date == label %}{{ month_post }},{% endif %}{% endif %}{% endfor %}{% endfor %}
-                  ],
+                  data: [{% for month in month_list %}{% for row in month_post %}{% if row.category == category %}{% if row.month == month %}{{ row.post_count }},{% endif %}{% endif %}{% endfor %}{% endfor %}],
                 },
                 {% endfor %}
               ]
@@ -248,7 +246,7 @@
           var width = 800;
           var height = 400;
           var target_id = '#wordcloud';
-          var data = [{% for k, v in word_dict.items %}{"word": "{{ k }}","count": {{ v }},},{% endfor %}]
+          var data = [{% for row in word_cloud %}{"word": "{{ row.word }}","count": {{ row.word_count }},},{% endfor %}]
           function draw_wordcloud(data){
             var random = d3.randomIrwinHall(2);
             var countMax = d3.max(data, function(d){ return d.count } );
