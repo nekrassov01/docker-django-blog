@@ -90,6 +90,9 @@ USE_TZ = env('USE_TZ')
 # sites Framework
 SITE_ID = env('SITE_ID')
 
+# SecurityMiddleware
+SECURE_SSL_REDIRECT = env.get_value('SECURE_SSL_REDIRECT', bool),
+
 # ClickJacking Protection
 X_FRAME_OPTIONS = env('X_FRAME_OPTIONS')
 

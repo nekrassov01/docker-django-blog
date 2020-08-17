@@ -5,38 +5,20 @@
       {% block meta_title %}{{ label }} | {{ block.super }}{% endblock %}
       {% block ogp_title %}{{ label }} | {{ block.super }}{% endblock %}
 
-      {% block breadcrumb %}
+                  {% block breadcrumb %}
                   {{ block.super }}
                   <li class="breadcrumb-item">{{ label }}</li>
-      {% endblock %}
+                  {% endblock %}
 
-      {% block main %}
+                {% block main %}
                 <div class="single col-12 shadow-0 rounded-0 mb-3 p-lg-4">
                   <div class="row no-gutters">
                     <div class="single-title col-12 text-center m-0 px-3 px-md-5 pt-5 pb-3 h-100">
-                      {% if 'about-site' in request.path %}
-                      <h2 class="m-0 p-0"><a href="{% url 'blog:about' %}">{{ label }}</a></h2>
-                      {% elif '/privacy-policy/' in request.path %}
-                      <h2 class="m-0 p-0"><a href="{% url 'blog:policy' %}">{{ label }}</a></h2>
-                      {% elif '/snippet/' in request.path %}
-                      <h2 class="m-0 p-0"><a href="{% url 'blog:snippet' %}">{{ label }}</a></h2>
-                      {% elif '/graph/' in request.path %}
-                      <h2 class="m-0 p-0"><a href="{% url 'blog:graph' %}">{{ label }}</a></h2>
-                      {% elif '/archive/' in request.path %}
-                      <h2 class="m-0 p-0"><a href="{% url 'blog:archive' %}">{{ label }}</a></h2>
-                      {% elif '/category/' in request.path %}
-                      <h2 class="m-0 p-0"><a href="{% url 'blog:category' %}">{{ label }}</a></h2>
-                      {% elif '/tag/' in request.path %}
-                      <h2 class="m-0 p-0"><a href="{% url 'blog:tag' %}">{{ label }}</a></h2>
-                      {% elif '/contact/' in request.path %}
-                      <h2 class="m-0 p-0"><a href="{% url 'blog:contact_form' %}">{{ label }}</a></h2>
-                      {% elif '/contact/result/' in request.path %}
-                      <h2 class="m-0 p-0"><a href="{% url 'blog:contact_result' %}">{{ label }}</a></h2>
-                      {% endif %}
+                      <h2 class="m-0 p-0"><a>{{ label }}</a></h2>
                     </div>
                     <div class="single-body p-3 p-lg-4 w-100">
                     {% block single %}{% endblock %}
                     </div>
                   </div>
                 </div>
-      {% endblock %}
+                {% endblock %}

@@ -5,7 +5,7 @@
       {% block meta_title %}{{ label }} | {{ block.super }}{% endblock %}
       {% block ogp_title %}{{ label }} | {{ block.super }}{% endblock %}
 
-      {% block breadcrumb %}
+                  {% block breadcrumb %}
                   {{ block.super }}
                   {% if '/draft/' not in request.path and query %}
                   <li class="breadcrumb-item">[ {{ query }} ] の検索結果</li>
@@ -18,9 +18,9 @@
                   {% else %}
                   <li class="breadcrumb-item">{{ label }}</li>
                   {% endif %}
-      {% endblock %}
+                  {% endblock %}
 
-      {% block main %}
+                {% block main %}
                 {% for post in post_list %}
                 <a href="{% url 'blog:detail' post.pk %}" class="post-card rounded-0 m-0 p-4">
                   <div class="card-title mb-4 pb-3">
@@ -64,4 +64,4 @@
                 {% include 'blog/center/pager_list.html' %}
                 {% endblock %}
                 {% endif %}
-      {% endblock %}
+                {% endblock %}
