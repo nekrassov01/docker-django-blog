@@ -1,7 +1,6 @@
 from pathlib import Path
 import os
 import environ
-import six
 
 # Base
 # BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
@@ -109,7 +108,7 @@ EMAIL_HOST = env('EMAIL_HOST')
 EMAIL_HOST_USER = env('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = env('EMAIL_PORT')
-EMAIL_USE_TLS = env('EMAIL_USE_TLS')
+EMAIL_USE_TLS = env.get_value('EMAIL_USE_TLS', bool)
 
 # Static Files
 STATIC_URL = '/static/'
@@ -118,7 +117,7 @@ STATIC_ROOT = '/static'
 
 # Media Files
 MEDIA_URL = '/media/'
-#MEDIA_ROOT = '/media'
+# MEDIA_ROOT = '/media'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # django-cloudinary-storage
