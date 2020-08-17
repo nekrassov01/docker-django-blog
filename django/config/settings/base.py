@@ -1,4 +1,5 @@
 from pathlib import Path
+from django.contrib.messages import constants as messages
 import os
 import environ
 
@@ -86,10 +87,16 @@ USE_I18N = env('USE_I18N')
 USE_L10N = env('USE_L10N')
 USE_TZ = env('USE_TZ')
 
+# Flash Message
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage' 
+MESSAGE_TAGS = {
+    messages.SUCCESS: 'alert alert-success',
+}
+
 # sites Framework
 SITE_ID = env('SITE_ID')
 
-# SecurityMiddleware
+# SecurityMiddlewa
 SECURE_SSL_REDIRECT = env.get_value('SECURE_SSL_REDIRECT', bool),
 
 # ClickJacking Protection
@@ -109,6 +116,7 @@ EMAIL_HOST_USER = env('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = env('EMAIL_PORT')
 EMAIL_USE_TLS = env.get_value('EMAIL_USE_TLS', bool)
+DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL')
 
 # Static Files
 STATIC_URL = '/static/'
@@ -132,3 +140,4 @@ CLOUDINARY_STORAGE = {
 SERVICE_ACCOUNT_EMAIL = env('SERVICE_ACCOUNT_EMAIL')
 VIEW_ID = env('VIEW_ID')
 KEY_FILE_LOCATION = os.path.join(BASE_DIR, 'client_secrets.p12')
+

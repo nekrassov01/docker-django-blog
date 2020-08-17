@@ -5,6 +5,13 @@
                       {% block single %}
                       <div class="row no-gutters">
                         <div class="col-12 m-0 p-0">
+                          {% if messages %}
+                          <ul class="list-unstyled">
+                            {% for message in messages %}
+                            <li{% if message.tags %} class="{{ message.tags }} rounded-0"{% endif %}>{{ message }}</li>
+                            {% endfor %}
+                          </ul>
+                          {% endif %}
                           <div class="description mb-5 p-2 w-100">
                             <p class="m-0 p-2">汎用の問い合わせフォームです。当サイトの内容について、お気軽にご連絡ください。ただし、お問い合わせ内容によってはご返信を控えさせていただく場合や、事情によりご返信にお時間をいただく場合がございますので、あらかじめご了承ください。</p>
                           </div>

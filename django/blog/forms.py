@@ -1,8 +1,9 @@
 from django import forms
 from django.conf import settings
 from django.contrib.sites.models import Site
-from django.core.mail import BadHeaderError, send_mail
+from django.core.mail import send_mail, EmailMessage, BadHeaderError
 from django.http import HttpResponse
+from django.template.loader import render_to_string
 
 """ お問い合わせフォーム """
 class ContactForm(forms.Form):
@@ -48,11 +49,19 @@ class ContactForm(forms.Form):
     def send_email(self):
         domain = Site.objects.get_current().domain
         subject = self.cleaned_data['subject']
-        message = '{}\r\n\r\n----\r\nこのメールは {} のお問い合わせフォームから送信されました。'.format(self.cleaned_data['message'], domain)
+        message = self.cleaned_data['message']
         name = self.cleaned_data['name']
         email = self.cleaned_data['email']
         from_email = '{name} <{email}>'.format(name=name, email=email)
         recipient_list = [settings.EMAIL_HOST_USER]
+        context = {
+            'domain': domain,
+            'subject': subject,
+            'message': message,
+            'name': name,
+            'email': email,
+        }
+        message = render_to_string('blog/mail.txt', context) 
         try:
             send_mail(subject, message, from_email, recipient_list)
         except BadHeaderError:

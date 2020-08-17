@@ -41,6 +41,9 @@ LOGGING = {
     },
 }
 
+# Email not send
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 # django-debug-toolbar
 if DEBUG:
     def show_toolbar(request):

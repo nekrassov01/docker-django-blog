@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.sites.models import Site
 from django.contrib.sitemaps import ping_google
 from django.views import generic
@@ -240,10 +241,11 @@ def ping(request):
         return redirect('blog:index', permanent=True)
 
 """ 問い合わせフォーム """
-class ContactFormView(generic.edit.FormView):
-    template_name = 'blog/blog_single_contact_form.html'
+class ContactFormView(SuccessMessageMixin, generic.edit.FormView):
+    template_name = 'blog/blog_single_contact.html'
     form_class = ContactForm
-    success_url = reverse_lazy('blog:contact_result')
+    success_url = reverse_lazy('blog:contact')
+    success_message = "メール送信が完了しました。"
     label = 'お問い合わせ'
 
     def form_valid(self, form):
@@ -252,16 +254,5 @@ class ContactFormView(generic.edit.FormView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['label'] = self.label
-        return context
-
-""" 問い合わせ送信後のリダイレクト先 """
-class ContactResultView(generic.TemplateView):
-    template_name = 'blog/blog_single_contact_result.html'
-    label = 'お問い合わせ'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['success'] = "メール送信が完了しました。"
         context['label'] = self.label
         return context
