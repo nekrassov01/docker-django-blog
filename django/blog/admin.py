@@ -4,7 +4,7 @@ from django.utils.safestring import mark_safe
 from django.urls import path
 from django.template.response import TemplateResponse
 from django_summernote.admin import SummernoteModelAdmin, SummernoteInlineModelAdmin
-from .models import Base, Post, Category, Tag, SiteDetail, AboutSite, PrivacyPolicy, Snippet, Image, Link, CategoryPost, CategoryTag, TagPost, MonthPost, WordCloud
+from .models import Base, Post, Category, Tag, SiteDetail, AboutSite, PrivacyPolicy, Snippet, Image, Link, PopularPost, CategoryPost, CategoryTag, TagPost, MonthPost, WordCloud
 
 class SiteDetailInline(admin.StackedInline):
     model = SiteDetail
@@ -18,16 +18,19 @@ class PrivacyPolicyInline(admin.StackedInline, SummernoteInlineModelAdmin):
     summernote_fields = ('text')
 
 class SiteAdmin(admin.ModelAdmin):
+    model = Site
     inlines = [SiteDetailInline, AboutSiteInline, PrivacyPolicyInline]
     list_display = ('id', 'domain', 'name')
 
 class CategoryAdmin(admin.ModelAdmin):
+    model = Category
     list_display = ('id', 'created_at', 'updated_at', 'index', 'name', 'slug', 'description')
     ordering = ('index',)
     search_fields = ('name',)
     readonly_fields = ('id', 'created_at', 'updated_at')
 
 class TagAdmin(admin.ModelAdmin):
+    model = Tag
     list_display = ('id', 'created_at', 'updated_at', 'category', 'name', 'slug')
     ordering = ('-created_at',)
     list_filter = ('category',)
@@ -35,6 +38,7 @@ class TagAdmin(admin.ModelAdmin):
     readonly_fields = ('id', 'created_at', 'updated_at')
 
 class SnippetAdmin(admin.ModelAdmin):
+    model = Snippet
     list_display = ('id', 'created_at', 'updated_at', 'index', 'name', 'truncate_text')
     ordering = ('index',)
     search_fields = ('name',)
@@ -60,6 +64,7 @@ class LinkInline(admin.StackedInline):
     readonly_fields = ('id', 'created_at', 'updated_at')
 
 class PostAdmin(SummernoteModelAdmin):
+    model = Post
     inlines = [ImageInline, LinkInline]
     list_display = ('is_public', 'id', 'created_at', 'updated_at', 'published_at', 'category', 'title', 'truncate_desc', 'preview')
     list_display_links = ('id', 'preview')
@@ -101,31 +106,37 @@ class PostAdmin(SummernoteModelAdmin):
     bulk_unpublish.short_description = '選択された 記事 を非公開扱いにする'
 
 class PopularPostAdmin(admin.ModelAdmin):
+    model = PopularPost
     list_display = ('id', 'created_at', 'updated_at', 'title', 'link', 'page_view')
     ordering = ('-page_view',)
     readonly_fields = ('id', 'created_at', 'updated_at')
 
 class CategoryPostAdmin(admin.ModelAdmin):
+    model = CategoryPost
     list_display = ('id', 'created_at', 'updated_at', 'category', 'post_count')
     ordering = ('-post_count',)
     readonly_fields = ('id', 'created_at', 'updated_at')
 
 class CategoryTagAdmin(admin.ModelAdmin):
+    model = CategoryTag
     list_display = ('id', 'created_at', 'updated_at', 'category', 'tag_count')
     ordering = ('-tag_count',)
     readonly_fields = ('id', 'created_at', 'updated_at')
 
 class TagPostAdmin(admin.ModelAdmin):
+    model = TagPost
     list_display = ('id', 'created_at', 'updated_at', 'tag', 'post_count')
     ordering = ('-post_count',)
     readonly_fields = ('id', 'created_at', 'updated_at')
 
 class MonthPostAdmin(admin.ModelAdmin):
+    model = MonthPost
     list_display = ('id', 'created_at', 'updated_at', 'month', 'category', 'post_count')
     ordering = ('month', 'category', 'post_count',)
     readonly_fields = ('id', 'created_at', 'updated_at')
 
 class WordCloudAdmin(admin.ModelAdmin):
+    model = WordCloud
     list_display = ('id', 'created_at', 'updated_at', 'word', 'word_count')
     ordering = ('-word_count',)
     readonly_fields = ('id', 'created_at', 'updated_at')
@@ -137,6 +148,7 @@ admin.site.register(Category, CategoryAdmin)
 admin.site.register(Tag, TagAdmin)
 admin.site.register(Snippet, SnippetAdmin)
 admin.site.register(Post, PostAdmin)
+admin.site.register(PopularPost, PopularPostAdmin)
 admin.site.register(CategoryPost, CategoryPostAdmin)
 admin.site.register(CategoryTag, CategoryTagAdmin)
 admin.site.register(TagPost, TagPostAdmin)

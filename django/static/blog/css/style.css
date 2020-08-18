@@ -560,7 +560,6 @@ side bar card
 .side-card-info
 {
     border-bottom: solid 2px #f1f1f1;
-    /*background-color: #f1f1f1;*/
 }
 
 .side-card-info-md
@@ -738,6 +737,7 @@ graph
 .graph-title
 {
     border-bottom: solid 2px #ececec;
+    font-weight: bold;
 }
 
 .graph-title i
