@@ -218,7 +218,6 @@ class PrivacyPolicyView(BaseListView):
 
 """ スニペット """
 class SnippetView(LoginRequiredMixin, BaseListView):
-
     template_name = 'blog/blog_single_snippet.html'
     model = Snippet
     paginate_by = None

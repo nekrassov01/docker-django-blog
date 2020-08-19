@@ -2,7 +2,7 @@ from django.conf import settings
 from django.utils import timezone
 from django.db.models import Count, Q
 from django.db.models.functions import TruncMonth
-from .models import Base, Post, Category, Tag, SiteDetail, AboutSite, PrivacyPolicy, Snippet, Image, Link, PopularPost
+from .models import Post, Category, Tag, PopularPost
 
 """ すべてのページで呼ぶコンテキスト """
 def common(request):
