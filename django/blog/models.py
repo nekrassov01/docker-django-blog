@@ -1,6 +1,6 @@
 import os
 import pytz
-import uuid as uuid
+import uuid
 from urllib.parse import urlparse
 from django.conf import settings
 from django.contrib.sites.models import Site
@@ -130,7 +130,7 @@ class SiteDetail(Base):
     description = models.TextField(verbose_name='メタデスクリプション', blank=True, null=True, default='技術ブログ。学んだ技術のノートや雑記等の置き場所です。AWS,PowerShell,Windows,Linux,Python,Django,Dockerなどが多め。')
     google_analytics_html = models.TextField(verbose_name='Google Analitics', blank=True)
     google_adsence_html = models.TextField(verbose_name='Google AdSense', blank=True)
-    github = models.CharField(verbose_name='Github URL', max_length=255, blank=True)
+    github = models.CharField(verbose_name='GitHub URL', max_length=255, blank=True)
 
     def __str__(self):
         return '「{}」の基本情報を編集します。'.format(self.site.name)
@@ -165,7 +165,7 @@ class PrivacyPolicy(Base):
     def __str__(self):
         return '「{}」のプライバシーポリシーを編集します。'.format(self.site.name)
 
-""" 本文編集用スニペット """
+""" スニペット | 本文編集用 """
 class Snippet(Base):
     class Meta:
         db_table = 'snippet'
@@ -179,7 +179,7 @@ class Snippet(Base):
     def __str__(self):
         return '{}: {}'.format(self.index, self.name)
 
-""" 人気記事上位10件を Google Analytics Reporting API から取得して格納する """
+""" 人気記事 | 上位10件を Google Analytics Reporting API から取得して格納する """
 class PopularPost(Base):
     class Meta:
         db_table = 'popular_post'
@@ -194,12 +194,12 @@ class PopularPost(Base):
         return '{0} ({1}): {2}'.format(
             self.url, self.title, self.page_view)
 
-""" 自作 Reporting API - 1.カテゴリ別記事数 """
+""" 自作 Reporting API | 1.カテゴリ別記事数 """
 class CategoryPost(Base):
     class Meta:
         db_table = 'category_post'
-        verbose_name = 'レポート - カテゴリ別記事数'
-        verbose_name_plural = 'レポート - カテゴリ別記事数'
+        verbose_name = 'カテゴリ別: 記事数'
+        verbose_name_plural = 'レポート - カテゴリ別: 記事数'
 
     category = models.CharField(verbose_name='カテゴリ名', max_length=255)
     post_count = models.IntegerField(verbose_name='記事数', null=True, blank=True)
@@ -207,12 +207,12 @@ class CategoryPost(Base):
     def __str__(self):
         return '{}: {}'.format(self.category, self.post_count)
 
-""" 自作 Reporting API - 2.カテゴリ別タグ数 """
+""" 自作 Reporting API | 2.カテゴリ別タグ数 """
 class CategoryTag(Base):
     class Meta:
         db_table = 'category_tag'
-        verbose_name = 'レポート - カテゴリ別タグ数'
-        verbose_name_plural = 'レポート - カテゴリ別タグ数'
+        verbose_name = 'カテゴリ別: タグ数'
+        verbose_name_plural = 'レポート - カテゴリ別: タグ数'
 
     category = models.CharField(verbose_name='カテゴリ名', max_length=255, null=True, blank=True)
     tag_count = models.IntegerField(verbose_name='タグ数', null=True, blank=True)
@@ -220,12 +220,12 @@ class CategoryTag(Base):
     def __str__(self):
         return '{}: {}'.format(self.category, self.tag_count)
 
-""" 自作 Reporting API - 3.タグ別記事数 """
+""" 自作 Reporting API | 3.タグ別記事数 """
 class TagPost(Base):
     class Meta:
         db_table = 'tag_post'
-        verbose_name = 'レポート - タグ別記事数'
-        verbose_name_plural = 'レポート - タグ別記事数'
+        verbose_name = 'タグ別: 記事数'
+        verbose_name_plural = 'レポート - タグ別: 記事数'
 
     tag = models.CharField(verbose_name='タグ名', max_length=255, null=True, blank=True)
     post_count = models.IntegerField(verbose_name='記事数', null=True, blank=True)
@@ -233,12 +233,12 @@ class TagPost(Base):
     def __str__(self):
         return '{}: {}'.format(self.tag, self.post_count)
 
-""" 自作 Reporting API - 4.月別記事数 """
+""" 自作 Reporting API | 4.月別記事数 """
 class MonthPost(Base):
     class Meta:
         db_table = 'month_post'
-        verbose_name = 'レポート - 月別記事数'
-        verbose_name_plural = 'レポート - 月別記事数'
+        verbose_name = 'カテゴリ別: 記事数推移'
+        verbose_name_plural = 'レポート - カテゴリ別: 記事数推移'
 
     month = models.CharField(verbose_name='年月', max_length=255, null=True, blank=True)
     category = models.CharField(verbose_name='タグ名', max_length=255, null=True, blank=True)
@@ -247,11 +247,11 @@ class MonthPost(Base):
     def __str__(self):
         return '{}: {}'.format(self.month, self.category, self.post_count)
 
-""" 自作 Reporting API - 5.ワードクラウド """
+""" 自作 Reporting API | 5.ワードクラウド """
 class WordCloud(Base):
     class Meta:
         db_table = 'word_cloud'
-        verbose_name = 'レポート - ワードクラウド'
+        verbose_name = 'ワードクラウド'
         verbose_name_plural = 'レポート - ワードクラウド'
 
     word = models.CharField(verbose_name='ワード', max_length=255, null=True, blank=True)

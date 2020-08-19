@@ -27,11 +27,7 @@ body
     line-height: 1.5;
 }
 
-a
-{
-    color: #444444;
-}
-
+a,
 a:hover
 {
     color: #444444;
@@ -240,7 +236,7 @@ badge
 .card-badge-group
 {
     font-size: 80%;
-    line-height: 180%;
+    line-height: 20px;
 
      /* --- control with media query :start --- */
     position: absolute;
@@ -253,13 +249,13 @@ badge
 .single-badge-group
 {
     font-size: 80%;
-    line-height: 180%;
+    line-height: 20px;
 }
 
 .sns-badge-group
 {
     font-size: 80%;
-    line-height: 180%;
+    line-height: 20px;
 }
 
 .date-badge,
@@ -303,16 +299,19 @@ badge
 .twitter-badge i
 {
     color: #55acee;
+    vertical-align: -.5px;
 }
 
 .facebook-badge i
 {
     color: #3B5998;
+    vertical-align: -.5px;
 }
 
 .hatena-badge i
 {
     color: #008fde;
+    vertical-align: -.5px;
 }
 
 .category-badge:hover,
@@ -402,13 +401,13 @@ post details
 
 .single-description
 {
-    font-size: 90%;
+    font-size: 105%;
     line-height: 2.0;
 }
 
 .single-text
 {
-    font-size: 90%;
+    font-size: 105%;
 }
 
 /* -------------------------------------------
@@ -833,7 +832,7 @@ media query
 {
     html
     {
-        font-size: 66%;
+        font-size: 72%;
     }
     .side-card-title
     {

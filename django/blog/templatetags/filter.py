@@ -10,6 +10,13 @@ def replace_url(request, field, value):
     url_dict[field] = str(value)
     return url_dict.urlencode()
 
+""" 汎用タグ | モデルの verbose_name をテンプレートで使う """
+@register.simple_tag
+def verbose_name(value):
+    if hasattr(value, 'model'):
+        value = value.model
+    return value._meta.verbose_name.title()
+
 """ 汎用フィルタ | 半角全角を区別してTRUNCATE """
 @register.filter
 def truncatechars_ja(text, arg):

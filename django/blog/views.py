@@ -263,8 +263,8 @@ def report(request):
     category_post = CategoryPost.objects.all()
     category_tag = CategoryTag.objects.all()
     tag_post = TagPost.objects.all()
-    month_post = MonthPost.objects.all()
-    word_cloud = WordCloud.objects.all()
+    month_post = MonthPost.objects.all().order_by('month', 'category', 'post_count')
+    word_cloud = WordCloud.objects.all().order_by('-word_count')[:150]
 
     category_list = list(category_post.values_list('category', flat=True))
     month_list = sorted(list(set(month_post.values_list('month', flat=True))))
@@ -279,4 +279,9 @@ def report(request):
         'tag_post': tag_post,
         'month_post': month_post,
         'word_cloud': word_cloud,
+        'model_category_post': CategoryPost,
+        'model_category_tag': CategoryTag,
+        'model_tag_post': TagPost,
+        'model_month_post': MonthPost,
+        'model_word_cloud': WordCloud,
     })

@@ -17,7 +17,7 @@
                             {% for tag in tag_list %}
                             <tr>
                               <td class="position-relative"><a href="{% url 'blog:tag_post' tag.slug %}" class="stretched-link">{{ forloop.counter }}</a></td>
-                              <td class="position-relative"><a href="{% url 'blog:tag_post' tag.slug %}" class="stretched-link">{{ tag.category }}</a></td>
+                              <td class="position-relative"><a href="{% url 'blog:tag_post' tag.slug %}" class="stretched-link">{{ tag.category.name }}</a></td>
                               <td class="position-relative"><a href="{% url 'blog:tag_post' tag.slug %}" class="stretched-link">{{ tag.name }}</a></td>
                               <td class="position-relative"><a href="{% url 'blog:tag_post' tag.slug %}" class="stretched-link">{{ tag.count }}</a></td>
                             </tr>
