@@ -1,10 +1,8 @@
 from django.conf import settings
 from django.db.models import Q, Count
-from django.db.models.functions import TruncMonth
 from django.utils import html
 from blog.models import Post, Category, Tag
 from datetime import datetime
-from collections import Counter
 from janome.tokenizer import Tokenizer
 from janome.analyzer import Analyzer
 from janome.charfilter import *
