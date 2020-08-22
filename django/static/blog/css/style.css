@@ -9,7 +9,7 @@ html
     overflow-y: scroll;
     visibility: hidden;
     font-feature-settings: "palt";
-    letter-spacing: .8px;
+    letter-spacing: .9px;
 }
 
 html.wf-active
@@ -82,6 +82,21 @@ navbar
 /* -------------------------------------------
 breadcrumb list
 ------------------------------------------- */
+
+
+ol.breadcrumb
+{
+    display:block;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+li.breadcrumb-item
+{
+    display: inline;
+}
 
 li.breadcrumb-item a:hover
 {
@@ -233,29 +248,12 @@ toc & heading
 badge
 ------------------------------------------- */
 
+/* control with media query */
 .card-badge-group
 {
-    font-size: 80%;
-    line-height: 20px;
-
-     /* --- control with media query :start --- */
     position: absolute;
     bottom: 0;
     right: 0;
-     /* --- control with media query :end   --- */
-
-}
-
-.single-badge-group
-{
-    font-size: 80%;
-    line-height: 20px;
-}
-
-.sns-badge-group
-{
-    font-size: 80%;
-    line-height: 20px;
 }
 
 .date-badge,
@@ -263,17 +261,14 @@ badge
 .admin-badge,
 .twitter-badge,
 .facebook-badge,
-.hatena-badge
+.hatena-badge,
+.tag-badge
 {
     background-color: #f7f8fa;
     border: solid 1px #f7f8fa;
+    font-size: 80%;
     font-weight: bold;
-}
-
-.tag-badge
-{
-    background-color: #f1f1f1;
-    border: solid 1px #f1f1f1;  
+    line-height: 23px;
 }
 
 .card-badge-item,
@@ -284,8 +279,6 @@ badge
 {
     font-size: 100%;
     font-weight: lighter;
-    display: inline-block;
-    vertical-align: 0%;
 }
 
 .date-badge i,
@@ -299,19 +292,16 @@ badge
 .twitter-badge i
 {
     color: #55acee;
-    vertical-align: -.5px;
 }
 
 .facebook-badge i
 {
     color: #3B5998;
-    vertical-align: -.5px;
 }
 
 .hatena-badge i
 {
     color: #008fde;
-    vertical-align: -.5px;
 }
 
 .category-badge:hover,
@@ -588,16 +578,6 @@ side bar card
 side bar list
 ------------------------------------------- */
 
-.category-body i,
-.tag-body i,
-.archive-body i
-{
-    color: #65a6ff;
-    font-size: 70%;
-    display: inline-block;
-    vertical-align: -20%;
-}
-
 .category-item,
 .tag-item,
 .archive-item
@@ -605,8 +585,18 @@ side bar list
     color: #444444;
     font-size: 90%;
     display: inline-block;
-    vertical-align: -14%;
-}    
+    vertical-align: -3px;
+}
+
+.category-body i,
+.tag-body i,
+.archive-body i
+{
+    color: #65a6ff;
+    font-size: 70%;
+    display: inline-block;
+    vertical-align: -2.5px;
+}
 
 .category-count,
 .tag-count,
@@ -617,7 +607,7 @@ side bar list
     font-size: 92%;
     min-width: 12%;
     display: inline-block;
-    vertical-align: 50%;
+    vertical-align: middle;
 }
 
 .category a:hover,
@@ -756,14 +746,26 @@ graph
 }
 
 /* -------------------------------------------
-inner text
+in single-text
 ------------------------------------------- */
 
 .inner-code
 {
     padding-top: 2px;
     padding-bottom: 2px;
-    font-size: 100%;
+    font-size: 90%;
+    background-color: #f7f8fa;
+    color: #008fde;
+    vertical-align: 1px;
+}
+
+ul.inner-list
+{
+    display:block;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overflow: auto;
+    white-space: nowrap;
 }
 
 /* -------------------------------------------
@@ -820,11 +822,45 @@ media query
 {
     html
     {
-        font-size: 80%;
+        font-size: 90%;
     }
     .side-card-title
     {
         font-size: 100%;
+    }
+    .date-badge,
+    .category-badge,
+    .admin-badge,
+    .tag-badge,
+    .twitter-badge,
+    .facebook-badge,
+    .hatena-badge
+    {
+        font-size: 74%;
+        line-height: 21px;
+    }
+    .twitter-badge i,
+    .facebook-badge i,
+    .hatena-badge i
+    {
+        vertical-align: -.3px;
+    }
+    .side-card-category i,
+    .side-card-date i
+    {
+        vertical-align: .1px;
+    }
+    .category-item,
+    .tag-item,
+    .archive-item
+    {
+        vertical-align: -3px;
+    }    
+    .category-body i,
+    .tag-body i,
+    .archive-body i
+    {
+        vertical-align: -2.5px;
     }
 }
 
@@ -832,10 +868,44 @@ media query
 {
     html
     {
-        font-size: 72%;
+        font-size: 80%;
     }
     .side-card-title
     {
         font-size: 90%;
+    }
+    .date-badge,
+    .category-badge,
+    .admin-badge,
+    .tag-badge,
+    .twitter-badge,
+    .facebook-badge,
+    .hatena-badge
+    {
+        font-size: 74%;
+        line-height: 21px;
+    }
+    .twitter-badge i,
+    .facebook-badge i,
+    .hatena-badge i
+    {
+        vertical-align: -.3px;
+    }
+    .side-card-category i,
+    .side-card-date i
+    {
+        vertical-align: .1px;
+    }
+    .category-item,
+    .tag-item,
+    .archive-item
+    {
+        vertical-align: -3px;
+    }    
+    .category-body i,
+    .tag-body i,
+    .archive-body i
+    {
+        vertical-align: -2.5px;
     }
 }

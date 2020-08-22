@@ -34,7 +34,7 @@ tag_list = list(published_tag.distinct().values_list('name', flat=True))
 month_list = sorted(list(set(map(lambda date: date.strftime('%Y-%m'), list(published_post.values_list('published_at', flat=True))))))
 
 """
-集計1: カテゴリ別記事数
+自作 Reporting API | 1.カテゴリ別記事数
 """
 def get_category_post_dict():
 
@@ -48,7 +48,7 @@ def get_category_post_dict():
         yield key, value
 
 """
-集計2: カテゴリ別タグ数
+自作 Reporting API | 2.カテゴリ別タグ数
 """
 def get_category_tag_dict():
 
@@ -62,7 +62,7 @@ def get_category_tag_dict():
         yield key, value
 
 """
-集計3: タグ別記事数
+自作 Reporting API | 3.タグ別記事数
 """
 def get_tag_post_dict():
 
@@ -93,7 +93,7 @@ def get_tag_post_dict():
         yield key, value
 
 """
-月別記事数
+自作 Reporting API | 4.月別記事数
 """
 def get_month_post_list():
 
@@ -114,7 +114,7 @@ def get_month_post_list():
         yield date, category, month_post_count
 
 """
-ワードクラウド
+自作 Reporting API | 5.ワードクラウド
 """
 def get_word_dict():
 

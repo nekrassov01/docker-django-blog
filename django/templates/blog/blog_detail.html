@@ -30,7 +30,7 @@
                       {% endif %}
                       <div class="row no-gutters">
                         <div class="single-description mx-1 my-4 py-4 w-100">{{ post.description | linebreaksbr | safe }}</div>
-                        {% if post.text % }
+                        {% if post.text %}
                         {% include 'blog/center/badge_sns.html' %}
                         <div class="single-toc description col-12 rounded-0 py-4 w-100" id="toc"></div>
                         <div class="single-text col-12 my-4 py-4 w-100">{{ post.text | safe }}</div>
