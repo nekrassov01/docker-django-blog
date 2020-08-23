@@ -40,7 +40,8 @@ services:
     environment:
       TZ: ${TZ}
       DOMAIN: ${DOMAIN}
-      GIP: ${GIP}
+      ALLOW_IP_1: ${ALLOW_IP_1}
+      ALLOW_IP_2: ${ALLOW_IP_2}
     logging:
       driver: "json-file"
       options:

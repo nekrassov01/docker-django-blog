@@ -31,6 +31,8 @@ server {
     location / {
         uwsgi_pass django;
         include /etc/nginx/uwsgi_params;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     }
 
     location /static {
@@ -41,8 +43,9 @@ server {
         alias /media;
     }
 
-    location /admin {
-        allow ${GIP};
+    location ~ ^admin/ {
+        allow ${ALLOW_IP_1};
+        allow ${ALLOW_IP_2};
         deny all;
     }
 }
