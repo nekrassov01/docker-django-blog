@@ -7,6 +7,7 @@ from django.contrib.sitemaps import ping_google
 from django.views import generic
 from django.db.models import Q, Count
 from django.db.models.functions import TruncMonth
+from django.conf import settings
 from django.urls import reverse_lazy
 from django.http import Http404
 from .models import Post, Category, Tag, SiteDetail, AboutSite, PrivacyPolicy, Snippet, Image, Link, PopularPost, CategoryPost, CategoryTag, TagPost, MonthPost, WordCloud
@@ -264,7 +265,7 @@ def report(request):
     category_tag = CategoryTag.objects.all()
     tag_post = TagPost.objects.all()
     month_post = MonthPost.objects.all().order_by('month', 'category', 'post_count')
-    word_cloud = WordCloud.objects.all().order_by('-word_count')[:150]
+    word_cloud = WordCloud.objects.all().order_by('-word_count')[:settings.WORD_CLOUD_COUNT]
 
     category_list = list(category_post.values_list('category', flat=True))
     month_list = sorted(list(set(month_post.values_list('month', flat=True))))

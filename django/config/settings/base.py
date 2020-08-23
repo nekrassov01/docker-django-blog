@@ -123,3 +123,6 @@ STATIC_ROOT = '/static'
 
 # Janome
 JANOME_DICTIONARY_PATH = env('JANOME_DICTIONARY_PATH')
+
+# Loop Count
+WORD_CLOUD_COUNT = env.get_value('WORD_CLOUD_COUNT', int)
