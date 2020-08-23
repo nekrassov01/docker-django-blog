@@ -27,7 +27,11 @@ body
     line-height: 1.5;
 }
 
-a,
+a
+{
+    color: #444444;
+}
+
 a:hover
 {
     color: #444444;
@@ -199,11 +203,10 @@ toc & heading
 #toc li a:hover
 {
     color: #65a6ff;
-    transition: all 0.3s;
 }
 
-#toc li.toc-h4 a::before,
-#toc li.toc-h5 a::before
+#toc ul a::before,
+#toc li a::before
 {
     margin-right: .2em;
     content: '-';
@@ -497,7 +500,8 @@ side bar
 .side-bar-parts-header-recent,
 .side-bar-parts-header-category,
 .side-bar-parts-header-tag,
-.side-bar-parts-header-archive
+.side-bar-parts-header-archive,
+.side-bar-parts-header-toc
 {
     background-color: #233142;
 }
@@ -506,7 +510,8 @@ side bar
 .side-bar-parts-header-recent h5,
 .side-bar-parts-header-category h5,
 .side-bar-parts-header-tag h5,
-.side-bar-parts-header-archive h5
+.side-bar-parts-header-archive h5,
+.side-bar-parts-header-toc h5
 {
     color: #ffffff;
 }
@@ -548,6 +553,7 @@ side bar card
 
 .side-card-info
 {
+    color: #808080;
     border-bottom: solid 2px #f1f1f1;
 }
 
@@ -595,7 +601,7 @@ side bar list
     color: #65a6ff;
     font-size: 70%;
     display: inline-block;
-    vertical-align: -2.5px;
+    vertical-align: -2px;
 }
 
 .category-count,
@@ -759,13 +765,22 @@ in single-text
     vertical-align: 1px;
 }
 
-ul.inner-list
+.inner-list
 {
     display:block;
     overflow-x: auto;
     overflow-y: hidden;
     overflow: auto;
     white-space: nowrap;
+}
+
+.inner-list li::before
+{
+    margin-right: .6em;
+    font-family: FontAwesome;
+    font-size: 90%;
+    content: '\f0da';
+    color: #dfdfdf;
 }
 
 /* -------------------------------------------

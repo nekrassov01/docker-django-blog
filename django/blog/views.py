@@ -159,7 +159,8 @@ class CategoryListView(BaseListView):
     def get_queryset(self):
         queryset = Category.objects \
             .annotate(post_count=Count('post', filter=Q(post__is_public=True), distinct=True)).exclude(post_count=0) \
-            .annotate(tag_count=Count('tag', filter=Q(tag__post__is_public=True), distinct=True))
+            .annotate(tag_count=Count('tag', filter=Q(tag__post__is_public=True), distinct=True)) \
+            .order_by('index')
         return queryset
 
 """ タグ一覧 """
@@ -171,7 +172,7 @@ class TagListView(BaseListView):
 
     def get_queryset(self):
         queryset = Tag.objects.select_related('category') \
-            .annotate(count=Count('post', filter=Q(post__is_public=True), distinct=True)).order_by('-count', 'name').exclude(count=0)
+            .annotate(count=Count('post', filter=Q(post__is_public=True), distinct=True)).order_by('-count', 'slug').exclude(count=0)
         return queryset
 
 """ 記事詳細 """

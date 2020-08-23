@@ -32,7 +32,7 @@ class CategoryAdmin(admin.ModelAdmin):
 class TagAdmin(admin.ModelAdmin):
     model = Tag
     list_display = ('id', 'created_at', 'updated_at', 'category', 'name', 'slug')
-    ordering = ('-created_at',)
+    ordering = ('category', 'slug')
     list_filter = ('category',)
     search_fields = ('name',)
     readonly_fields = ('id', 'created_at', 'updated_at')
@@ -78,7 +78,7 @@ class PostAdmin(SummernoteModelAdmin):
 
     def formfield_for_manytomany(self, db_field, request, **kwargs):
         if db_field.name == 'tag':
-            kwargs['queryset'] = Tag.objects.order_by('category__index', 'name')
+            kwargs['queryset'] = Tag.objects.order_by('category__index', 'slug')
         if db_field.name == "related_posts":
             kwargs['queryset'] = Post.objects.order_by('category__index', 'title')
         return super().formfield_for_manytomany(db_field, request, **kwargs)

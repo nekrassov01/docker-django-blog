@@ -5,6 +5,21 @@ SECRET_KEY = env('SECRET_KEY')
 DEBUG = True
 ALLOWED_HOSTS = ['*']
 
+# Email not send
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Media Files
+MEDIA_URL = '/media/'
+MEDIA_ROOT = '/media'
+
+# django-debug-toolbar
+if DEBUG:
+    def show_toolbar(request):
+        return True
+    INSTALLED_APPS += ('debug_toolbar',)
+    MIDDLEWARE += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
+    DEBUG_TOOLBAR_CONFIG = {'SHOW_TOOLBAR_CALLBACK': show_toolbar,}
+
 # Logging
 LOGGING = {
     'version': 1, 
@@ -40,14 +55,3 @@ LOGGING = {
         },
     },
 }
-
-# Email not send
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
-# django-debug-toolbar
-if DEBUG:
-    def show_toolbar(request):
-        return True
-    INSTALLED_APPS += ('debug_toolbar',)
-    MIDDLEWARE += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
-    DEBUG_TOOLBAR_CONFIG = {'SHOW_TOOLBAR_CALLBACK': show_toolbar,}

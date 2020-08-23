@@ -20,6 +20,7 @@
     {% load bootstrap4 %}
     {% bootstrap_css %}
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/styles/nord.min.css">
     <link rel="stylesheet" href="{% static 'blog/css/style.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'blog/icon/fonts.css' %}" type="text/css">
@@ -69,6 +70,7 @@
         </div>
 
 {% bootstrap_javascript jquery='slim' %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/highlight.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/languages/powershell.min.js" charset="UTF-8"></script>
@@ -81,7 +83,7 @@
         <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-colorschemes"></script>
         <script src="https://d3js.org/d3.v5.min.js" charset="utf-8"></script>
         <script src="{% static 'blog/js/d3.layout.cloud.js' %}"></script>
-        <script src="{% static 'blog/js/toc.min.js' %}"></script>
+        <script src="{% static 'blog/js/jquery.toc.js' %}"></script>
         <script>new ClipboardJS('#copy-button');</script>
         <script>
           window.WebFontConfig = {
@@ -106,9 +108,8 @@
         </script>
         {% if '/detail/' in request.path %}
         <script>
-          jQuery('#toc').toc({
-            'container': '.single-text',
-            'selectors': 'h4, h5',
+          $(function(){
+            $(".single-text").toc();
           });
         </script>
         {% endif %}

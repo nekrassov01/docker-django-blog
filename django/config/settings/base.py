@@ -20,6 +20,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.sitemaps',
     'blog.apps.BlogConfig',
+    'django_cleanup',
     'django_summernote',
     'bootstrap4',
     'cloudinary',
@@ -96,9 +97,6 @@ MESSAGE_TAGS = {
 # sites Framework
 SITE_ID = env('SITE_ID')
 
-# SecurityMiddlewa
-SECURE_SSL_REDIRECT = env.get_value('SECURE_SSL_REDIRECT', bool),
-
 # ClickJacking Protection
 X_FRAME_OPTIONS = env('X_FRAME_OPTIONS')
 
@@ -122,24 +120,6 @@ DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
 STATIC_ROOT = '/static'
-
-# Media Files
-MEDIA_URL = '/media/'
-# MEDIA_ROOT = '/media'
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-
-# django-cloudinary-storage
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': env('CLOUDINARY_CLOUD_NAME'),
-    'API_KEY': env('CLOUDINARY_API_KEY'),
-    'API_SECRET': env('CLOUDINARY_API_SECRET'),
-    'SECURE': env.get_value('CLOUDINARY_SECURE', bool),
-}
-
-# Google Analytics Reporting API
-SERVICE_ACCOUNT_EMAIL = env('SERVICE_ACCOUNT_EMAIL')
-VIEW_ID = env('VIEW_ID')
-KEY_FILE_LOCATION = os.path.join(BASE_DIR, 'client_secrets.p12')
 
 # Janome
 JANOME_DICTIONARY_PATH = env('JANOME_DICTIONARY_PATH')

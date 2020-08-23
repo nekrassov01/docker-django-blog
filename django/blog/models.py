@@ -43,7 +43,7 @@ class Tag(Base):
         db_table = 'tag'
         verbose_name = 'タグ'
         verbose_name_plural = 'タグ'
-        ordering = ['name', 'slug']
+        ordering = ['category', 'slug']
 
     name = models.CharField(verbose_name='タグ名', max_length=255)
     slug = models.SlugField(verbose_name='スラッグ', max_length=255, null=True, blank=True)
