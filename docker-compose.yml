@@ -5,7 +5,7 @@ services:
     container_name: django.application
     restart: always
     volumes:
-      - ./django:/django:rw
+      - ./django:/django
       - socket_app:/var/run/uwsgi
       - socket_db:/var/run/postgresql
       - static:/static
@@ -27,9 +27,10 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:rw
-      - ./nginx/conf.d:/etc/nginx/conf.d:rw
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./nginx/uwsgi_params:/etc/nginx/uwsgi_params
+      - ./nginx/templates:/etc/nginx/templates
+      - ./nginx/conf.d:/etc/nginx/conf.d
       - ./nginx/letsencrypt:/etc/letsencrypt
       - socket_app:/var/run/uwsgi
       - static:/static
@@ -38,6 +39,7 @@ services:
       - django
     environment:
       TZ: ${TZ}
+      GIP: ${GIP}
     logging:
       driver: "json-file"
       options:

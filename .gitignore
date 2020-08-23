@@ -13,5 +13,6 @@ client_secrets.p12
 /django/config/settings.py_
 /django/config/janome/
 /django/blog/fixtures/text/
+/nginx/conf.d/*
 /nginx/letsencrypt/
 /nginx/log

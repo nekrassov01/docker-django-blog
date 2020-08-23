@@ -1,7 +1,8 @@
+# HTTP
+
 upstream django {
     ip_hash;
     server unix:///var/run/uwsgi/uwsgi.sock;
-
 }
 
 server {
@@ -23,8 +24,12 @@ server {
         alias /static;
     }
 
-
     location /media {
         alias /media;
+    }
+
+    location /admin {
+        allow ${GIP};
+        deny all;
     }
 }
