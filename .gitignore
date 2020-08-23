@@ -9,10 +9,10 @@ db.sqlite3
 client_secrets.p12
 /tmp
 /django/.env
-/django/log
+/django/log/*
 /django/config/settings.py_
-/django/config/janome/
-/django/blog/fixtures/text/
+/django/config/janome/*
+/django/blog/fixtures/text/*
 /nginx/conf.d/*
-/nginx/letsencrypt/
-/nginx/log
+/nginx/letsencrypt/*
+/nginx/log/*
