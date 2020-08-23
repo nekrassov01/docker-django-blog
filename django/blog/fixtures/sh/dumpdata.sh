@@ -1,7 +1,7 @@
 #!/bin/bash
 TARGET_DIR=$(dirname "$(cd "$(dirname "${BASH_SOURCE:-$0}")" && pwd)")
 cd /django
-python manage.py dumpdata sites.site --indent 4 --output ${TARGET_DIR}/sites.site_.json
+python manage.py dumpdata sites.site --indent 4 --output ${TARGET_DIR}/sites.site.json
 python manage.py dumpdata blog.category --indent 4 --output ${TARGET_DIR}/blog.category.json
 python manage.py dumpdata blog.tag --indent 4 --output ${TARGET_DIR}/blog.tag.json
 python manage.py dumpdata blog.snippet --indent 4 --output ${TARGET_DIR}/blog.snippet.json
