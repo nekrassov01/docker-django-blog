@@ -39,6 +39,7 @@ services:
       - django
     environment:
       TZ: ${TZ}
+      DOMAIN: ${DOMAIN}
       GIP: ${GIP}
     logging:
       driver: "json-file"

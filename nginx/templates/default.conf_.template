@@ -7,26 +7,26 @@ upstream django {
 
 server {
     listen 80;
-    server_name minbase.io;
-    return 301 https://minbase.io$request_uri;
+    server_name ${DOMAIN};
+    return 301 https://${DOMAIN}$request_uri;
 }
 
 server {
     listen 80;
     listen 443;
-    server_name www.minbase.io;
-    return 301 https://minbase.io$request_uri;
+    server_name www.${DOMAIN};
+    return 301 https://${DOMAIN}$request_uri;
 }
 
 server {
     listen 443 default_server;
-    server_name minbase.io;
+    server_name ${DOMAIN};
     ssl on;
     charset utf-8;
     client_max_body_size 75M;
 
-    ssl_certificate      /etc/letsencrypt/live/minbase.io/fullchain.pem;
-    ssl_certificate_key  /etc/letsencrypt/live/minbase.io/privkey.pem;
+    ssl_certificate      /etc/letsencrypt/live/${DOMAIN}/fullchain.pem;
+    ssl_certificate_key  /etc/letsencrypt/live/${DOMAIN}/privkey.pem;
 
     location / {
         uwsgi_pass django;
