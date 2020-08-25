@@ -26,7 +26,6 @@
     <link rel="stylesheet" href="{% static 'blog/icon/fonts.css' %}" type="text/css">
     <link rel="icon" href="/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
-    <style>.breadcrumb-item + .breadcrumb-item::before {content: ">";}</style>
     <title>{% block meta_title %}{{ request.site.name }}{% endblock %}</title>
   </head>
 
@@ -47,9 +46,9 @@
               <nav aria-label="breadcrumb-list">
                 <ol class="breadcrumb m-0 px-3 py-2 rounded-0 bg-transparent">
                   {% if request.path == '/' %}
-                  <li class="breadcrumb-item">記事一覧</li>
+                  <li class="breadcrumb-item m-0 p-0"><span>記事一覧</span></li>
                   {% else %}
-                  <li class="breadcrumb-item"><a href="{% url 'blog:index' %}">記事一覧</a></li>
+                  <li class="breadcrumb-item m-0 p-0"><a href="{% url 'blog:index' %}">記事一覧</a></li>
                   {% endif %}
                   {% block breadcrumb %}{% endblock %}
                 </ol>
@@ -69,8 +68,8 @@
         {% endblock %}
         </div>
 
-{% bootstrap_javascript jquery='slim' %}
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+{% bootstrap_javascript jquery='True' %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/highlight.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/languages/powershell.min.js" charset="UTF-8"></script>
@@ -87,7 +86,6 @@
         <script>new ClipboardJS('#copy-button');</script>
         <script>
           window.WebFontConfig = {
-            //google: {families: ['Amatic SC', 'Lato', 'Kosugi']},
             google: {families: ['Amatic SC']},
             active: function() {
               sessionStorage.fonts = true;
@@ -261,7 +259,6 @@
             d3.layout.cloud().size([width, height])
               .words(words)
               .rotate(function() { return (~~(Math.random() * 6) - 3) * 0; })
-              .font(['Lato', 'Kosugi Maru'])
               .fontSize(function(d) { return d.size; })
               .on("end", draw)
               .start();
@@ -279,7 +276,7 @@
                   .data(words)
                 .enter().append("text")
                   .style("font-size", function(d) { return d.size + "px"; })
-                  .style("font-family", ['Lato', 'kosugi Maru'])
+                  .style("font-family", ["Yu Gothic Medium", "Yu Gothic", "Verdana", "Meiryo", "sans-serif"])
                   .style("fill", function(d, i) { return d3.schemeCategory10[i % 10]; })
                   .attr("text-anchor", "middle")
                   .attr("transform", function(d) { return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")"; })

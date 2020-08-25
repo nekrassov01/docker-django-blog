@@ -128,7 +128,22 @@ def get_word_dict():
     post_texts = html.strip_tags(''.join(post_texts)).split()
     tokens = ' '.join(post_descriptions + post_titles + post_texts)
 
-    """ 形態素解析のためのアナライザを定義 """
+    # ストップワード除去用クラス
+    class RegexReplaceTokenFilter(TokenFilter):
+        fromword = None
+        toword = None
+        def __init__(self, fromword, toword):
+            self.fromword = fromword
+            self.toword = toword
+    
+        def apply(self, tokens):
+            for token in tokens:
+                token.surface = re.sub(self.fromword, self.toword, token.surface)
+                if token.surface == "":
+                    continue
+                yield token
+
+    # 形態素解析のためのアナライザを定義
     udic_path = settings.JANOME_DICTIONARY_PATH
     char_filters = [UnicodeNormalizeCharFilter(), RegexReplaceCharFilter('\,', '')]
     tokenizer = Tokenizer(udic=udic_path, udic_type='simpledic', udic_enc='utf8')

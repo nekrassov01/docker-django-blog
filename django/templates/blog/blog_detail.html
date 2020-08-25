@@ -12,7 +12,7 @@
 
                   {% block breadcrumb %}
                   {{ block.super }}
-                  <li class="breadcrumb-item">{{ post.title | truncatechars_ja:96 }}</li>
+                  <li class="breadcrumb-item m-0 p-0"><span>{{ post.title | truncatechars_ja:96 }}</span></li>
                   {% endblock %}
 
                 {% block main %}

@@ -22,7 +22,6 @@ body
     overflow: hidden;
     background-color: #f1f1f1;
     color: #444444;
-    /*font-family: 'Lato', 'Kosugi Maru', sans-serif;*/
     font-family: -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", "Helvetica Neue", HelveticaNeue, YuGothic, "Yu Gothic Medium", "Yu Gothic", Verdana, Meiryo, sans-serif;
     line-height: 1.5;
 }
@@ -51,7 +50,7 @@ header & footer
 .header,
 .footer
 {
-    background-color: #233142;
+    background-color: #00204a;
 }
 
 .header-item,
@@ -80,7 +79,21 @@ navbar
 
 .nav-container
 {
-    background-color: #455d7a;
+    background-color: #005792;
+}
+
+.nav-container ul
+{
+    display:block;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.nav-container li
+{
+    display: inline;
 }
 
 /* -------------------------------------------
@@ -102,9 +115,26 @@ li.breadcrumb-item
     display: inline;
 }
 
+li.breadcrumb-item span,
+li.breadcrumb-item a
+{
+    color: #808080;
+    font-size: 76%;
+}
+
 li.breadcrumb-item a:hover
 {
-    color: #65a6ff;
+    color: #00bbf0;
+}
+
+.breadcrumb-item + .breadcrumb-item::before
+{
+  padding-left: 0.4em;
+  padding-right: 0.6em;
+  font-family: FontAwesome;
+  font-size: 70%;
+  color: #999999;
+  content: '\f0da';
 }
 
 /* -------------------------------------------
@@ -123,7 +153,7 @@ pagination
 
 .page-item.active .page-link
 {
-    background-color: #455d7a;
+    background-color: #005792;
     border: solid 1px #f1f1f1;
 }
 
@@ -139,7 +169,7 @@ pagination
 
 .page-link:hover
 {
-    background-color: #455d7a;
+    background-color: #005792;
     border: solid 1px #f1f1f1;
 }
 
@@ -150,7 +180,7 @@ pagination
 
 .pager-detail a:hover
 {
-    color: #65a6ff;
+    color: #00bbf0;
 }
 
 
@@ -160,7 +190,7 @@ form & button
 
 .btn-default
 {
-    background-color: #233142;
+    background-color: #00204a;
 }
 
 .searchform
@@ -202,7 +232,7 @@ toc & heading
 
 #toc li a:hover
 {
-    color: #65a6ff;
+    color: #00bbf0;
 }
 
 #toc ul a::before,
@@ -212,18 +242,18 @@ toc & heading
     content: '-';
 }
 
-#toc li.toc-h4
+#toc li.toc-h3
 {
     font-size: .95em;
 }
 
-#toc li.toc-h5
+#toc li.toc-h4
 {
     padding-left: 1em;
     font-size: .95em;
 }
 
-.head-h4
+.head-h3
 {
     border-left: solid 8px #ececec;
     border-right: solid 1px #ececec;
@@ -232,7 +262,7 @@ toc & heading
     background-color: #f8f9fa;
 }
 
-.head-h5
+.head-h4
 {
     border-left: solid 4px #ececec;
     border-right: solid 1px #ececec;
@@ -241,8 +271,8 @@ toc & heading
     background-color: #f8f9fa;
 }
 
-.toc-h4 h4,
-.toc-h5 h5
+.toc-h3 h3,
+.toc-h4 h4
 {
     font-weight: bold;
 }
@@ -289,7 +319,7 @@ badge
 .tag-badge i,
 .admin-badge i
 {
-    color: #65a6ff;
+    color: #00bbf0;
 }
 
 .twitter-badge i
@@ -311,7 +341,7 @@ badge
 .tag-badge:hover,
 .admin-badge:hover
 {
-    border: solid 1px #65a6ff;
+    border: solid 1px #00bbf0;
 }
 
 .twitter-badge:hover
@@ -341,7 +371,7 @@ post list card
 
 .post-card:hover .card-title
 {
-    color: #65a6ff;
+    color: #00bbf0;
     transition: all 0.3s;
 }
 
@@ -383,7 +413,7 @@ post details
 
 .single-title a:hover
 {
-    color: #65a6ff;
+    color: #00bbf0;
     transition: all 0.3s;
 }
 
@@ -427,7 +457,7 @@ related items for post details
 
 .related-post:hover .related-post-title
 {
-    color: #65a6ff;
+    color: #00bbf0;
     transition: all 0.3s;
 }
 
@@ -455,7 +485,7 @@ related items for post details
 .related-post-date i,
 .related-post-category i
 {
-    color: #65a6ff;
+    color: #00bbf0;
 }
 
 .related-link
@@ -471,7 +501,7 @@ related items for post details
 
 .related-link-item:hover
 {
-    color: #65a6ff;
+    color: #00bbf0;
     transition: all 0.3s;
     text-decoration-line: underline;
 }
@@ -479,7 +509,7 @@ related items for post details
 .related-link i,
 .related-tag i
 {
-    color: #65a6ff;
+    color: #00bbf0;
     font-size: 86%;
     display: inline-block;
     vertical-align: 5%;
@@ -503,7 +533,7 @@ side bar
 .side-bar-parts-header-archive,
 .side-bar-parts-header-toc
 {
-    background-color: #233142;
+    background-color: #00204a;
 }
 
 .side-bar-parts-header-popular h5,
@@ -542,19 +572,19 @@ side bar card
 .side-card-title
 {
     font-size: 90%;
-    line-height: 120%;
+    line-height: 1.4;
 }
 
 .side-card:hover .side-card-title
 {
-    color: #65a6ff;
+    color: #00bbf0;
     transition: all 0.3s;
 }
 
 .side-card-info
 {
     color: #808080;
-    border-bottom: solid 2px #f1f1f1;
+    border-bottom: solid 1px #f1f1f1;
 }
 
 .side-card-info-md
@@ -577,7 +607,7 @@ side bar card
 .side-card-date-md i,
 .side-card-category i
 {
-    color: #65a6ff;
+    color: #00bbf0;
 }
 
 /* -------------------------------------------
@@ -598,7 +628,7 @@ side bar list
 .tag-body i,
 .archive-body i
 {
-    color: #65a6ff;
+    color: #00bbf0;
     font-size: 70%;
     display: inline-block;
     vertical-align: -2px;
@@ -623,7 +653,7 @@ side bar list
 .archive a:hover,
 .archive:hover .archive-item
 {
-    color: #65a6ff;
+    color: #00bbf0;
     transition: all 0.3s;
 }
 
@@ -631,8 +661,8 @@ side bar list
 .tag:hover .tag-count,
 .archive:hover .archive-count
 {
-    background-color: #65a6ff;
-    border: solid 1px #65a6ff;
+    background-color: #00bbf0;
+    border: solid 1px #00bbf0;
     color: #ffffff;
     transition: all 0.3s;
 }
@@ -644,13 +674,13 @@ table
 #category-table tr:hover .stretched-link,
 #tag-table tr:hover .stretched-link
 {
-    color: #65a6ff;
+    color: #00bbf0;
     transition: all 0.3s;
 }
 
 .stretched-link:hover 
 {
-    color: #65a6ff;
+    color: #00bbf0;
     transition: all 0.3s;
 }
 
@@ -689,7 +719,7 @@ snippet
 
 .snippet-title a:hover
 {
-    color: #65a6ff;
+    color: #00bbf0;
     transition: all 0.3s;
 }
 
@@ -714,7 +744,7 @@ graph
 
 .wc-container
 {
-    background-color: #233142;
+    background-color: #00204a;
 }
 
 .wc-container:hover
@@ -737,7 +767,7 @@ graph
 
 .graph-title i
 {
-    color: #65a6ff;
+    color: #00bbf0;
     font-size: 80%;
     display: inline-block;
     vertical-align: middle;
@@ -755,12 +785,40 @@ graph
 in single-text
 ------------------------------------------- */
 
+.single-text p
+{
+    line-height: 2.0;
+}
+
+.single-text h3,
+.single-text h4
+{
+    font-weight: bold;
+}
+
+.single-text pre code
+{
+    font-size: 12px;
+    line-height: 1.4;
+    overflow-x: scroll;
+}
+
+.single-text table
+{
+    font-size: 84%;
+}
+
+.single-text .table-title
+{
+    font-weight: bold;
+}
+
 .inner-code
 {
     padding-top: 2px;
     padding-bottom: 2px;
-    font-size: 90%;
     background-color: #f7f8fa;
+    font-size: 90%;
     color: #008fde;
     vertical-align: 1px;
 }
@@ -772,6 +830,12 @@ in single-text
     overflow-y: hidden;
     overflow: auto;
     white-space: nowrap;
+    list-style-type: none;
+}
+
+.inner-list li
+{
+    line-height: 1.8;
 }
 
 .inner-list li::before
@@ -780,7 +844,7 @@ in single-text
     font-family: FontAwesome;
     font-size: 90%;
     content: '\f0da';
-    color: #dfdfdf;
+    color: #cccccc;
 }
 
 /* -------------------------------------------
@@ -837,6 +901,15 @@ media query
 {
     html
     {
+        font-size: 80%;
+    }
+    .single-text p,
+    .single-description
+    {
+        font-size: 105%;
+    }
+    .nav-container
+    {
         font-size: 90%;
     }
     .side-card-title
@@ -881,46 +954,5 @@ media query
 
 @media (max-width: 320px)
 {
-    html
-    {
-        font-size: 80%;
-    }
-    .side-card-title
-    {
-        font-size: 90%;
-    }
-    .date-badge,
-    .category-badge,
-    .admin-badge,
-    .tag-badge,
-    .twitter-badge,
-    .facebook-badge,
-    .hatena-badge
-    {
-        font-size: 74%;
-        line-height: 21px;
-    }
-    .twitter-badge i,
-    .facebook-badge i,
-    .hatena-badge i
-    {
-        vertical-align: -.3px;
-    }
-    .side-card-category i,
-    .side-card-date i
-    {
-        vertical-align: .1px;
-    }
-    .category-item,
-    .tag-item,
-    .archive-item
-    {
-        vertical-align: -3px;
-    }    
-    .category-body i,
-    .tag-body i,
-    .archive-body i
-    {
-        vertical-align: -2.5px;
-    }
+
 }

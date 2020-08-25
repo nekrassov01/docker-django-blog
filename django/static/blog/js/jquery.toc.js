@@ -2,7 +2,7 @@
 
     jQuery.fn.toc = function(options) {
         var defaults = {
-            startLevel: 'h4',
+            startLevel: 'h3',
             listType: 'ul',
             target: 'toc'
         };

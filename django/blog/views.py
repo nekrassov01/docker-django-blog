@@ -192,7 +192,7 @@ class PostDetailView(generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         post = context.get('object')
-        context['related_posts'] = post.related_posts.select_related('category').prefetch_related('tag').filter(is_public=True)
+        context['related_posts'] = post.related_posts.select_related('category').filter(is_public=True)
         context['related_tags'] = post.tag.all().select_related('category')
         context['related_links'] = post.link_set.all().prefetch_related('post')
         context['label'] = post.title
