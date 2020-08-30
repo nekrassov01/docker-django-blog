@@ -136,8 +136,8 @@ def get_word_dict():
         with open(path, mode='r', encoding='utf-8') as f:
             synonym_list = [row.strip() for row in f.readlines()]
         for synonym in synonym_list:
-            from_word = str(synonym.split(',')[0])
-            to_word = str(synonym.split(',')[1])
+            from_word = synonym.split(',')[0]
+            to_word = synonym.split(',')[1]
             filters.append(RegexReplaceCharFilter(from_word, to_word))
 
     # ひらがな・カタカナ・英数字で1文字の単語を除去するクラス
@@ -175,7 +175,7 @@ def get_word_dict():
     char_filters = [UnicodeNormalizeCharFilter()]
     set_synonym_filters(synonym_path, char_filters)
     tokenizer = Tokenizer(udic=udic_path, udic_type='simpledic', udic_enc='utf8')
-    token_filters = [POSKeepFilter(['名詞']), OneCharacterRemoveFilter(), OnlyNumericOrSymbolicRemoveFilter(), StopWordRemoveFilter(), TokenCountFilter()]
+    token_filters = [POSKeepFilter(['名詞']), OneCharacterRemoveFilter(), OnlyNumericOrSymbolicRemoveFilter(), StopWordRemoveFilter(), LowerCaseFilter(), TokenCountFilter()]
     analyzer = Analyzer(char_filters, tokenizer, token_filters)
 
     # dict | 単語リストから辞書を作る
