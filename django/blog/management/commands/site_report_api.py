@@ -21,7 +21,7 @@ published_post = Post.objects.select_related('category').prefetch_related('tag')
 published_category = Category.objects.filter(post__is_public=True).order_by('index')
 
 # queryset | （紐づく記事が）公開されているタグ一覧
-published_tag = Tag.objects.filter(post__is_public=True).order_by('name')
+published_tag = Tag.objects.filter(post__is_public=True).order_by('slug')
 
 """
 集計の基準となるリスト
