@@ -22,10 +22,10 @@
                             <h5><i class="fas fa-chart-bar mr-1"></i>{% verbose_name model_category_post %}</h5>
                           </div>
                           <div class="graph-text p-0">
-                            <p class="m-0 p-0">各カテゴリに紐づく記事の件数です。</p>
+                            <p class="m-0 p-0">{{ desc_category_post }}</p>
                           </div>
                           <div class="canvas-container">
-                            <canvas class="my-3" id="category-post" style="position: relative; height:30vh; width:100vw"></canvas>
+                            <canvas class="my-3" id="category-post"></canvas>
                           </div>
                         </div>
                         <div class="graph-card col-12 col-md-6 mt-5 p-3">
@@ -33,10 +33,10 @@
                             <h5><i class="fas fa-chart-bar mr-1"></i>{% verbose_name model_category_tag %}</h5>
                           </div>
                           <div class="graph-text p-0">
-                            <p class="m-0 p-0">各カテゴリを親に持つタグがどれだけあるかの集計です。役には立たなそう。</p>
+                            <p class="m-0 p-0">{{ desc_category_tag }}</p>
                           </div>
                           <div class="canvas-container">
-                            <canvas class="my-3" id="category-tag" style="position: relative; height:30vh; width:100vw"></canvas>
+                            <canvas class="my-3" id="category-tag"></canvas>
                           </div>
                         </div>
                         <div class="graph-card col-12 mt-5 p-3">
@@ -44,10 +44,10 @@
                             <h5><i class="fas fa-chart-bar mr-1"></i>{% verbose_name model_tag_post %}</h5>
                           </div>
                           <div class="graph-text p-0">
-                            <p class="m-0 p-0">各タグに紐づく記事の件数です。ネタの傾向が大体わかります。</p>
+                            <p class="m-0 p-0">{{ desc_tag_post }}</p>
                           </div>
-                          <div class="canvas-container">
-                            <canvas class="my-3" id="tag-post" style="position: relative; height:50vh; width:100vw"></canvas>
+                          <div class="canvas-container h-auto">
+                            <canvas class="my-3" id="tag-post"></canvas>
                           </div>
                         </div>
                         <div class="graph-card col-12 mt-5 p-3">
@@ -55,10 +55,10 @@
                             <h5><i class="fas fa-chart-bar mr-1"></i>{% verbose_name model_month_post %}</h5>
                           </div>
                           <div class="graph-text p-0">
-                            <p class="m-0 p-0">カテゴリごとの記事数における月単位での推移です。怠け具合がわかります。</p>
+                            <p class="m-0 p-0">{{ desc_month_post }}</p>
                           </div>
-                          <div class="canvas-container">
-                            <canvas class="my-3" id="post-monthly" style="position: relative; height:100vh; width:100vw"></canvas>
+                          <div class="canvas-container h-auto">
+                            <canvas class="my-3" id="month-post"></canvas>
                           </div>
                         </div>
                       </div>

@@ -257,9 +257,9 @@ class ContactFormView(SuccessMessageMixin, generic.edit.FormView):
         context['label'] = self.label
         return context
 
-""" サイトレポート """
+""" レポート """
 def report(request):
-    label = 'サイトレポート'
+    label = 'レポート'
 
     category_post = CategoryPost.objects.all()
     category_tag = CategoryTag.objects.all()
@@ -269,6 +269,11 @@ def report(request):
 
     category_list = list(category_post.values_list('category', flat=True))
     month_list = sorted(list(set(month_post.values_list('month', flat=True))))
+
+    desc_category_post = '各カテゴリに紐づく記事の件数です。'
+    desc_category_tag = '各カテゴリを親に持つタグがどれだけあるかの集計です。役には立たなそう。'
+    desc_tag_post = '各タグに紐づく記事の件数です。ネタの傾向が大体わかります。'
+    desc_month_post = 'カテゴリごとの記事数における月単位での推移です。怠け具合がわかります。'
 
     """ レンダリング """
     return render(request, 'blog/blog_single_graph.html', {
@@ -285,4 +290,8 @@ def report(request):
         'model_tag_post': TagPost,
         'model_month_post': MonthPost,
         'model_word_cloud': WordCloud,
+        'desc_category_post': desc_category_post,
+        'desc_category_tag': desc_category_tag,
+        'desc_tag_post': desc_tag_post,
+        'desc_month_post': desc_month_post,
     })

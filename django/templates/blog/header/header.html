@@ -1,19 +1,23 @@
 {% load filter %}
           <div class="header container-fruid m-0 p-0" id="header">
-            <h1 class="header-item px-3 pt-0 pb-2 m-0"><a href="{% url "blog:index" %}">{{ request.site.name }}{% if request.user.is_authenticated %} - admin mode{% endif %}</a></h1>
-          </div>
-          <div class="containetr-fluid nav-container p-0">
             <div class="container max-width p-0">
-              <ul class="list-group list-group-horizontal-lg px-3 py-2">
-                <li class="list-group-item border-0 rounded-0 text-left bg-transparent ml-0 mr-2 mr-md-3 my-0 p-0"><a class="text-light" href="{% url 'blog:index' %}">ブログ</a></li>
-                <li class="list-group-item border-0 rounded-0 text-left bg-transparent ml-0 mr-2 mr-md-3 my-0 p-0"><a class="text-light" href="{% url 'blog:graph' %}">サイトレポート</a></li>
-                <li class="list-group-item border-0 rounded-0 text-left bg-transparent ml-0 mr-2 mr-md-3 my-0 p-0"><a class="text-light" href="{% url 'blog:feed' %}" target="_blank" rel="nofollow">RSS フィード</a></li>
-                {% if request.user.is_authenticated %}
-                <li class="list-group-item border-0 rounded-0 text-left bg-transparent ml-0 mr-2 mr-md-3 my-0 p-0"><a class="text-light" href="{% url 'blog:draft' %}" rel="nofollow">下書き</a></li>
-                <li class="list-group-item border-0 rounded-0 text-left bg-transparent ml-0 mr-2 mr-md-3 my-0 p-0"><a class="text-light" href="{% url 'blog:ping' %}" rel="nofollow">Ping 送信</a></li>
-                <li class="list-group-item border-0 rounded-0 text-left bg-transparent ml-0 mr-2 mr-md-3 my-0 p-0"><a class="text-light" href="{% url 'blog:snippet' %}" target="_blank" rel="nofollow">スニペット</a></li>
-                <li class="list-group-item border-0 rounded-0 text-left bg-transparent ml-0 mr-2 mr-md-3 my-0 p-0"><a class="text-light" href="{% url 'admin:index' %}" target="_blank" rel="nofollow">管理サイト</a></li>
-                {% endif %}
-              </ul>
+              <div class="row no-gutters">
+                <div class="col-12">
+                  <h1 class="header-item m-0 px-3 py-0"><a href="{% url "blog:index" %}">{{ request.site.name }}</a></h1>
+                </div>
+                <div class="col-12">
+                  <ul class="header-list list-group list-group-horizontal-lg px-3 pb-2">
+                    <li class="list-group-item border-0 rounded-0 text-left bg-transparent ml-0 mr-2 mr-md-3 my-0 p-0"><a class="text-light" href="{% url 'blog:index' %}">ブログ</a></li>
+                    <li class="list-group-item border-0 rounded-0 text-left bg-transparent ml-0 mr-2 mr-md-3 my-0 p-0"><a class="text-light" href="{% url 'blog:graph' %}">レポート</a></li>
+                    <li class="list-group-item border-0 rounded-0 text-left bg-transparent ml-0 mr-2 mr-md-3 my-0 p-0"><a class="text-light" href="{% url 'blog:feed' %}" target="_blank" rel="nofollow">RSS</a></li>
+                    {% if request.user.is_authenticated %}
+                    <li class="list-group-item border-0 rounded-0 text-left bg-transparent ml-0 mr-2 mr-md-3 my-0 p-0"><a class="text-light" href="{% url 'blog:draft' %}" rel="nofollow">下書き</a></li>
+                    <li class="list-group-item border-0 rounded-0 text-left bg-transparent ml-0 mr-2 mr-md-3 my-0 p-0"><a class="text-light" href="{% url 'blog:ping' %}" rel="nofollow">Ping</a></li>
+                    <li class="list-group-item border-0 rounded-0 text-left bg-transparent ml-0 mr-2 mr-md-3 my-0 p-0"><a class="text-light" href="{% url 'blog:snippet' %}" target="_blank" rel="nofollow">スニペット</a></li>
+                    <li class="list-group-item border-0 rounded-0 text-left bg-transparent ml-0 mr-2 mr-md-3 my-0 p-0"><a class="text-light" href="{% url 'admin:index' %}" target="_blank" rel="nofollow">管理サイト</a></li>
+                    {% endif %}
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>

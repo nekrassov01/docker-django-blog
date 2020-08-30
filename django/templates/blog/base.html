@@ -86,7 +86,7 @@
         <script>new ClipboardJS('#copy-button');</script>
         <script>
           window.WebFontConfig = {
-            google: {families: ['Amatic SC']},
+            google: {families: ['Dosis', 'Lato']},
             active: function() {
               sessionStorage.fonts = true;
             }
@@ -193,7 +193,7 @@
               }
             }
           });
-          var ctx = document.getElementById('post-monthly').getContext('2d');
+          var ctx = document.getElementById('month-post').getContext('2d');
           var post_monthly = new Chart(ctx, {
             type: 'line',
             data: {
@@ -276,7 +276,7 @@
                   .data(words)
                 .enter().append("text")
                   .style("font-size", function(d) { return d.size + "px"; })
-                  .style("font-family", ["Yu Gothic Medium", "Yu Gothic", "Verdana", "Meiryo", "sans-serif"])
+                  .style("font-family", ["Roboto", "Yu Gothic Medium", "Yu Gothic", "Verdana", "Meiryo", "sans-serif"])
                   .style("fill", function(d, i) { return d3.schemeCategory10[i % 10]; })
                   .attr("text-anchor", "middle")
                   .attr("transform", function(d) { return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")"; })

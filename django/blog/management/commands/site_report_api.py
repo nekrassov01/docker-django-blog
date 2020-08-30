@@ -7,6 +7,8 @@ from janome.tokenizer import Tokenizer
 from janome.analyzer import Analyzer
 from janome.charfilter import *
 from janome.tokenfilter import *
+import csv
+import re
 import itertools
 
 """
@@ -128,26 +130,52 @@ def get_word_dict():
     post_texts = html.strip_tags(''.join(post_texts)).split()
     tokens = ' '.join(post_descriptions + post_titles + post_texts)
 
-    # ストップワード除去用クラス
-    class RegexReplaceTokenFilter(TokenFilter):
-        fromword = None
-        toword = None
-        def __init__(self, fromword, toword):
-            self.fromword = fromword
-            self.toword = toword
-    
+    #  シノニム一覧から内容を1行ずつ取り出して行数分の RegexReplaceCharFilter を生成
+    def set_synonym_filters(path, filters):
+        synonym_list = []
+        with open(path, mode='r', encoding='utf-8') as f:
+            synonym_list = [row.strip() for row in f.readlines()]
+        for synonym in synonym_list:
+            from_word = str(synonym.split(',')[0])
+            to_word = str(synonym.split(',')[1])
+            filters.append(RegexReplaceCharFilter(from_word, to_word))
+
+    # ひらがな・カタカナ・英数字で1文字の単語を除去するクラス
+    class OneCharacterRemoveFilter(TokenFilter):
         def apply(self, tokens):
             for token in tokens:
-                token.surface = re.sub(self.fromword, self.toword, token.surface)
-                if token.surface == "":
+                if re.match('^[あ-んア-ンa-zA-Z0-9ー]$', token.surface):
+                    continue
+                yield token
+
+    # 数字と記号のみの単語を除去するクラス
+    class OnlyNumericOrSymbolicRemoveFilter(TokenFilter):
+        def apply(self, tokens):
+            for token in tokens:
+                if re.match('^[0-9!-/:-@¥[-`{-~]*$', token.surface):
+                    continue
+                yield token
+
+    # ストップワードを除去するクラス
+    class StopWordRemoveFilter(TokenFilter):
+        def __init__(self):
+            stopwords_path = settings.JANOME_STOPWORDS_PATH
+            stopwords = []
+            with open(stopwords_path, mode='r', encoding='utf-8') as f:
+                self.stopwords = [row.strip() for row in f.readlines()]
+        def apply(self, tokens):
+            for token in tokens:
+                if token.surface in self.stopwords:
                     continue
                 yield token
 
     # 形態素解析のためのアナライザを定義
     udic_path = settings.JANOME_DICTIONARY_PATH
-    char_filters = [UnicodeNormalizeCharFilter(), RegexReplaceCharFilter('\,', '')]
+    synonym_path = settings.JANOME_SYNONYM_PATH
+    char_filters = [UnicodeNormalizeCharFilter()]
+    set_synonym_filters(synonym_path, char_filters)
     tokenizer = Tokenizer(udic=udic_path, udic_type='simpledic', udic_enc='utf8')
-    token_filters = [CompoundNounFilter(), POSKeepFilter(['名詞']), LowerCaseFilter(), TokenCountFilter()]
+    token_filters = [POSKeepFilter(['名詞']), OneCharacterRemoveFilter(), OnlyNumericOrSymbolicRemoveFilter(), StopWordRemoveFilter(), TokenCountFilter()]
     analyzer = Analyzer(char_filters, tokenizer, token_filters)
 
     # dict | 単語リストから辞書を作る

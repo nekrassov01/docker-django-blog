@@ -8,8 +8,7 @@ html
 {
     overflow-y: scroll;
     visibility: hidden;
-    font-feature-settings: "palt";
-    letter-spacing: .9px;
+    letter-spacing: .8px;
 }
 
 html.wf-active
@@ -22,7 +21,7 @@ body
     overflow: hidden;
     background-color: #f1f1f1;
     color: #444444;
-    font-family: -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", "Helvetica Neue", HelveticaNeue, YuGothic, "Yu Gothic Medium", "Yu Gothic", Verdana, Meiryo, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, Lato, "Segoe UI", "Helvetica Neue", HelveticaNeue, YuGothic, "Yu Gothic Medium", "Yu Gothic", Verdana, Meiryo, sans-serif;
     line-height: 1.5;
 }
 
@@ -47,13 +46,16 @@ a:hover
 header & footer
 ------------------------------------------- */
 
-.header,
-.footer
+.header
 {
-    background-color: #00204a;
+    background-color: #2e3440;
 }
 
-.header-item,
+.footer
+{
+    background-color: #2e3440;
+}
+
 .footer-item
 {
     text-align: center;
@@ -62,15 +64,21 @@ header & footer
 .header-item a
 {
     color: #ffffcc;
-    font-family: 'Amatic SC';
+    font-family: 'Dosis';
+    font-size: 50%;
+    vertical-align: middle;
+}
+
+.header-list li.list-group-item a
+{
     font-size: 70%;
 }
 
 .footer-item span
 {
     color: #ffffcc;
-    font-family: 'Amatic SC';
-    font-size: 100%;
+    font-family: 'Lato';
+    font-size: 80%;
 }
 
 /* -------------------------------------------
@@ -79,7 +87,7 @@ navbar
 
 .nav-container
 {
-    background-color: #005792;
+    background-color: #455d7a;
 }
 
 .nav-container ul
@@ -94,6 +102,8 @@ navbar
 .nav-container li
 {
     display: inline;
+    vertical-align: middle;
+    font-size: 70%;
 }
 
 /* -------------------------------------------
@@ -119,12 +129,12 @@ li.breadcrumb-item span,
 li.breadcrumb-item a
 {
     color: #808080;
-    font-size: 76%;
+    font-size: 70%;
 }
 
 li.breadcrumb-item a:hover
 {
-    color: #00bbf0;
+    color: #65a6ff;
 }
 
 .breadcrumb-item + .breadcrumb-item::before
@@ -153,7 +163,7 @@ pagination
 
 .page-item.active .page-link
 {
-    background-color: #005792;
+    background-color: #455d7a;
     border: solid 1px #f1f1f1;
 }
 
@@ -165,11 +175,12 @@ pagination
     vertical-align: middle;
     min-width: 34px;
     margin: 0 1px 0 1px;
+    line-height: 15px;
 }
 
 .page-link:hover
 {
-    background-color: #005792;
+    background-color: #455d7a;
     border: solid 1px #f1f1f1;
 }
 
@@ -180,7 +191,7 @@ pagination
 
 .pager-detail a:hover
 {
-    color: #00bbf0;
+    color: #65a6ff;
 }
 
 
@@ -190,7 +201,7 @@ form & button
 
 .btn-default
 {
-    background-color: #00204a;
+    background-color: #ffffff;
 }
 
 .searchform
@@ -232,7 +243,7 @@ toc & heading
 
 #toc li a:hover
 {
-    color: #00bbf0;
+    color: #65a6ff;
 }
 
 #toc ul a::before,
@@ -301,7 +312,7 @@ badge
     border: solid 1px #f7f8fa;
     font-size: 80%;
     font-weight: bold;
-    line-height: 23px;
+    line-height: 24px;
 }
 
 .card-badge-item,
@@ -319,29 +330,33 @@ badge
 .tag-badge i,
 .admin-badge i
 {
-    color: #00bbf0;
+    color: #65a6ff;
+    vertical-align: -.2px;
 }
 
 .twitter-badge i
 {
     color: #55acee;
+    vertical-align: -1px;
 }
 
 .facebook-badge i
 {
     color: #3B5998;
+    vertical-align: -1px;
 }
 
 .hatena-badge i
 {
     color: #008fde;
+    vertical-align: -1px;
 }
 
 .category-badge:hover,
 .tag-badge:hover,
 .admin-badge:hover
 {
-    border: solid 1px #00bbf0;
+    border: solid 1px #65a6ff;
 }
 
 .twitter-badge:hover
@@ -371,7 +386,7 @@ post list card
 
 .post-card:hover .card-title
 {
-    color: #00bbf0;
+    color: #65a6ff;
     transition: all 0.3s;
 }
 
@@ -385,7 +400,7 @@ post list card
 
 .card-title
 {
-    border-bottom: solid 2px #f1f1f1;
+    border-bottom: solid 1px #f1f1f1;
 }
 
 .card-title h4
@@ -413,7 +428,7 @@ post details
 
 .single-title a:hover
 {
-    color: #00bbf0;
+    color: #65a6ff;
     transition: all 0.3s;
 }
 
@@ -457,7 +472,7 @@ related items for post details
 
 .related-post:hover .related-post-title
 {
-    color: #00bbf0;
+    color: #65a6ff;
     transition: all 0.3s;
 }
 
@@ -485,7 +500,7 @@ related items for post details
 .related-post-date i,
 .related-post-category i
 {
-    color: #00bbf0;
+    color: #65a6ff;
 }
 
 .related-link
@@ -501,7 +516,7 @@ related items for post details
 
 .related-link-item:hover
 {
-    color: #00bbf0;
+    color: #65a6ff;
     transition: all 0.3s;
     text-decoration-line: underline;
 }
@@ -509,7 +524,7 @@ related items for post details
 .related-link i,
 .related-tag i
 {
-    color: #00bbf0;
+    color: #65a6ff;
     font-size: 86%;
     display: inline-block;
     vertical-align: 5%;
@@ -533,7 +548,7 @@ side bar
 .side-bar-parts-header-archive,
 .side-bar-parts-header-toc
 {
-    background-color: #00204a;
+    background-color: #2e3440;
 }
 
 .side-bar-parts-header-popular h5,
@@ -546,15 +561,27 @@ side bar
     color: #ffffff;
 }
 
+ul .side-card
+{
+    background-color: #ffffff;
+    border-top: solid 6px #f1f1f1;
+}
+
 .side-bar-parts-footer-category,
 .side-bar-parts-footer-tag,
 .side-bar-parts-footer-archive,
-ul .side-card,
 ul .category,
 ul .tag,
 ul .archive
 {
     border-top: solid 4px #f1f1f1;
+}
+
+.side-bar-parts-footer-category,
+.side-bar-parts-footer-tag,
+.side-bar-parts-footer-archive
+{
+    background-color: #f1f1f1;
 }
 
 .side-bar-parts-footer-category span,
@@ -571,20 +598,20 @@ side bar card
 
 .side-card-title
 {
-    font-size: 90%;
+    font-size: 14px;
     line-height: 1.4;
 }
 
 .side-card:hover .side-card-title
 {
-    color: #00bbf0;
+    color: #65a6ff;
     transition: all 0.3s;
 }
 
 .side-card-info
 {
     color: #808080;
-    border-bottom: solid 1px #f1f1f1;
+    border-bottom: solid 1px #ececec;
 }
 
 .side-card-info-md
@@ -607,7 +634,7 @@ side bar card
 .side-card-date-md i,
 .side-card-category i
 {
-    color: #00bbf0;
+    color: #65a6ff;
 }
 
 /* -------------------------------------------
@@ -621,39 +648,38 @@ side bar list
     color: #444444;
     font-size: 90%;
     display: inline-block;
-    vertical-align: -3px;
+    vertical-align: -4px;
 }
 
 .category-body i,
 .tag-body i,
 .archive-body i
 {
-    color: #00bbf0;
+    color: #65a6ff;
     font-size: 70%;
     display: inline-block;
-    vertical-align: -2px;
+    vertical-align: -3.4px;
 }
 
 .category-count,
 .tag-count,
-.archive-count {
+.archive-count
+{
     background-color: #f1f1f1;
     border: solid 1px #f1f1f1;
     color: #444444;
-    font-size: 92%;
-    min-width: 12%;
-    display: inline-block;
-    vertical-align: middle;
+    font-size: 14px;
+    min-width: 30px;
 }
 
 .category a:hover,
-.category:hover .category-item ,
+.category:hover .category-item,
 .tag a:hover,
 .tag:hover .tag-item,
 .archive a:hover,
 .archive:hover .archive-item
 {
-    color: #00bbf0;
+    color: #65a6ff;
     transition: all 0.3s;
 }
 
@@ -661,8 +687,8 @@ side bar list
 .tag:hover .tag-count,
 .archive:hover .archive-count
 {
-    background-color: #00bbf0;
-    border: solid 1px #00bbf0;
+    background-color: #65a6ff;
+    border: solid 1px #65a6ff;
     color: #ffffff;
     transition: all 0.3s;
 }
@@ -674,13 +700,13 @@ table
 #category-table tr:hover .stretched-link,
 #tag-table tr:hover .stretched-link
 {
-    color: #00bbf0;
+    color: #65a6ff;
     transition: all 0.3s;
 }
 
 .stretched-link:hover 
 {
-    color: #00bbf0;
+    color: #65a6ff;
     transition: all 0.3s;
 }
 
@@ -719,7 +745,7 @@ snippet
 
 .snippet-title a:hover
 {
-    color: #00bbf0;
+    color: #65a6ff;
     transition: all 0.3s;
 }
 
@@ -744,7 +770,7 @@ graph
 
 .wc-container
 {
-    background-color: #00204a;
+    background-color: #2e3440;
 }
 
 .wc-container:hover
@@ -767,7 +793,7 @@ graph
 
 .graph-title i
 {
-    color: #00bbf0;
+    color: #65a6ff;
     font-size: 80%;
     display: inline-block;
     vertical-align: middle;
@@ -779,6 +805,28 @@ graph
     font-size: 70%;
     color: #808080;
     min-height: 32px;
+}
+
+#category-post,
+#category-tag
+{
+    position: relative;
+    height: 30vh;
+    width: 100vw;
+}
+
+#tag-post
+{
+    position: relative;
+    height: 50vh;
+    width: 100vw;
+}
+
+#month-post
+{
+    position: relative;
+    height: 50vh;
+    width: 100vw;
 }
 
 /* -------------------------------------------
@@ -798,7 +846,7 @@ in single-text
 
 .single-text pre code
 {
-    font-size: 12px;
+    font-size: 90%;
     line-height: 1.4;
     overflow-x: scroll;
 }
@@ -904,13 +952,10 @@ media query
         font-size: 80%;
     }
     .single-text p,
-    .single-description
+    .single-description,
+    .inner-list
     {
-        font-size: 105%;
-    }
-    .nav-container
-    {
-        font-size: 90%;
+        font-size: 110%;
     }
     .side-card-title
     {
@@ -925,34 +970,58 @@ media query
     .hatena-badge
     {
         font-size: 74%;
-        line-height: 21px;
+        line-height: 20px;
+    }
+    .date-badge i,
+    .category-badge i,
+    .admin-badge i
+    {
+        vertical-align: -.4px;
     }
     .twitter-badge i,
     .facebook-badge i,
     .hatena-badge i
     {
-        vertical-align: -.3px;
+        vertical-align: -.8px;
+    }
+    .tag-badge i
+    {
+        vertical-align: .4px;
     }
     .side-card-category i,
     .side-card-date i
     {
-        vertical-align: .1px;
+        vertical-align: -.1px;
     }
     .category-item,
     .tag-item,
     .archive-item
     {
-        vertical-align: -3px;
+        vertical-align: -3.4px;
     }    
     .category-body i,
     .tag-body i,
     .archive-body i
     {
-        vertical-align: -2.5px;
+        vertical-align: -3.2px;
     }
-}
-
-@media (max-width: 320px)
-{
-
+    .category-count,
+    .tag-count,
+    .archive-count
+    {
+        font-size: 12px;
+        vertical-align: middle;
+    }
+    canvas #tag-post
+    {
+        position: relative;
+        height: 150vh;
+        width: 300vw;
+    }
+    canvas #post-monthly
+    {
+        position: relative;
+        height: 200vh;
+        width: 100vw;
+    }
 }
