@@ -97,6 +97,7 @@ navbar
     overflow-y: hidden;
     overflow: auto;
     white-space: nowrap;
+    line-height: 200%;
 }
 
 .nav-container li
@@ -312,7 +313,6 @@ badge
     border: solid 1px #f7f8fa;
     font-size: 80%;
     font-weight: bold;
-    line-height: 24px;
 }
 
 .card-badge-item,
@@ -331,25 +331,21 @@ badge
 .admin-badge i
 {
     color: #65a6ff;
-    vertical-align: -.2px;
 }
 
 .twitter-badge i
 {
     color: #55acee;
-    vertical-align: -1px;
 }
 
 .facebook-badge i
 {
     color: #3B5998;
-    vertical-align: -1px;
 }
 
 .hatena-badge i
 {
     color: #008fde;
-    vertical-align: -1px;
 }
 
 .category-badge:hover,
@@ -598,7 +594,7 @@ side bar card
 
 .side-card-title
 {
-    font-size: 14px;
+    font-size: 13px;
     line-height: 1.4;
 }
 
@@ -641,24 +637,25 @@ side bar card
 side bar list
 ------------------------------------------- */
 
+.category,
+.tag,
+.archive
+{
+    font-size: 90%;
+}
+
 .category-item,
 .tag-item,
 .archive-item
 {
     color: #444444;
-    font-size: 90%;
-    display: inline-block;
-    vertical-align: -4px;
 }
 
-.category-body i,
-.tag-body i,
-.archive-body i
+.category-icon,
+.tag-icon,
+.archive-icon
 {
     color: #65a6ff;
-    font-size: 70%;
-    display: inline-block;
-    vertical-align: -3.4px;
 }
 
 .category-count,
@@ -666,10 +663,7 @@ side bar list
 .archive-count
 {
     background-color: #f1f1f1;
-    border: solid 1px #f1f1f1;
     color: #444444;
-    font-size: 14px;
-    min-width: 30px;
 }
 
 .category a:hover,
@@ -688,7 +682,6 @@ side bar list
 .archive:hover .archive-count
 {
     background-color: #65a6ff;
-    border: solid 1px #65a6ff;
     color: #ffffff;
     transition: all 0.3s;
 }
@@ -807,26 +800,26 @@ graph
     min-height: 32px;
 }
 
-#category-post,
-#category-tag
+.canvas-container-category-post,
+.canvas-container-category-tag
 {
     position: relative;
-    height: 30vh;
-    width: 100vw;
+    height: 300px;
+    width:  100%;
 }
 
-#tag-post
+.canvas-container-tag-post
 {
     position: relative;
-    height: 50vh;
-    width: 100vw;
+    height: 500px;
+    width:  100%;
 }
 
-#month-post
+.canvas-container-month-post
 {
     position: relative;
-    height: 50vh;
-    width: 100vw;
+    height: 600px;
+    width:  100%;
 }
 
 /* -------------------------------------------
@@ -964,64 +957,30 @@ media query
     .date-badge,
     .category-badge,
     .admin-badge,
-    .tag-badge,
     .twitter-badge,
     .facebook-badge,
-    .hatena-badge
+    .hatena-badge,
+    .tag-badge
     {
-        font-size: 74%;
-        line-height: 20px;
+        font-size: 78%;
     }
-    .date-badge i,
-    .category-badge i,
-    .admin-badge i
-    {
-        vertical-align: -.4px;
-    }
-    .twitter-badge i,
-    .facebook-badge i,
-    .hatena-badge i
-    {
-        vertical-align: -.8px;
-    }
-    .tag-badge i
-    {
-        vertical-align: .4px;
-    }
-    .side-card-category i,
-    .side-card-date i
-    {
-        vertical-align: -.1px;
-    }
-    .category-item,
-    .tag-item,
-    .archive-item
-    {
-        vertical-align: -3.4px;
-    }    
-    .category-body i,
-    .tag-body i,
-    .archive-body i
-    {
-        vertical-align: -3.2px;
-    }
-    .category-count,
-    .tag-count,
-    .archive-count
-    {
-        font-size: 12px;
-        vertical-align: middle;
-    }
-    canvas #tag-post
+    .canvas-container-category-post,
+    .canvas-container-category-tag
     {
         position: relative;
-        height: 150vh;
-        width: 300vw;
+        height: 230px;
+        width:  100%;
     }
-    canvas #post-monthly
+    .canvas-container-tag-post
     {
         position: relative;
-        height: 200vh;
-        width: 100vw;
+        height: 500px;
+        width:  100%;
+    }
+    .canvas-container-month-post
+    {
+        position: relative;
+        height: 380px;
+        width:  100%;
     }
 }

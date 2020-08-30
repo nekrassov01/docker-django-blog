@@ -36,11 +36,11 @@
                       <div class="row no-gutters">
                         <p class="card-text m-0">{{ post.description | safe | truncatechars_ja:176 }}</p>
                         <div class="card-badge-group">
-                          <div class="date-badge rounded-0 d-inline-block float-right ml-2 mt-3 px-2"> 
-                            <span class="badge card-badge-item mr-1 my-0 p-0"><i class="far fa-clock mr-1 p-0"></i>{{ post.published_at | date:"Y-m-d" }}</span>
+                          <div class="date-badge rounded-0 d-inline-block float-right ml-2 mt-3 px-2 py-1"> 
+                            <p class="badge card-badge-item mr-1 my-0 p-0"><i class="far fa-clock mr-1 p-0"></i>{{ post.published_at | date:"Y-m-d" }}</p>
                           </div>
-                          <div class="date-badge rounded-0 d-inline-block float-right ml-2 mt-3 px-2">
-                            <span class="badge card-badge-item mr-1 my-0 p-0"><i class="far fa-sticky-note mr-1 p-0"></i>{{ post.category.name }}</span>
+                          <div class="date-badge rounded-0 d-inline-block float-right ml-2 mt-3 px-2 py-1">
+                            <p class="badge card-badge-item mr-1 my-0 p-0"><i class="far fa-sticky-note mr-1 p-0"></i>{{ post.category.name }}</p>
                           </div>
                         </div>
                       </div>

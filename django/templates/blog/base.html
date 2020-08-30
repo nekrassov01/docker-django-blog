@@ -124,7 +124,7 @@
               [{% for row in category_post %}{{ row.post_count }},{% endfor %}],
             ]
           var category_post = new Chart(ctx, {
-            type: 'polarArea',
+            type: 'pie',
             data: {
               labels: data[0],
               datasets: [
@@ -210,7 +210,7 @@
             },
             options: {
               responsive: true,
-              maintainAspectRatio: true,
+              maintainAspectRatio: false,
               plugins: {
                 colorschemes: {
                   scheme: 'tableau.ClassicBlueRed12',

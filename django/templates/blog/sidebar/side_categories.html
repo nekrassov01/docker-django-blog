@@ -7,11 +7,12 @@
                   <ul class="list-unstyled list-item m-0 p-0">
                     {% for category in categories %}
                     <a class="col m-0 p-0" href="{% url 'blog:category_post' category.slug %}">
-                      <div class="category row m-0 p-2">
-                        <div class="category-body col m-0 p-0">
-                          <i class="fas fa-caret-right mx-1"></i>
-                          <span class="category-item">{{ category.name }}</span>
-                          <span class="category-count float-right text-right rounded-0 m-0 px-2 py-1">{{ category.count }}</span>
+                      <div class="category row no-gutters p-2">
+                        <div class="col">
+                          <p class="category-item m-0 p-1"><i class="category-icon fas fa-caret-right mr-2"></i></i>{{ category.name }}</p>
+                        </div>
+                        <div class="col-offset">
+                          <p class="category-count rounded-0 m-0 px-2 py-1">{{ category.count }}</p>
                         </div>
                       </div>
                     </a>

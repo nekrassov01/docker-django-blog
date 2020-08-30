@@ -7,11 +7,12 @@
                   <ul class="list-unstyled list-item m-0 p-0">
                     {% for archive in archives %}
                     <a class="col m-0 p-0" href="{% url 'blog:archive_month' archive.month|date:'Y' archive.month|date:'m' %}">
-                      <div class="archive row m-0 p-2">
-                        <div class="archive-body col m-0 p-0">
-                          <i class="fas fa-caret-right mx-1"></i>
-                          <span class="archive-item">{{ archive.month | date:"Y 年 m 月" }}</span>
-                          <span class="archive-count float-right text-right rounded-0 m-0 px-2 py-1">{{ archive.count }}</span>
+                      <div class="archive row no-gutters p-2">
+                        <div class="col">
+                          <p class="archive-item m-0 p-1"><i class="archive-icon fas fa-caret-right mr-2"></i>{{ archive.month | date:"Y 年 m 月" }}</p>
+                        </div>
+                        <div class="col-offset">
+                          <p class="archive-count rounded-0 m-0 px-2 py-1">{{ archive.count }}</p>
                         </div>
                       </div>
                     </a>

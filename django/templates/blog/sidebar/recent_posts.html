@@ -10,8 +10,8 @@
                       <div class="side-card row no-gutters px-2 pt-2 pb-3 pb-md-2 pb-lg-3">
                         {% if recent_post.eyecatch %}
                         <div class="side-card-info col-12 d-lg-block d-md-none mb-2 px-2">
-                          <span class="side-card-category mr-3"><i class="far fa-sticky-note mr-1 p-0"></i>{{ recent_post.category.name }}</span>
-                          <span class="side-card-date"><i class="far fa-clock mr-1 p-0"></i>{{ recent_post.published_at | date:"Y-m-d" }}</span>
+                          <p class="side-card-category my-0 mr-3"><i class="far fa-sticky-note mr-1 p-0"></i>{{ recent_post.category.name }}</p>
+                          <p class="side-card-date my-0"><i class="far fa-clock mr-1 p-0"></i>{{ recent_post.published_at | date:"Y-m-d" }}</p>
                         </div>
                         <div class="col-5 d-lg-block d-md-none">
                           <img src="" data-src="{{ recent_post.eyecatch.url }}" class="lozad w-100" alt="eyecatch">
@@ -21,7 +21,7 @@
                           <p class="side-card-title m-0 p-0">{{ recent_post.title | truncatechars_ja:66 }}</p>
                         </div>
                         <div class="side-card-info-md col-12 d-none d-md-block d-lg-none m-0 p-0">
-                          <span class="side-card-date float-right"><i class="far fa-clock mr-1 p-0"></i>{{ recent_post.published_at | date:"Y-m-d" }}</span>
+                          <p class="side-card-date float-right"><i class="far fa-clock mr-1 p-0"></i>{{ recent_post.published_at | date:"Y-m-d" }}</p>
                         </div>
                       </div>
                     </a>

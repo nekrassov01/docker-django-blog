@@ -1,5 +1,5 @@
 {% load filter %}
-              <div class="searchbox m-0 pt-0 pb-5">
+              <div class="searchbox d-none d-md-block m-0 px-3 px-md-0 pt-0 pb-5">
                 {% if '/draft/' in request.path %}
                 <form method="GET" class="input-group h-100" action="{% url 'blog:draft' %}">
                 {% else %}
