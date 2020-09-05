@@ -78,7 +78,7 @@ class StaticSitemap(Sitemap):
     priority = 0.5
 
     def items(self):
-        return ['blog:about', 'blog:policy', 'blog:graph']
+        return ['blog:about', 'blog:policy', 'blog:report']
 
     def location(self, obj):
         return reverse_lazy(obj)

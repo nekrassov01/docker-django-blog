@@ -7,14 +7,14 @@
 
                   {% block breadcrumb %}
                   {{ block.super }}
-                  <li class="breadcrumb-item m-0 p-0"><span>{{ label }}</span></li>
+                  <li class="breadcrumb-item m-0 p-0"><span>{{ label | set_text_spacing }}</span></li>
                   {% endblock %}
 
                 {% block main %}
                 <div class="single col-12 shadow-0 rounded-0 mb-5 pb-0 p-lg-4">
                   <div class="row no-gutters">
                     <div class="single-title col-12 text-center m-0 px-3 px-md-5 pt-5 pb-3 h-100">
-                      <h2 class="m-0 p-0"><a>{{ label }}</a></h2>
+                      <h2 class="m-0 p-0"><a href="">{{ label }}</a></h2>
                     </div>
                     <div class="single-body m-0 p-3 p-lg-4 w-100">
                     {% block single %}{% endblock %}

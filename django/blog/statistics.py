@@ -130,7 +130,7 @@ def statistics(request):
     word_dict = dict(analyzer.analyze(tokens))
 
     """ レンダリング """
-    return render(request, 'blog/blog_single_graph.html', {
+    return render(request, 'blog/blog_single_report.html', {
         'label': label, 
         'category_list': category_list, 
         'category_post_dict': category_post_dict, 

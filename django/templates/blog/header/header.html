@@ -8,7 +8,7 @@
                 <div class="col-12">
                   <ul class="header-list list-group list-group-horizontal-lg px-3 pb-2">
                     <li class="list-group-item border-0 rounded-0 text-left bg-transparent ml-0 mr-2 mr-md-3 my-0 p-0"><a class="text-light" href="{% url 'blog:index' %}">ブログ</a></li>
-                    <li class="list-group-item border-0 rounded-0 text-left bg-transparent ml-0 mr-2 mr-md-3 my-0 p-0"><a class="text-light" href="{% url 'blog:graph' %}">レポート</a></li>
+                    <li class="list-group-item border-0 rounded-0 text-left bg-transparent ml-0 mr-2 mr-md-3 my-0 p-0"><a class="text-light" href="{% url 'blog:report' %}">レポート</a></li>
                     <li class="list-group-item border-0 rounded-0 text-left bg-transparent ml-0 mr-2 mr-md-3 my-0 p-0"><a class="text-light" href="{% url 'blog:feed' %}" target="_blank" rel="nofollow">RSS</a></li>
                     {% if request.user.is_authenticated %}
                     <li class="list-group-item border-0 rounded-0 text-left bg-transparent ml-0 mr-2 mr-md-3 my-0 p-0"><a class="text-light" href="{% url 'blog:draft' %}" rel="nofollow">下書き</a></li>

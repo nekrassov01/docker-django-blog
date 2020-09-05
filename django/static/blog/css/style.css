@@ -21,7 +21,7 @@ body
     overflow: hidden;
     background-color: #f1f1f1;
     color: #444444;
-    font-family: -apple-system, BlinkMacSystemFont, Lato, "Segoe UI", "Helvetica Neue", HelveticaNeue, YuGothic, "Yu Gothic Medium", "Yu Gothic", Verdana, Meiryo, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", "Helvetica Neue", HelveticaNeue, YuGothic, "Yu Gothic Medium", "Yu Gothic", Verdana, Meiryo, sans-serif;
     line-height: 1.5;
 }
 
@@ -77,7 +77,7 @@ header & footer
 .footer-item span
 {
     color: #ffffcc;
-    font-family: 'Lato';
+    font-family: 'Roboto';
     font-size: 80%;
 }
 
@@ -129,7 +129,7 @@ li.breadcrumb-item
 li.breadcrumb-item span,
 li.breadcrumb-item a
 {
-    color: #808080;
+    color: #aaaaaa;
     font-size: 70%;
 }
 
@@ -202,7 +202,7 @@ form & button
 
 .btn-default
 {
-    background-color: #ffffff;
+    background-color: #2e3440;
 }
 
 .searchform
@@ -267,20 +267,20 @@ toc & heading
 
 .head-h3
 {
-    border-left: solid 8px #ececec;
-    border-right: solid 1px #ececec;
-    border-top: solid 1px #ececec;
-    border-bottom: solid 1px #ececec;
-    background-color: #f8f9fa;
+    border-left: solid 8px #65a6ff;
+    border-bottom: solid 1px #65a6ff;
 }
 
 .head-h4
 {
-    border-left: solid 4px #ececec;
-    border-right: solid 1px #ececec;
-    border-top: solid 1px #ececec;
-    border-bottom: solid 1px #ececec;
-    background-color: #f8f9fa;
+    border-left: solid 4px #65a6ff;
+    border-bottom: solid 1px #65a6ff;
+}
+
+.head-h5
+{
+    color: #aaaaaa;
+    font-weight: bold;
 }
 
 .toc-h3 h3,
@@ -301,28 +301,13 @@ badge
     right: 0;
 }
 
-.date-badge,
-.category-badge,
-.admin-badge,
-.twitter-badge,
-.facebook-badge,
-.hatena-badge,
-.tag-badge
-{
-    background-color: #f7f8fa;
-    border: solid 1px #f7f8fa;
-    font-size: 80%;
-    font-weight: bold;
-}
-
 .card-badge-item,
 .single-badge-item,
 .twitter-badge-item,
 .facebook-badge-item,
 .hatena-badge-item
 {
-    font-size: 100%;
-    font-weight: lighter;
+    font-weight: normal;
 }
 
 .date-badge i,
@@ -348,26 +333,43 @@ badge
     color: #008fde;
 }
 
+.tag-badge
+{
+    background-color: #f7f8fa;
+    border: solid 1px #f7f8fa;
+    font-weight: bold;
+}
+
 .category-badge:hover,
 .tag-badge:hover,
 .admin-badge:hover
 {
-    border: solid 1px #65a6ff;
+    color: #65a6ff;
+    transition: all 0.3s;
 }
 
 .twitter-badge:hover
 {
-    border: solid 1px #55acee;
+    color: #55acee;
+    transition: all 0.3s;
 }
 
 .facebook-badge:hover
 {
-    border: solid 1px #3B5998;
+    color: #3B5998;
+    transition: all 0.3s;
 }
 
 .hatena-badge:hover
 {
-    border: solid 1px #008fde;
+    color: #008fde;
+    transition: all 0.3s;
+}
+
+.tag-badge:hover
+{
+    border: solid 1px #65a6ff;
+    transition: all 0.3s;
 }
 
 /* -------------------------------------------
@@ -456,14 +458,10 @@ related items for post details
 }
 
 .related-links,
-.related-tags
+.related-tags,
+.related-posts
 {
-    border-bottom: solid 2px #ececec;
-}
-
-.related-post
-{
-    border-top: solid 2px #ececec;
+    border-bottom: solid 1px #ececec;
 }
 
 .related-post:hover .related-post-title
@@ -490,7 +488,7 @@ related items for post details
 .related-post-category
 {
     font-size:76%;
-    color: #808080;
+    color: #aaaaaa;
 }
 
 .related-post-date i,
@@ -595,6 +593,7 @@ side bar card
 .side-card-title
 {
     font-size: 13px;
+    font-weight: bold;
     line-height: 1.4;
 }
 
@@ -606,13 +605,13 @@ side bar card
 
 .side-card-info
 {
-    color: #808080;
+    color: #aaaaaa;
     border-bottom: solid 1px #ececec;
 }
 
 .side-card-info-md
 {
-    color: #808080;
+    color: #aaaaaa;
 }
 
 .side-card-number,
@@ -664,6 +663,7 @@ side bar list
 {
     background-color: #f1f1f1;
     color: #444444;
+    min-width: 36px;
 }
 
 .category a:hover,
@@ -703,6 +703,11 @@ table
     transition: all 0.3s;
 }
 
+tr
+{
+    border: solid 2px #ececec;
+}
+
 /* -------------------------------------------
 link box
 ------------------------------------------- */
@@ -729,7 +734,7 @@ link box
 {
     font-weight: lighter;
     font-size: 80%;
-    color: #808080;
+    color: #aaaaaa;
 }
 
 /* -------------------------------------------
@@ -742,9 +747,12 @@ snippet
     transition: all 0.3s;
 }
 
-.snippet-content
+.snippet
 {
     font-size: 90%;
+    line-height: 1.4;
+    overflow-x: scroll;
+    background-color: #f7f8fa;
 }
 
 #copy-button
@@ -796,7 +804,7 @@ graph
 {
     font-weight: lighter;
     font-size: 70%;
-    color: #808080;
+    color: #aaaaaa;
     min-height: 32px;
 }
 
@@ -842,6 +850,7 @@ in single-text
     font-size: 90%;
     line-height: 1.4;
     overflow-x: scroll;
+    background-color: #f7f8fa;
 }
 
 .single-text table
@@ -864,13 +873,10 @@ in single-text
     vertical-align: 1px;
 }
 
-.inner-list
+.single-text ul li,
+.single-text ol li
 {
-    display:block;
-    overflow-x: auto;
-    overflow-y: hidden;
-    overflow: auto;
-    white-space: nowrap;
+    text-indent: -1em;
     list-style-type: none;
 }
 
@@ -953,16 +959,6 @@ media query
     .side-card-title
     {
         font-size: 100%;
-    }
-    .date-badge,
-    .category-badge,
-    .admin-badge,
-    .twitter-badge,
-    .facebook-badge,
-    .hatena-badge,
-    .tag-badge
-    {
-        font-size: 78%;
     }
     .canvas-container-category-post,
     .canvas-container-category-tag

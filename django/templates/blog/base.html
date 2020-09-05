@@ -21,7 +21,7 @@
     {% bootstrap_css %}
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/styles/nord.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/styles/idea.min.css">
     <link rel="stylesheet" href="{% static 'blog/css/style.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'blog/icon/fonts.css' %}" type="text/css">
     <link rel="icon" href="/favicon.ico">
@@ -86,7 +86,7 @@
         <script>new ClipboardJS('#copy-button');</script>
         <script>
           window.WebFontConfig = {
-            google: {families: ['Dosis', 'Lato']},
+            google: {families: ['Dosis', 'Roboto']},
             active: function() {
               sessionStorage.fonts = true;
             }
@@ -116,7 +116,7 @@
           hljs.initHighlightingOnLoad();
         </script>
         {% endif %}
-        {% if '/graph/' == request.path %}
+        {% if '/report/' == request.path %}
         <script> 
           var ctx = document.getElementById('category-post').getContext('2d');
           var data = [
@@ -258,7 +258,7 @@
             });
             d3.layout.cloud().size([width, height])
               .words(words)
-              .rotate(function() { return (~~(Math.random() * 6) - 3) * 0; })
+              .rotate(function() { return ~~(Math.random() * 2) * 90; })
               .fontSize(function(d) { return d.size; })
               .on("end", draw)
               .start();
@@ -276,7 +276,7 @@
                   .data(words)
                 .enter().append("text")
                   .style("font-size", function(d) { return d.size + "px"; })
-                  .style("font-family", ["Roboto", "Yu Gothic Medium", "Yu Gothic", "Verdana", "Meiryo", "sans-serif"])
+                  .style("font-family", ["Dosis", "Yu Gothic Medium", "Yu Gothic", "Verdana", "Meiryo", "sans-serif"])
                   .style("fill", function(d, i) { return d3.schemeCategory10[i % 10]; })
                   .attr("text-anchor", "middle")
                   .attr("transform", function(d) { return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")"; })

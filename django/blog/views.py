@@ -276,7 +276,7 @@ def report(request):
     desc_month_post = 'カテゴリごとの記事数における月単位での推移です。怠け具合がわかります。'
 
     """ レンダリング """
-    return render(request, 'blog/blog_single_graph.html', {
+    return render(request, 'blog/blog_single_report.html', {
         'label': label,
         'category_list': category_list,
         'month_list': month_list,     

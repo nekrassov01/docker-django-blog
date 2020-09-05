@@ -24,7 +24,7 @@
                 {% for post in post_list %}
                 <a href="{% url 'blog:detail' post.pk %}" class="post-card rounded-0 m-0 p-4">
                   <div class="card-title mb-4 pb-3">
-                    <h4 class="m-0 p-0">{% if request.user.is_authenticated and not post.is_public %}[下書き] {% endif %}{{ post.title | truncatechars_ja:70 }}</h4>
+                    <h4 class="m-0 p-0">{% if request.user.is_authenticated and not post.is_public %}[下書き] {% endif %}{{ post.title | set_text_spacing | truncatechars_ja:70 }}</h4>
                   </div>
                   <div class="row no-gutters">
                     {% if post.eyecatch %}
@@ -34,7 +34,7 @@
                     {% endif %}
                     <div class="card-body col-lg-7 pt-3 pb-0 pl-lg-3 pt-lg-0">
                       <div class="row no-gutters">
-                        <p class="card-text m-0">{{ post.description | safe | truncatechars_ja:176 }}</p>
+                        <p class="card-text m-0">{{ post.description | set_text_spacing | safe | truncatechars_ja:276 }}</p>
                         <div class="card-badge-group">
                           <div class="date-badge rounded-0 d-inline-block float-right ml-2 mt-3 px-2 py-1"> 
                             <p class="badge card-badge-item mr-1 my-0 p-0"><i class="far fa-clock mr-1 p-0"></i>{{ post.published_at | date:"Y-m-d" }}</p>
