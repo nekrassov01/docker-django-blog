@@ -45,7 +45,7 @@ class SnippetAdmin(admin.ModelAdmin):
     readonly_fields = ('id', 'created_at', 'updated_at')
 
     def truncate_text(self, obj):
-        count = 168
+        count = 150
         if len(obj.text) <= count:
             return obj.text
         else:
@@ -55,11 +55,13 @@ class SnippetAdmin(admin.ModelAdmin):
 
 class ImageInline(admin.StackedInline):
     model = Image
+    ordering = ('index',)
     extra = 1
     readonly_fields = ('id', 'created_at', 'updated_at')
 
 class LinkInline(admin.StackedInline):
     model = Link
+    ordering = ('index',)
     extra = 1
     readonly_fields = ('id', 'created_at', 'updated_at')
 

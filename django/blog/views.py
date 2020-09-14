@@ -197,11 +197,13 @@ class PostDetailView(generic.DetailView):
         context['related_links'] = post.link_set.all().prefetch_related('post')
         context['label'] = post.title
         try:
-            context['prev'] = post.get_previous_by_published_at(is_public=True)
+            is_public = True if post.is_public else False
+            context['prev'] = post.get_previous_by_published_at(is_public=is_public)
         except Post.DoesNotExist:
             context['prev'] = None
         try:
-            context['next'] = post.get_next_by_published_at(is_public=True)
+            is_public = True if post.is_public else False
+            context['next'] = post.get_next_by_published_at(is_public=is_public)
         except Post.DoesNotExist:
             context['next'] = None
         return context

@@ -69,7 +69,7 @@ class Post(Base):
     category = models.ForeignKey(Category, verbose_name='カテゴリー', null=True, blank=True, on_delete=models.SET_NULL)
     tag = models.ManyToManyField(Tag, verbose_name='タグ', blank=True)
     related_posts = models.ManyToManyField('self', verbose_name='関連記事', blank=True)
-    eyecatch = models.ImageField(verbose_name='アイキャッチ画像', upload_to='image/post/eyecatch/%Y/%m/%d/', null=True, blank=True)
+    eyecatch = models.ImageField(verbose_name='アイキャッチ画像', upload_to='image/post/eyecatch/%Y/%m/%d/', default='image/post/eyecatch/default/default.png',null=True, blank=True)
     description = models.TextField(verbose_name='説明', blank=True, null=True)
     text = models.TextField(verbose_name='本文', blank=True, null=True)
 
@@ -93,8 +93,9 @@ class Image(Base):
         db_table = 'image'
         verbose_name = '画像'
         verbose_name_plural = '画像'
-        ordering = ['created_at']
+        ordering = ['index']
 
+    index = models.IntegerField(verbose_name='並び順', null=True, blank=True)
     post = models.ForeignKey(Post, verbose_name='記事', on_delete=models.PROTECT)
     title = models.CharField('タイトル', max_length=255, blank=True, help_text='画像のalt属性として利用されます')
     image = models.ImageField(verbose_name='画像', upload_to='image/post/text/%Y/%m/%d/', null=True, blank=True, help_text='保存後、本文挿入用HTMLを生成します')
@@ -108,8 +109,9 @@ class Link(Base):
         db_table = 'link'
         verbose_name = '参考リンク'
         verbose_name_plural = '参考リンク'
-        ordering = ['created_at']
+        ordering = ['index']
 
+    index = models.IntegerField(verbose_name='並び順', null=True, blank=True)
     post = models.ForeignKey(Post, verbose_name='記事', on_delete=models.PROTECT)
     link = models.URLField(verbose_name='URL', max_length=255, blank=True, help_text='URLを指定してください')
     description = models.TextField(verbose_name='説明', blank=True, null=True)

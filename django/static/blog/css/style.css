@@ -231,6 +231,11 @@ toc & heading
 
 #toc ul
 {
+    display:block;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overflow: auto;
+    white-space: nowrap;
     list-style: none;
     margin-bottom: 0px;
     padding-left: 1em;
@@ -280,6 +285,7 @@ toc & heading
 .head-h5
 {
     color: #aaaaaa;
+    border-left: solid 4px #ececec;
     font-weight: bold;
 }
 
@@ -503,11 +509,6 @@ related items for post details
     line-height: 180%;
 }
 
-.related-link-item
-{
-    font-weight: lighter;
-}
-
 .related-link-item:hover
 {
     color: #65a6ff;
@@ -708,6 +709,13 @@ tr
     border: solid 2px #ececec;
 }
 
+table
+{
+    width: 100%;
+    word-break: break-all;
+    word-wrap: break-all;
+}
+
 /* -------------------------------------------
 link box
 ------------------------------------------- */
@@ -847,10 +855,12 @@ in single-text
 
 .single-text pre code
 {
-    font-size: 90%;
+    /*font-family: 'Roboto Mono', monospace;*/
+    font-size: 86%;
     line-height: 1.4;
     overflow-x: scroll;
-    background-color: #f7f8fa;
+    /*background-color: #282a36;*/
+    background-color: #f8f9fa;
 }
 
 .single-text table
@@ -858,6 +868,7 @@ in single-text
     font-size: 84%;
 }
 
+.single-text .list-title,
 .single-text .table-title
 {
     font-weight: bold;
@@ -873,19 +884,15 @@ in single-text
     vertical-align: 1px;
 }
 
-.single-text ul li,
-.single-text ol li
+ul.inner-list li
 {
+    font-size: 100%;
+    line-height: 1.8;
     text-indent: -1em;
     list-style-type: none;
 }
 
-.inner-list li
-{
-    line-height: 1.8;
-}
-
-.inner-list li::before
+ul.inner-list li::before
 {
     margin-right: .6em;
     font-family: FontAwesome;
@@ -893,6 +900,21 @@ in single-text
     content: '\f0da';
     color: #cccccc;
 }
+
+ol.inner-list li
+{
+    font-size: 100%;
+    line-height: 1.8;
+    list-style-type: decimal;
+}
+
+.single-text blockquote
+{
+    font-size: 84%;
+    background-color: #f1f1f1;
+    color: #aaaaaa;
+}
+
 
 /* -------------------------------------------
 media query
@@ -950,9 +972,7 @@ media query
     {
         font-size: 80%;
     }
-    .single-text p,
-    .single-description,
-    .inner-list
+    .single-text
     {
         font-size: 110%;
     }

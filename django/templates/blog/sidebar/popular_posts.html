@@ -1,4 +1,6 @@
-{% load filter %}  
+{% load filter %}
+              {% if not DEBUG %}
+              {% if popular_posts %}
               <div class="side-bar-parts shadow-0 mx-0 mt-0 mb-5 p-0">
                 <div class="side-bar-parts-header-recent text-center p-3">
                   <h5 class="m-0 p-0">人気の記事</h5>
@@ -30,3 +32,5 @@
                   </ul>
                 </div>
               </div>
+              {% endif %}
+              {% endif %}
