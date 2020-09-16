@@ -69,6 +69,20 @@ header & footer
     vertical-align: middle;
 }
 
+ul.header-list
+{
+    display:block;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.header-list li
+{
+    display: inline;
+}
+
 .header-list li.list-group-item a
 {
     font-size: 70%;
@@ -426,8 +440,21 @@ post details
 
 .single-title a
 {
-    font-weight: bold;
+    font-size: 90%;
     line-height: 140%;
+    font-weight: bold;
+}
+
+.single-subtitle
+{
+    color: #aaaaaa;
+}
+
+.single-subtitle a
+{
+    font-size: 90%;
+    line-height: 140%;
+    font-weight: bold;
 }
 
 .single-title a:hover
@@ -722,19 +749,19 @@ link box
 
 .linkbox
 {
-    border: solid 3px #ececec;
+    border: solid 2px #ececec;
 }
 
-.linkbox-body:hover
+.linkbox-body:hover .linkbox-title
 {
-    background-color: #ececec;
+    color: #65a6ff;
     transition: all 0.3s;
 }
 
 .linkbox-title
 {
     font-weight: bold;
-    font-size: 130%;
+    font-size: 100%;
     color: #444444;
 }
 
@@ -742,7 +769,7 @@ link box
 {
     font-weight: lighter;
     font-size: 80%;
-    color: #aaaaaa;
+    color: #999999;
 }
 
 /* -------------------------------------------

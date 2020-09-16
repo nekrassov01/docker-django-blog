@@ -3,8 +3,8 @@
 {% load filter %}
 
       {% block meta_keyword %}{{ post.get_keyword }}{% endblock %}
-      {% block meta_description %}{{ post.description }}{% endblock %}
-      {% block meta_title %}{{ post.title }} | {{ block.super }}{% endblock %}
+      {% block meta_description %}{{ post.description | set_text_spacing }}{% endblock %}
+      {% block meta_title %}{{ post.title | set_text_spacing }} - {{ post.subtitle | set_text_spacing }} | {{ block.super }}{% endblock %}
 
       {% block ogp_image %}{{ post.eyecatch.url }}{% endblock %}
       {% block ogp_description %}{{ post.description }}{% endblock %}
@@ -12,15 +12,20 @@
 
                   {% block breadcrumb %}
                   {{ block.super }}
-                  <li class="breadcrumb-item m-0 p-0"><span>{{ post.title | truncatechars_ja:96 }}</span></li>
+                  <li class="breadcrumb-item m-0 p-0"><span>{{ post.title | set_text_spacing }} - {{ post.subtitle | set_text_spacing }}</span></li>
                   {% endblock %}
 
                 {% block main %}
                 <div class="single d-block col-12 shadow-0 rounded-0 mb-3 p-lg-4">
                   <div class="row no-gutters">
-                    <div class="single-title col-12 text-center px-4 px-md-5 pt-5 pb-3 h-100">
+                    <div class="single-title col-12 text-center px-4 px-md-5 pt-5 pb-1 h-100">
                       <h2 class="m-0 p-0"><a href="{% url 'blog:detail' post.pk %}">{% if request.user.is_authenticated and not post.is_public %}[下書き] {% endif %}{{ label | set_text_spacing }}</a></h2>
                     </div>
+                    {% if post.subtitle %}
+                    <div class="single-subtitle col-12 text-center px-4 px-md-5 pt-1 pb-3 h-100">
+                      <h4 class="m-0 p-0"><a>{{ post.subtitle | set_text_spacing }}</a></h4>
+                    </div>
+                    {% endif %}
                     <div class="single-body p-3 p-lg-4 w-100">
                       {% include 'blog/center/badge_date.html' %}
                       {% if post.eyecatch %}
@@ -31,8 +36,10 @@
                       <div class="row no-gutters">
                         <div class="single-description mx-1 mt-4 py-4 w-100">{{ post.description | set_text_spacing | linebreaksbr | safe }}</div>
                         {% if post.text %}
+                        {% if post.category.index != 9 %}
                         {% include 'blog/center/badge_sns.html' %}
                         <div class="single-toc description col-12 rounded-0 mb-4 py-4 w-100" id="toc"></div>
+                        {% endif %}
                         <div class="single-text col-12 m-0 p-0 w-100">{{ post.text | set_text_spacing | safe }}</div>
                         {% endif %}
                       </div>

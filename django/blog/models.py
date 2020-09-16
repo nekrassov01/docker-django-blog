@@ -66,6 +66,7 @@ class Post(Base):
     is_public = models.BooleanField(verbose_name='公開フラグ', default=False)
     published_at = models.DateTimeField(verbose_name='投稿日', default=default_datetime, help_text='Nullを回避するため、公開フラグをFalseで保存した場合はダミー日時がセットされます。その後、公開したときに日時が上書きされます。')
     title = models.CharField(verbose_name='タイトル', max_length=128)
+    subtitle = models.CharField(verbose_name='サブタイトル', max_length=128, null=True, blank=True)
     category = models.ForeignKey(Category, verbose_name='カテゴリー', null=True, blank=True, on_delete=models.SET_NULL)
     tag = models.ManyToManyField(Tag, verbose_name='タグ', blank=True)
     related_posts = models.ManyToManyField('self', verbose_name='関連記事', blank=True)
@@ -101,7 +102,7 @@ class Image(Base):
     image = models.ImageField(verbose_name='画像', upload_to='image/post/text/%Y/%m/%d/', null=True, blank=True, help_text='保存後、本文挿入用HTMLを生成します')
 
     def __str__(self):
-        return '本文挿入用HTML: <img src="" data-src="{}" class="lozad py-3 w-100" alt="{}">'.format(self.image.url, self.title)
+        return '本文挿入用HTML: <img src="" data-src="{}" class="lozad w-100" alt="{}">'.format(self.image.url, self.title)
 
 """ 外部リンク | 記事の本文で利用 """
 class Link(Base):

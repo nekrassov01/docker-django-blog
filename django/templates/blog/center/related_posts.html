@@ -12,7 +12,7 @@
                                 <img src="" data-src="{{ related_post.eyecatch.url }}" class="lozad w-100" alt="eyecatch">
                               </div>
                               <div class="related-post-body col-12 p-3">
-                                <h4 class="related-post-title m-0 pb-2">{{ related_post.title | set_text_spacing | truncatechars_ja:80 }}</h4>
+                                <h4 class="related-post-title m-0 pb-2">{{ related_post.title | set_text_spacing | truncatechars_ja:80 }}{% if related_post.subtitle %} - {{ related_post.subtitle | set_text_spacing }}{% endif %}</h4>
                                 <span class="related-post-date mr-2"><i class="far fa-clock mr-1 p-0"></i>{{ related_post.published_at | date:"Y-m-d" }}</span>
                                 <span class="related-post-category mr-2"><i class="far fa-sticky-note mr-1 p-0"></i>{{ related_post.category.name }}</span>
                               </div>

@@ -68,7 +68,7 @@ class LinkInline(admin.StackedInline):
 class PostAdmin(SummernoteModelAdmin):
     model = Post
     inlines = [ImageInline, LinkInline]
-    list_display = ('is_public', 'id', 'created_at', 'updated_at', 'published_at', 'category', 'title', 'truncate_desc', 'preview')
+    list_display = ('is_public', 'id', 'created_at', 'updated_at', 'published_at', 'category', 'title', 'subtitle', 'truncate_desc', 'preview')
     list_display_links = ('id', 'preview')
     ordering = ('-created_at',)
     list_filter = ('is_public', 'category')

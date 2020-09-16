@@ -21,7 +21,7 @@
                         </div>
                         {% endif %}
                         <div class="side-card-body col pl-2 pl-md-0 pl-lg-2">
-                          <p class="side-card-title m-0 p-0">{{ recent_post.title | set_text_spacing | truncatechars_ja:80 }}</p>
+                          <p class="side-card-title m-0 p-0">{{ recent_post.title | set_text_spacing | truncatechars_ja:80 }} - {% if recent_post.subtitle %}{{ recent_post.subtitle | set_text_spacing }}{% endif %}</p>
                         </div>
                         <div class="side-card-info-md col-12 d-none d-md-block d-lg-none m-0 p-0">
                           <span class="side-card-date-md float-right my-0"><i class="far fa-clock mr-1 p-0"></i>{{ recent_post.published_at | date:"Y-m-d" }}</span>
