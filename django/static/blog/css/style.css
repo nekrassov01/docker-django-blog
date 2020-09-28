@@ -877,11 +877,9 @@ in single-text
 
 .single-text pre code
 {
-    /*font-family: 'Roboto Mono', monospace;*/
     font-size: 80%;
     line-height: 1.4;
     overflow-x: scroll;
-    /*background-color: #282a36;*/
     background-color: #f8f9fa;
 }
 
