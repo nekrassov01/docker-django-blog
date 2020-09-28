@@ -25,7 +25,7 @@
                 <a href="{% url 'blog:detail' post.pk %}" class="post-card rounded-0 m-0 p-4 w-100">
                   <div class="card-title mb-4 pb-3">
                     <h4 class="m-0 p-0">
-                    {% if request.user.is_authenticated and not post.is_public %}[下書き] {% endif %}{{ post.title | set_text_spacing | truncatechars_ja:76 }}{% if post.subtitle %} - {{ post.subtitle | set_text_spacing }}{% endif %}
+                    {% if request.user.is_authenticated and not post.is_public %}[下書き] {% endif %}{{ post.title | set_text_spacing }}{% if post.subtitle %} - {{ post.subtitle | set_text_spacing }}{% endif %}
                     </h4>
                   </div>
                   <div class="row no-gutters">

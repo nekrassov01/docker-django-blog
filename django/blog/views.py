@@ -195,7 +195,10 @@ class PostDetailView(generic.DetailView):
         context['related_posts'] = post.related_posts.select_related('category').filter(is_public=True)
         context['related_tags'] = post.tag.all().select_related('category')
         context['related_links'] = post.link_set.all().prefetch_related('post')
-        context['label'] = post.title
+        if post.subtitle:
+            context['label'] = '{} - {}'.format(post.title, post.subtitle)
+        else:
+            context['label'] = post.title
         try:
             is_public = True if post.is_public else False
             context['prev'] = post.get_previous_by_published_at(is_public=is_public)

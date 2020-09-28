@@ -7,7 +7,7 @@
                             <a class="facebook-badge rounded-0 d-inline-block float-right ml-2 pl-1" href="https://www.facebook.com/sharer/sharer.php?u={{ request.scheme }}://{{ request.get_host }}{{ request.path }}" target="_blank" rel="nofollow">
                               <p class="badge facebook-badge-item my-0 px-1 py-2"><i class="icon-facebook mr-1 p-0"></i>Facebook</p>
                             </a>
-                            <a class="twitter-badge rounded-0 d-inline-block float-right ml-2 pl-1" href="https://twitter.com/share?url={{ request.scheme }}://{{ request.get_host }}{{ request.path }}&text={{ label }} - {{ request.site.name }}" target="_blank" rel="nofollow">
+                            <a class="twitter-badge rounded-0 d-inline-block float-right ml-2 pl-1" href="https://twitter.com/share?url={{ request.scheme }}://{{ request.get_host }}{{ request.path }}&text={{ label | set_text_spacing }} - {{ request.site.name }}" target="_blank" rel="nofollow">
                               <p class="badge twitter-badge-item my-0 px-1 py-2"><i class="icon-twitter mr-1 p-0"></i>Twitter</p>
                             </a>
                           </div>

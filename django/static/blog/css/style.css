@@ -747,11 +747,6 @@ table
 link box
 ------------------------------------------- */
 
-.linkbox
-{
-    border: solid 2px #ececec;
-}
-
 .linkbox-body:hover .linkbox-title
 {
     color: #65a6ff;
@@ -767,7 +762,7 @@ link box
 
 .linkbox-text
 {
-    font-weight: lighter;
+    font-weight: normal;
     font-size: 80%;
     color: #999999;
 }
@@ -883,7 +878,7 @@ in single-text
 .single-text pre code
 {
     /*font-family: 'Roboto Mono', monospace;*/
-    font-size: 86%;
+    font-size: 80%;
     line-height: 1.4;
     overflow-x: scroll;
     /*background-color: #282a36;*/
@@ -907,7 +902,7 @@ in single-text
     padding-bottom: 2px;
     background-color: #f7f8fa;
     font-size: 90%;
-    color: #008fde;
+    color: #65a6ff;
     vertical-align: 1px;
 }
 
@@ -939,7 +934,7 @@ ol.inner-list li
 {
     font-size: 84%;
     background-color: #f1f1f1;
-    color: #aaaaaa;
+    color: #808080;
 }
 
 
