@@ -13,7 +13,7 @@ client_secrets.p12
 /django/config/settings.py_
 /django/config/janome/*
 /django/blog/fixtures/text/*
-/django/blog/migration/*
+/django/blog/migrations/*
 /nginx/conf.d/*
 /nginx/letsencrypt/*
 /nginx/log/*
