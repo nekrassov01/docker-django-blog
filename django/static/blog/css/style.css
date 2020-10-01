@@ -642,7 +642,6 @@ side bar card
     color: #aaaaaa;
 }
 
-.side-card-number,
 .side-card-date,
 .side-card-date-md,
 .side-card-category
@@ -650,6 +649,14 @@ side bar card
     font-size:72%;
     display: inline-block;
     vertical-align: middle;
+}
+
+.side-card-number
+{
+    font-size:80%;
+    display: inline-block;
+    vertical-align: middle;
+    font-weight: bold;
 }
 
 .side-card-number i,
@@ -764,7 +771,7 @@ link box
 {
     font-weight: normal;
     font-size: 80%;
-    color: #999999;
+    color: #aaaaaa;
 }
 
 /* -------------------------------------------

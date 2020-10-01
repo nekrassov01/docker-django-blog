@@ -10,6 +10,7 @@ SECURE_SSL_REDIRECT = env.get_value('SECURE_SSL_REDIRECT', bool),
 
 # Media Files
 MEDIA_URL = '/media/'
+
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # django-cloudinary-storage

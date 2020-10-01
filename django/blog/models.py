@@ -195,7 +195,7 @@ class PopularPost(Base):
 
     def __str__(self):
         return '{0} ({1}): {2}'.format(
-            self.url, self.title, self.page_view)
+            self.link, self.title, self.page_view)
 
 """ 自作 Reporting API | 1.カテゴリ別記事数 """
 class CategoryPost(Base):

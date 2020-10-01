@@ -7,24 +7,14 @@
                 </div>
                 <div class="side-bar-parts-body-recent">
                   <ul class="list-unstyled list-item m-0 p-0">
-                    {% for recent_post in recent_posts %}
-                    <a href="{% url 'blog:detail' recent_post.pk %}">
+                    {% for popular_post in popular_posts %}
+                    <a href="{{ popular_post.link | urlize }}">
                       <div class="side-card row no-gutters px-2 pt-2 pb-3 pb-md-2 pb-lg-3">
                         <div class="side-card-info col-12 d-lg-block d-md-none mb-2 px-2">
-                          <p class="side-card-number my-0 mr-3"><i class="fas fa-caret-up mr-1 p-0"></i>{{ forloop.counter }}</span>
-                          <p class="side-card-category my-0 mr-3"><i class="far fa-sticky-note mr-1 p-0"></i>{{ recent_post.category.name }}</p>
-                          <p class="side-card-date my-0"><i class="far fa-clock mr-1 p-0"></i>{{ recent_post.published_at | date:"Y-m-d" }}</p>
+                          <p class="side-card-number my-0 mr-3"><i class="fas fa-check mr-1 p-0"></i>{{ popular_post.page_view }} view</span>
                         </div>
-                        {% if recent_post.eyecatch %}
-                        <div class="col-4 d-lg-block d-md-none">
-                          <img src="" data-src="{{ recent_post.eyecatch.url }}" class="lozad w-100" alt="eyecatch">
-                        </div>
-                        {% endif %}
                         <div class="side-card-body col pl-2 pl-md-0 pl-lg-2">
-                          <p class="side-card-title m-0 p-0">{{ recent_post.title | set_text_spacing | truncatechars_ja:80 }}{% if recent_post.subtitle %} - {{ recent_post.subtitle | set_text_spacing }}{% endif %}</p>
-                        </div>
-                        <div class="side-card-info-md col-12 d-none d-md-block d-lg-none m-0 p-0">
-                          <span class="side-card-date-md float-right my-0"><i class="far fa-clock mr-1 p-0"></i>{{ recent_post.published_at | date:"Y-m-d" }}</span>
+                          <p class="side-card-title m-0 p-0">{{ popular_post.title | set_text_spacing | truncatechars_ja:80 }}</p>
                         </div>
                       </div>
                     </a>

@@ -45,10 +45,10 @@ def get_report(analytics):
             'reportRequests': [
                 {
                     'viewId': settings.VIEW_ID,
-                    'pageSize': 10,
-                    'dateRanges': [
-                        {'startDate': '7daysAgo', 'endDate': 'today'}
-                    ],
+                    'pageSize': 20,
+                    #'dateRanges': [
+                    #    {'startDate': '7daysAgo', 'endDate': 'today'}
+                    #],
                     'metrics': [
                         {'expression': 'ga:pageviews'},
                     ],
@@ -69,11 +69,11 @@ def get_10_popular():
     for report in response.get('reports', []):
         rows = report.get('data', {}).get('rows', [])
         for row in rows:
-            url = row['dimensions'][0]
+            link = row['dimensions'][0]
             title = row['dimensions'][1]
             page_view = row['metrics'][0]['values'][0]
-            yield url, title, int(page_view)
+            yield link, title, int(page_view)
 
 if __name__ == '__main__':
-    for url, title, page_view in get_10_popular():
-        print(url, title, page_view)
+    for link, title, page_view in get_10_popular():
+        print(link, title, page_view)

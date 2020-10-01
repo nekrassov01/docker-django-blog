@@ -36,6 +36,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.contrib.sites.middleware.CurrentSiteMiddleware',
+    'blog.middleware.IpRestrictMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -99,6 +100,9 @@ SITE_ID = env('SITE_ID')
 
 # ClickJacking Protection
 X_FRAME_OPTIONS = env('X_FRAME_OPTIONS')
+
+# ALLOWD_IPS
+ALLOWED_IPS = env.list('ALLOWED_IPS')
 
 # django-summernote
 SUMMERNOTE_CONFIG = {
