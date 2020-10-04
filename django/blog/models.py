@@ -190,12 +190,30 @@ class PopularPost(Base):
         verbose_name_plural = '人気記事'
 
     title = models.CharField(verbose_name='タイトル', max_length=128)
-    link = models.URLField(verbose_name='URL', max_length=255)
+    link = models.CharField(verbose_name='リンク', max_length=255)
     page_view = models.IntegerField(verbose_name='ページビュー')
+    detail_pk = models.CharField(verbose_name='記事のID', max_length=255, null=True, blank=True)
+    detail_published_at = models.DateTimeField(verbose_name='記事の投稿日', null=True, blank=True)
+    detail_category = models.CharField(verbose_name='記事のカテゴリー', max_length=255, null=True, blank=True)
+    detail_title = models.CharField(verbose_name='記事のタイトル', max_length=255, null=True, blank=True)
+    detail_subtitle = models.CharField(verbose_name='記事のサブタイトル', max_length=255, null=True, blank=True)
+    detail_eyecatch = models.ImageField(verbose_name='記事のアイキャッチ画像',null=True, blank=True)
+
+    def save(self, *args, **kwargs):
+        trigger = '/detail/'
+        if trigger in self.link:
+            post_detail_pk = self.link.split('/')[-2]
+            post = Post.objects.get(pk=post_detail_pk)
+            self.detail_pk = post.pk 
+            self.detail_published_at = post.published_at
+            self.detail_category = post.category.name
+            self.detail_title = post.title
+            self.detail_subtitle = post.subtitle
+            self.detail_eyecatch = post.eyecatch
+        super().save(*args, **kwargs)
 
     def __str__(self):
-        return '{0} ({1}): {2}'.format(
-            self.link, self.title, self.page_view)
+        return '{}'.format(self.title)
 
 """ 自作 Reporting API | 1.カテゴリ別記事数 """
 class CategoryPost(Base):
