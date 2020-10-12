@@ -47,23 +47,47 @@ def get_report(analytics):
                     'viewId': settings.VIEW_ID,
                     'pageSize': 20,
                     #'dateRanges': [
-                    #    {'startDate': '7daysAgo', 'endDate': 'today'}
+                    #    {
+                    #        'startDate': '7daysAgo',
+                    #        'endDate': 'today'
+                    #    }
                     #],
                     'metrics': [
-                        {'expression': 'ga:pageviews'},
+                        {
+                            'expression': 'ga:pageviews'
+                        },
                     ],
                     'dimensions': [
-                        {'name': 'ga:pagePath'}, {'name': 'ga:pageTitle'}
+                        {
+                            'name': 'ga:pagePath'
+                        },
+                        {
+                            'name': 'ga:pageTitle'
+                        }
+                    ],
+                    'dimensionFilterClauses': [
+                        {
+                            'filters': [
+                                {
+                                    'dimensionName': 'ga:pagePath',
+                                    'expressions': ['^/detail/']
+                                }
+                            ]
+                        }
                     ],
                     'orderBys': [
-                        {'fieldName': 'ga:pageviews', 'sortOrder': 'DESCENDING'},
+                        {
+                            'fieldName': 'ga:pageviews',
+                            'sortOrder': 'DESCENDING'
+                        },
                     ]
-                }]
+                }
+            ]
         }
     ).execute()
 
 """ ページビューが多い記事を上位10件取得 """
-def get_10_popular():
+def get_popular():
     analytics = initialize_analyticsreporting()
     response = get_report(analytics)
     for report in response.get('reports', []):
@@ -75,5 +99,5 @@ def get_10_popular():
             yield link, title, int(page_view)
 
 if __name__ == '__main__':
-    for link, title, page_view in get_10_popular():
+    for link, title, page_view in get_popular():
         print(link, title, page_view)

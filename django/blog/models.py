@@ -193,6 +193,7 @@ class PopularPost(Base):
     link = models.CharField(verbose_name='リンク', max_length=255)
     page_view = models.IntegerField(verbose_name='ページビュー')
     detail_pk = models.CharField(verbose_name='記事のID', max_length=255, null=True, blank=True)
+    detail_is_public = models.DateTimeField(verbose_name='記事の公開フラグ', null=True, blank=True)
     detail_published_at = models.DateTimeField(verbose_name='記事の投稿日', null=True, blank=True)
     detail_category = models.CharField(verbose_name='記事のカテゴリー', max_length=255, null=True, blank=True)
     detail_title = models.CharField(verbose_name='記事のタイトル', max_length=255, null=True, blank=True)
@@ -200,16 +201,15 @@ class PopularPost(Base):
     detail_eyecatch = models.ImageField(verbose_name='記事のアイキャッチ画像',null=True, blank=True)
 
     def save(self, *args, **kwargs):
-        trigger = '/detail/'
-        if trigger in self.link:
-            post_detail_pk = self.link.split('/')[-2]
-            post = Post.objects.get(pk=post_detail_pk)
-            self.detail_pk = post.pk 
-            self.detail_published_at = post.published_at
-            self.detail_category = post.category.name
-            self.detail_title = post.title
-            self.detail_subtitle = post.subtitle
-            self.detail_eyecatch = post.eyecatch
+        post_detail_pk = self.link.split('/')[-2]
+        post = Post.objects.get(pk=post_detail_pk)
+        self.detail_pk = post.pk
+        self.detail_is_public = post.is_public
+        self.detail_published_at = post.published_at
+        self.detail_category = post.category.name
+        self.detail_title = post.title
+        self.detail_subtitle = post.subtitle
+        self.detail_eyecatch = post.eyecatch
         super().save(*args, **kwargs)
 
     def __str__(self):
