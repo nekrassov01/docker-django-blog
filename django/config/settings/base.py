@@ -20,11 +20,11 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.sitemaps',
     'blog.apps.BlogConfig',
-    #'django_cleanup',
     'django_summernote',
     'bootstrap4',
     'cloudinary',
     'cloudinary_storage',
+    'django_cleanup',
 ]
 
 MIDDLEWARE = [
