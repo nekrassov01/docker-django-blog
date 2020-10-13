@@ -7,7 +7,7 @@ from .models import Post, Category, Tag, PopularPost
 """ すべてのページで呼ぶコンテキスト """
 def common(request):
     context = {
-        'popular_posts': PopularPost.objects.filter(link__startswith='/detail/').order_by('-page_view')[:5],
+        'popular_posts': PopularPost.objects.filter(detail_is_public=True).order_by('-page_view')[:5],
         'recent_posts': Post.objects.select_related('category').filter(is_public=True).order_by('-published_at', '-created_at')[:5],
         'categories': Category.objects.annotate(count=Count('post', filter=Q(post__is_public=True))).order_by('-count', 'index').exclude(count=0)[:10],
         'tags': Tag.objects.select_related('category').annotate(count=Count('post', filter=Q(post__is_public=True))).order_by('-count', 'slug').exclude(count=0)[:10],

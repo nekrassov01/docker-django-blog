@@ -45,13 +45,13 @@ def get_report(analytics):
             'reportRequests': [
                 {
                     'viewId': settings.VIEW_ID,
-                    'pageSize': 20,
-                    #'dateRanges': [
-                    #    {
-                    #        'startDate': '7daysAgo',
-                    #        'endDate': 'today'
-                    #    }
-                    #],
+                    'pageSize': 30,
+                    'dateRanges': [
+                        {
+                            'startDate': '365daysAgo',
+                            'endDate': 'today'
+                        }
+                    ],
                     'metrics': [
                         {
                             'expression': 'ga:pageviews'

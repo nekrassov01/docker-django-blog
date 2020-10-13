@@ -6,6 +6,7 @@ from django.conf import settings
 from django.contrib.sites.models import Site
 from django.db import models
 from django.utils import timezone
+from django_cleanup import cleanup
 
 """ ベース | 基底クラス """
 class Base(models.Model):
@@ -182,7 +183,8 @@ class Snippet(Base):
     def __str__(self):
         return '{}: {}'.format(self.index, self.name)
 
-""" 人気記事 | 上位10件を Google Analytics Reporting API から取得して格納する """
+""" 人気記事 | Google Analytics Reporting API から取得して格納する """
+@cleanup.ignore
 class PopularPost(Base):
     class Meta:
         db_table = 'popular_post'
@@ -193,7 +195,7 @@ class PopularPost(Base):
     link = models.CharField(verbose_name='リンク', max_length=255)
     page_view = models.IntegerField(verbose_name='ページビュー')
     detail_pk = models.CharField(verbose_name='記事のID', max_length=255, null=True, blank=True)
-    detail_is_public = models.DateTimeField(verbose_name='記事の公開フラグ', null=True, blank=True)
+    detail_is_public = models.BooleanField(verbose_name='記事の公開フラグ', default=False)
     detail_published_at = models.DateTimeField(verbose_name='記事の投稿日', null=True, blank=True)
     detail_category = models.CharField(verbose_name='記事のカテゴリー', max_length=255, null=True, blank=True)
     detail_title = models.CharField(verbose_name='記事のタイトル', max_length=255, null=True, blank=True)
