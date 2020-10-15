@@ -8,4 +8,6 @@ python manage.py dumpdata blog.snippet --indent 4 --output ${TARGET_DIR}/blog.sn
 python manage.py dumpdata blog.sitedetail --indent 4 --output ${TARGET_DIR}/blog.sitedetail.json
 python manage.py dumpdata blog.aboutsite --indent 4 --output ${TARGET_DIR}/blog.aboutsite.json
 python manage.py dumpdata blog.privacypolicy --indent 4 --output ${TARGET_DIR}/blog.privacypolicy.json
+python manage.py dumpdata blog.image --indent 4 --output ${TARGET_DIR}/blog.image.json
+python manage.py dumpdata blog.link --indent 4 --output ${TARGET_DIR}/blog.link.json
 python manage.py dumpdata blog --indent 4 --output ${TARGET_DIR}/blog.json

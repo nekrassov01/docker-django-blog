@@ -7,7 +7,7 @@
                         <div class="row no-gutters w-100">
                           <div class="related-link m-0 px-0 pt-2 pb-5 w-100">
                             {% for related_link in related_links %}
-                            <div><i class="fas fa-link ml-1 mr-2"></i><a class="related-link-item" href="{{ related_link.link }}" target="_blank" rel="nofollow">{{ related_link.description }}</a></div>
+                            <div><i class="fas fa-link ml-1 mr-2"></i><a class="related-link-item" href="{{ related_link.link }}" target="_blank" rel="nofollow">{{ related_link.description | set_text_spacing }}</a></div>
                             {% endfor %}
                           </div>
                         </div>
