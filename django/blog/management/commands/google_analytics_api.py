@@ -86,7 +86,7 @@ def get_report(analytics):
         }
     ).execute()
 
-""" ページビューが多い記事を上位10件取得 """
+""" ページビューが多い記事を pageSize の分だけ取得 """
 def get_popular():
     analytics = initialize_analyticsreporting()
     response = get_report(analytics)
