@@ -15,6 +15,7 @@ client_secrets.p12
 /django/blog/fixtures/text/*
 /django/blog/fixtures/recovery/*
 /django/blog/migrations/*
+/django/static/blog/favicon/*
 /nginx/conf.d/*
 /nginx/letsencrypt/*
 /nginx/log/*
