@@ -87,7 +87,10 @@ class Post(Base):
         return meta_keyword
 
     def __str__(self):
-        return '{}: {} - {}'.format(self.category, self.title, self.subtitle)
+        if self.subtitle:
+            return '{}: {} - {}'.format(self.category, self.title, self.subtitle)
+        else:
+            return '{}: {}'.format(self.category, self.title)
 
 """ 画像 | 記事の本文で利用 """
 class Image(Base):
