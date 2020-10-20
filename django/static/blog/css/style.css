@@ -534,6 +534,8 @@ related items for post details
 {
     font-size: 90%;
     line-height: 180%;
+    overflow-x: auto;
+    white-space: nowrap;
 }
 
 .related-link-item:hover
