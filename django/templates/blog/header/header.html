@@ -3,10 +3,10 @@
             <div class="container max-width p-0">
               <div class="row no-gutters">
                 <div class="col-12">
-                  <h1 class="header-item m-0 px-3 py-0"><a href="{% url "blog:index" %}">{{ request.site.name }}</a></h1>
+                  <h1 class="header-item m-0 px-3 px-md-2 py-0"><a href="{% url "blog:index" %}">{{ request.site.name }}</a></h1>
                 </div>
                 <div class="col-12">
-                  <ul class="header-list list-group list-group-horizontal-lg px-3 pb-2">
+                  <ul class="header-list list-group list-group-horizontal-lg m-0 px-3 px-md-2 pb-2">
                     <li class="list-group-item border-0 rounded-0 text-left bg-transparent ml-0 mr-2 mr-md-3 my-0 p-0"><a class="text-light" href="{% url 'blog:index' %}">ブログ</a></li>
                     <li class="list-group-item border-0 rounded-0 text-left bg-transparent ml-0 mr-2 mr-md-3 my-0 p-0"><a class="text-light" href="{% url 'blog:report' %}">レポート</a></li>
                     <li class="list-group-item border-0 rounded-0 text-left bg-transparent ml-0 mr-2 mr-md-3 my-0 p-0"><a class="text-light" href="{% url 'blog:feed' %}" target="_blank" rel="nofollow">RSS</a></li>

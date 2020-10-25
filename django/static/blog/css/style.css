@@ -4,6 +4,12 @@
 base
 ------------------------------------------- */
 
+*
+{
+    margin: 0;
+    /*outline:1px solid #0000FF;*/
+}
+
 html
 {
     overflow-y: scroll;
@@ -143,7 +149,7 @@ li.breadcrumb-item
 li.breadcrumb-item span,
 li.breadcrumb-item a
 {
-    color: #aaaaaa;
+    color: #444444;
     font-size: 70%;
 }
 
@@ -447,7 +453,7 @@ post details
 
 .single-subtitle
 {
-    color: #aaaaaa;
+    color: #808080;
 }
 
 .single-subtitle a

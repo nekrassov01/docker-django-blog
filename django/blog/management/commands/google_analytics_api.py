@@ -32,9 +32,13 @@ def initialize_analyticsreporting():
     http = credentials.authorize(httplib2.Http())
 
     # Build the service object.
-    analytics = build('analytics', 'v4', http=http,
-                      discoveryServiceUrl=DISCOVERY_URI,
-                      cache_discovery=False)
+    analytics = build(
+        'analytics',
+        'v4',
+        http=http,
+        discoveryServiceUrl=DISCOVERY_URI,
+        cache_discovery=False
+    )
 
     return analytics
 
