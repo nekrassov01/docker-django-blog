@@ -44,6 +44,7 @@ def truncatechars_ja(text, arg):
 汎用フィルタ | 全角文字と半角英字の間に半角スペースを挿入する
   - 句読点の直後の半角英数字記号にはスペースを挿入しない
   - 数字のみの場合はスペースを挿入しない
+  - <>"'と文字の間にはスペースを挿入しない
 """
 @register.filter
 def set_text_spacing(text):
