@@ -797,7 +797,7 @@ snippet
     font-size: 90%;
     line-height: 1.4;
     overflow-x: scroll;
-    background-color: #f7f8fa;
+    background-color: #2e3440;
 }
 
 #copy-button
@@ -895,7 +895,7 @@ in single-text
     font-size: 80%;
     line-height: 1.4;
     overflow-x: scroll;
-    background-color: #f8f9fa;
+    background-color: #2e3440;
 }
 
 .single-text table
@@ -915,7 +915,7 @@ in single-text
     padding-bottom: 2px;
     background-color: #f7f8fa;
     font-size: 90%;
-    color: #65a6ff;
+    color: #005fff;
     vertical-align: 1px;
 }
 
