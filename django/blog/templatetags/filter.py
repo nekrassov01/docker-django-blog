@@ -47,6 +47,6 @@ def truncatechars_ja(text, arg):
 """
 @register.filter
 def set_text_spacing(text):
-    text = re.sub(r"([0-9]*[!-/:-~][0-9]*)([^ -~\W+])", r"\1 \2", text)
-    text = re.sub(r"([^ -~\W+])([0-9]*[!-/:-~][0-9]*)", r"\1 \2", text)
+    text = re.sub(r"([0-9]*[!#-&(-/:-;=?-~][0-9]*)([^ -~\W+])", r"\1 \2", text)
+    text = re.sub(r"([^ -~\W+])([0-9]*[!#-&(-/:-;=?-~][0-9]*)", r"\1 \2", text)
     return text
