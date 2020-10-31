@@ -36,8 +36,8 @@
                       <div class="row no-gutters">
                         <div class="single-description mx-1 mt-4 py-4 w-100">{{ post.description | set_text_spacing | linebreaksbr | safe }}</div>
                         {% if post.text %}
-                        {% if post.category.index != 9 %}
                         {% include 'blog/center/badge_sns.html' %}
+                        {% if post.category.index != 9 %}
                         <div class="single-toc description col-12 rounded-0 mb-4 py-4 w-100" id="toc"></div>
                         {% endif %}
                         <div class="single-text col-12 m-0 p-0 w-100">{{ post.text | set_text_spacing | safe }}</div>
