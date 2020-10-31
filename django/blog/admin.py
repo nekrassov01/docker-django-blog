@@ -8,13 +8,16 @@ from .models import Base, Post, Category, Tag, SiteDetail, AboutSite, PrivacyPol
 
 class SiteDetailInline(admin.StackedInline):
     model = SiteDetail
+    readonly_fields = ('created_at', 'updated_at')
 
 class AboutSiteInline(admin.StackedInline, SummernoteInlineModelAdmin):
     model = AboutSite
+    readonly_fields = ('created_at', 'updated_at')
     summernote_fields = ('site_text', 'author_text')
 
 class PrivacyPolicyInline(admin.StackedInline, SummernoteInlineModelAdmin):
     model = PrivacyPolicy
+    readonly_fields = ('created_at', 'updated_at')
     summernote_fields = ('text')
 
 class SiteAdmin(admin.ModelAdmin):
@@ -57,13 +60,13 @@ class ImageInline(admin.StackedInline):
     model = Image
     ordering = ('index',)
     extra = 1
-    readonly_fields = ('id', 'created_at', 'updated_at')
+    readonly_fields = ('created_at', 'updated_at')
 
 class LinkInline(admin.StackedInline):
     model = Link
     ordering = ('index',)
     extra = 1
-    readonly_fields = ('id', 'created_at', 'updated_at')
+    readonly_fields = ('created_at', 'updated_at')
 
 class PostAdmin(SummernoteModelAdmin):
     model = Post

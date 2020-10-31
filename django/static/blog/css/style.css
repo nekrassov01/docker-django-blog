@@ -26,19 +26,19 @@ body
 {
     overflow: hidden;
     background-color: #f1f1f1;
-    color: #444444;
+    color: #292929;
     font-family: -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", "Helvetica Neue", HelveticaNeue, YuGothic, "Yu Gothic Medium", "Yu Gothic", Verdana, Meiryo, sans-serif;
     line-height: 1.5;
 }
 
 a
 {
-    color: #444444;
+    color: #292929;
 }
 
 a:hover
 {
-    color: #444444;
+    color: #292929;
     text-decoration: none;
     transition: all 0.3s;
 }
@@ -149,7 +149,7 @@ li.breadcrumb-item
 li.breadcrumb-item span,
 li.breadcrumb-item a
 {
-    color: #444444;
+    color: #292929;
     font-size: 70%;
 }
 
@@ -190,7 +190,7 @@ pagination
 
 .page-link
 {
-    color: #444444;
+    color: #292929;
     border: solid 1px #f1f1f1;
     display: inline-block;
     vertical-align: middle;
@@ -258,7 +258,7 @@ toc & heading
     white-space: nowrap;
     list-style: none;
     margin-bottom: 0px;
-    padding-left: 1em;
+    padding-left: 1.1em;
 }
 
 #toc li
@@ -304,7 +304,7 @@ toc & heading
 
 .head-h5
 {
-    color: #aaaaaa;
+    color: #757575;
     border-left: solid 4px #ececec;
     font-weight: bold;
 }
@@ -453,7 +453,7 @@ post details
 
 .single-subtitle
 {
-    color: #808080;
+    color: #757575;
 }
 
 .single-subtitle a
@@ -527,7 +527,7 @@ related items for post details
 .related-post-category
 {
     font-size:76%;
-    color: #aaaaaa;
+    color: #757575;
 }
 
 .related-post-date i,
@@ -641,13 +641,13 @@ side bar card
 
 .side-card-info
 {
-    color: #aaaaaa;
+    color: #757575;
     border-bottom: solid 1px #ececec;
 }
 
 .side-card-info-md
 {
-    color: #aaaaaa;
+    color: #757575;
 }
 
 .side-card-date,
@@ -690,7 +690,7 @@ side bar list
 .tag-item,
 .archive-item
 {
-    color: #444444;
+    color: #292929;
 }
 
 .category-icon,
@@ -705,7 +705,7 @@ side bar list
 .archive-count
 {
     background-color: #f1f1f1;
-    color: #444444;
+    color: #292929;
     min-width: 36px;
 }
 
@@ -772,14 +772,14 @@ link box
 {
     font-weight: bold;
     font-size: 100%;
-    color: #444444;
+    color: #292929;
 }
 
 .linkbox-text
 {
     font-weight: normal;
     font-size: 80%;
-    color: #aaaaaa;
+    color: #757575;
 }
 
 /* -------------------------------------------
@@ -802,7 +802,7 @@ snippet
 
 #copy-button
 {
-    color:#444444;
+    color:#292929;
     font-size:.6rem;
     cursor: pointer;
     position: absolute;
@@ -821,7 +821,7 @@ graph
 
 .wc-container:hover
 {
-    background-color: #444444;
+    background-color: #292929;
     transition: all 0.3s;
 }
 
@@ -849,7 +849,7 @@ graph
 {
     font-weight: lighter;
     font-size: 70%;
-    color: #aaaaaa;
+    color: #757575;
     min-height: 32px;
 }
 
@@ -904,7 +904,8 @@ in single-text
 }
 
 .single-text .list-title,
-.single-text .table-title
+.single-text .table-title,
+.single-text .list-title
 {
     font-weight: bold;
 }
@@ -947,7 +948,7 @@ ol.inner-list li
 {
     font-size: 84%;
     background-color: #f1f1f1;
-    color: #808080;
+    color: #757575;
 }
 
 
