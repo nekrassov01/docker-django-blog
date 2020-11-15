@@ -249,13 +249,17 @@ toc & heading
     text-decoration: none;
 }
 
-#toc ul
+#toc
 {
     display:block;
     overflow-x: auto;
     overflow-y: hidden;
     overflow: auto;
     white-space: nowrap;
+}
+
+#toc ul
+{
     list-style: none;
     margin-bottom: 0px;
     padding-left: 1.1em;
