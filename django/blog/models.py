@@ -133,8 +133,8 @@ class SiteDetail(Base):
         verbose_name_plural = 'サイト詳細'
 
     site = models.OneToOneField(Site, verbose_name='サイト', on_delete=models.PROTECT)
-    keyword = models.TextField(verbose_name='メタキーワード', blank=True, null=True, default='AWS,PowerShell,Windows,Linux,Python,Django,Docker,インフラ,クラウド,プログラミング,技術,システム管理,自動化')
-    description = models.TextField(verbose_name='メタデスクリプション', blank=True, null=True, default='技術ブログ。学んだ技術のノートや雑記等の置き場所です。AWS,PowerShell,Windows,Linux,Python,Django,Dockerなどが多め。')
+    keyword = models.TextField(verbose_name='メタキーワード', blank=True, null=True)
+    description = models.TextField(verbose_name='メタデスクリプション', blank=True, null=True)
     google_analytics_html = models.TextField(verbose_name='Google Analitics', blank=True)
     google_adsence_html = models.TextField(verbose_name='Google AdSense', blank=True)
     github = models.CharField(verbose_name='GitHub URL', max_length=255, blank=True)
