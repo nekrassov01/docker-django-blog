@@ -263,6 +263,7 @@ toc & heading
     list-style: none;
     margin-bottom: 0px;
     padding-left: 1.1em;
+    padding-right: 1.1em;
 }
 
 #toc li
@@ -899,7 +900,7 @@ in single-text
     font-size: 80%;
     line-height: 1.4;
     overflow-x: scroll;
-    background-color: #2e3440;
+    /*background-color: #f7f8fa;*/
 }
 
 .single-text table

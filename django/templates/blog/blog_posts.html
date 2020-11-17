@@ -8,10 +8,10 @@
                   {% block breadcrumb %}
                   {{ block.super }}
                   {% if '/draft/' not in request.path and query %}
-                  <li class="breadcrumb-item m-0 p-0"><span>[ {{ query }} ] の検索結果</span></li>
+                  <li class="breadcrumb-item m-0 p-0"><span>[{{ query }}] の検索結果</span></li>
                   {% elif '/draft/' in request.path and query %}
                   <li class="breadcrumb-item m-0 p-0"><a href="{% url 'blog:draft' %}">下書き一覧</span></li>
-                  <li class="breadcrumb-item m-0 p-0"><span>[ {{ query }} ] の検索結果</span></li>
+                  <li class="breadcrumb-item m-0 p-0"><span>[{{ query }}] の検索結果</span></li>
                   {% elif '/draft/' in request.path and not query %}
                   <li class="breadcrumb-item m-0 p-0"><span>下書き一覧</span></li>
                   {% elif request.path == '/' %}
@@ -51,9 +51,9 @@
                 </a>
                 {% empty %}
                 {% if '/draft/' not in request.path and query %}
-                <span class="col px-3 px-md-0 pb-3">検索ワード [ {{ query }} ] はどの投稿のタイトル、本文、説明にもヒットしませんでした。</span>
+                <span class="col px-3 px-md-0 pb-3">検索ワード [{{ query }}] はどの投稿のタイトル、本文、説明にもヒットしませんでした。</span>
                 {% elif '/draft/' in request.path and query %}
-                <span class="col px-3 px-md-0 pb-3">検索ワード [ {{ query }} ] はどの下書きのタイトル、本文、説明にもヒットしませんでした。</span>
+                <span class="col px-3 px-md-0 pb-3">検索ワード [{{ query }}] はどの下書きのタイトル、本文、説明にもヒットしませんでした。</span>
                 {% elif '/draft/' in request.path and not query %}
                 <span class="col px-3 px-md-0 pb-3">下書きがありません。</span>
                 {% else %}
