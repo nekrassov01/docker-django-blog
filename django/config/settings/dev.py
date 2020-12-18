@@ -5,6 +5,8 @@ SECRET_KEY = env('SECRET_KEY')
 DEBUG = True
 ALLOWED_HOSTS = ['*']
 
+SECURE_SSL_REDIRECT = False
+
 # Email not send
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 

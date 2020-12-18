@@ -7,4 +7,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         PopularPost.objects.all().delete()
         for link, title, page_view in get_popular():
-            PopularPost.objects.create(link=link, title=title, page_view=page_view)
+            try:
+                PopularPost.objects.create(link=link, title=title, page_view=page_view)
+            except:
+                pass

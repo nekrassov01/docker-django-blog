@@ -11,9 +11,9 @@ server {
     charset utf-8;
     client_max_body_size 75M;
 
-#    location ^~ /.well-known/acme-challenge/ {
-#        root /django/static;
-#    }
+    location ^~ /.well-known/acme-challenge/ {
+        root /static;
+    }
 
     location / {
         uwsgi_pass django;

@@ -24,8 +24,12 @@ server {
     charset utf-8;
     client_max_body_size 75M;
 
-    ssl_certificate      /etc/letsencrypt/live/${DOMAIN}-0001/fullchain.pem;
-    ssl_certificate_key  /etc/letsencrypt/live/${DOMAIN}-0001/privkey.pem;
+    ssl_certificate      /etc/letsencrypt/live/${DOMAIN}/fullchain.pem;
+    ssl_certificate_key  /etc/letsencrypt/live/${DOMAIN}/privkey.pem;
+
+    location ^~ /.well-known/acme-challenge/ {
+        root /static;
+    }
 
     location / {
         uwsgi_pass django;
