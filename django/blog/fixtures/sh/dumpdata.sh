@@ -1,13 +1,22 @@
 #!/bin/bash
-TARGET_DIR=$(dirname "$(cd "$(dirname "${BASH_SOURCE:-$0}")" && pwd)")
+models=(
+    sites.site
+    blog.category
+    blog.post
+    blog.tag
+    blog.snippet
+    blog.sitedetail
+    blog.aboutsite
+    blog.privacypolicy
+    blog.image
+    blog.link
+    blog
+)
+
+target_dir=$(dirname "$(cd "$(dirname "${BASH_SOURCE:-$0}")" && pwd)")
+
 cd /django
-python manage.py dumpdata sites.site --indent 4 --output ${TARGET_DIR}/sites.site.json
-python manage.py dumpdata blog.category --indent 4 --output ${TARGET_DIR}/blog.category.json
-python manage.py dumpdata blog.tag --indent 4 --output ${TARGET_DIR}/blog.tag.json
-python manage.py dumpdata blog.snippet --indent 4 --output ${TARGET_DIR}/blog.snippet.json
-python manage.py dumpdata blog.sitedetail --indent 4 --output ${TARGET_DIR}/blog.sitedetail.json
-python manage.py dumpdata blog.aboutsite --indent 4 --output ${TARGET_DIR}/blog.aboutsite.json
-python manage.py dumpdata blog.privacypolicy --indent 4 --output ${TARGET_DIR}/blog.privacypolicy.json
-python manage.py dumpdata blog.image --indent 4 --output ${TARGET_DIR}/blog.image.json
-python manage.py dumpdata blog.link --indent 4 --output ${TARGET_DIR}/blog.link.json
-python manage.py dumpdata blog --indent 4 --output ${TARGET_DIR}/blog.json
+
+for model in ${models[@]} ; do
+    python manage.py dumpdata ${model} --indent 4 --output ${target_dir}/${model}.json
+done
