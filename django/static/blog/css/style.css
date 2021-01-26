@@ -185,36 +185,21 @@ pagination
 .page-item.active .page-link
 {
     background-color: #455d7a;
-    border: solid 1px #f1f1f1;
+    border-color: #f1f1f1;
 }
 
 .page-link
 {
     color: #292929;
-    border: solid 1px #f1f1f1;
-    display: inline-block;
-    vertical-align: middle;
-    min-width: 36px;
-    margin: 0 1px 0 1px;
-    line-height: 15px;
-}
-
-.page-link:hover
-{
-    background-color: #455d7a;
-    border: solid 1px #f1f1f1;
-}
-
-.pager-list a:hover
-{
-    color: #ffffff;
+    border-color: #f1f1f1;
+    min-width: 38px;
+    margin: 0 2px 0 2px;
 }
 
 .pager-detail a:hover
 {
     color: #65a6ff;
 }
-
 
 /* -------------------------------------------
 form & button
