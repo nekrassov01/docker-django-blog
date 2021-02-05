@@ -7,6 +7,7 @@ from django.contrib.sites.models import Site
 from django.db import models
 from django.utils import timezone
 from django_cleanup import cleanup
+from cloudinary.models import CloudinaryField
 
 """ ベース | 基底クラス """
 class Base(models.Model):
@@ -71,7 +72,7 @@ class Post(Base):
     category = models.ForeignKey(Category, verbose_name='カテゴリー', null=True, blank=True, on_delete=models.SET_NULL)
     tag = models.ManyToManyField(Tag, verbose_name='タグ', blank=True)
     related_posts = models.ManyToManyField('self', verbose_name='関連記事', blank=True)
-    eyecatch = models.ImageField(verbose_name='アイキャッチ画像', upload_to='image/post/eyecatch/%Y/%m/%d/', default='image/post/eyecatch/default/default.png',null=True, blank=True)
+    eyecatch = CloudinaryField(verbose_name='アイキャッチ画像', null=True, blank=True, overwrite=True, resource_type="auto", folder="media/image/eyecatch", tags="EyeCatch")
     description = models.TextField(verbose_name='説明', blank=True, null=True)
     text = models.TextField(verbose_name='本文', blank=True, null=True)
 
@@ -103,10 +104,26 @@ class Image(Base):
     index = models.IntegerField(verbose_name='並び順', null=True, blank=True)
     post = models.ForeignKey(Post, verbose_name='記事', on_delete=models.PROTECT)
     title = models.CharField('タイトル', max_length=255, blank=True, help_text='画像のalt属性として利用されます')
-    image = models.ImageField(verbose_name='画像', upload_to='image/post/text/%Y/%m/%d/', null=True, blank=True, help_text='保存後、本文挿入用HTMLを生成します')
+    image = CloudinaryField(verbose_name='画像', null=True, blank=True, help_text='保存後、本文挿入用HTMLを生成します', overwrite=True, resource_type="auto", folder="media/image/post/", tags="Post")
 
     def __str__(self):
         return '本文挿入用HTML: <img src="" data-src="{}" class="lozad w-100" alt="{}">'.format(self.image.url, self.title)
+
+""" 動画 | 記事の本文で利用 """
+class Video(Base):
+    class Meta:
+        db_table = 'video'
+        verbose_name = '動画'
+        verbose_name_plural = '動画'
+        ordering = ['index']
+
+    index = models.IntegerField(verbose_name='並び順', null=True, blank=True)
+    post = models.ForeignKey(Post, verbose_name='記事', on_delete=models.PROTECT)
+    title = models.CharField('タイトル', max_length=255, blank=True, help_text='動画のalt属性として利用されます')
+    video = CloudinaryField(verbose_name='動画', null=True, blank=True, help_text='保存後、本文挿入用HTMLを生成します', overwrite=True, resource_type="auto", folder="media/video/", tags="Video")
+
+    def __str__(self):
+        return '本文挿入用HTML: <video controls="" controlslist="nodownload" loop="" preload="none" class="w-100"><source src="{}" alt="{}"></video>'.format(self.video.url, self.title)
 
 """ 外部リンク | 記事の本文で利用 """
 class Link(Base):
@@ -150,8 +167,8 @@ class AboutSite(Base):
         verbose_name_plural = 'このサイトについて'
 
     site = models.OneToOneField(Site, verbose_name='サイト', on_delete=models.PROTECT)
-    author_image = models.ImageField(verbose_name='管理者のイメージ', upload_to='image/site/author_image/', blank=True, null=True)
-    site_image = models.ImageField(verbose_name='サイトのイメージ', upload_to='image/site/site_image/', blank=True, null=True)
+    author_image = CloudinaryField(verbose_name='管理者のイメージ', null=True, blank=True, overwrite=True, resource_type="auto", folder="media/image/site/", tags="Site")
+    site_image = CloudinaryField(verbose_name='サイトのイメージ', null=True, blank=True, overwrite=True, resource_type="auto", folder="media/image/site/", tags="Site")  
     author_name = models.CharField(verbose_name='管理者の名前', max_length=255, blank=True, null=True)
     author_text = models.TextField(verbose_name='管理者の説明', blank=True, null=True)
     site_text = models.TextField(verbose_name='サイトの説明', blank=True, null=True)
@@ -203,7 +220,7 @@ class PopularPost(Base):
     detail_category = models.CharField(verbose_name='記事のカテゴリー', max_length=255, null=True, blank=True)
     detail_title = models.CharField(verbose_name='記事のタイトル', max_length=255, null=True, blank=True)
     detail_subtitle = models.CharField(verbose_name='記事のサブタイトル', max_length=255, null=True, blank=True)
-    detail_eyecatch = models.ImageField(verbose_name='記事のアイキャッチ画像',null=True, blank=True)
+    detail_eyecatch = CloudinaryField(verbose_name='記事のアイキャッチ画像',null=True, blank=True)
 
     def save(self, *args, **kwargs):
         post_detail_pk = self.link.split('/')[-2]

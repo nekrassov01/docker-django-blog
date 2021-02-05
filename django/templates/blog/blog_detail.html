@@ -6,7 +6,7 @@
       {% block meta_description %}{{ post.description | set_text_spacing }}{% endblock %}
       {% block meta_title %}{{ label | set_text_spacing }} | {{ block.super }}{% endblock %}
 
-      {% block ogp_image %}{{ post.eyecatch.url }}{% endblock %}
+      {% if post.eyecatch %}{% block ogp_image %}{{ post.eyecatch.url }}{% endblock %}{% endif %}
       {% block ogp_description %}{{ post.description }}{% endblock %}
       {% block ogp_title %}{{ label | set_text_spacing }} | {{ block.super }}{% endblock %}
 

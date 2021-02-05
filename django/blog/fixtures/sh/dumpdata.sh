@@ -9,6 +9,7 @@ models=(
     blog.aboutsite
     blog.privacypolicy
     blog.image
+    blog.video
     blog.link
     blog
 )

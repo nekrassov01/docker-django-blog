@@ -10,7 +10,7 @@ from django.db.models.functions import TruncMonth
 from django.conf import settings
 from django.urls import reverse_lazy
 from django.http import Http404
-from .models import Post, Category, Tag, SiteDetail, AboutSite, PrivacyPolicy, Snippet, Image, Link, PopularPost, CategoryPost, CategoryTag, TagPost, MonthPost, WordCloud
+from .models import Post, Category, Tag, SiteDetail, AboutSite, PrivacyPolicy, Snippet, Image, Video, Link, PopularPost, CategoryPost, CategoryTag, TagPost, MonthPost, WordCloud
 from .forms import ContactForm
 
 """ リストビューの基底クラス """

@@ -31,7 +31,7 @@
                   <div class="row no-gutters">
                     {% if post.eyecatch %}
                     <div class="card-img col-lg-5">
-                      <img src="" data-src="{{ post.eyecatch.url }}" class="lozad w-100" alt="eyecatch">
+                      {% if post.eyecatch %}<img src="" data-src="{{ post.eyecatch.url }}" class="lozad w-100" alt="eyecatch">{% endif %}
                     </div>
                     {% endif %}
                     <div class="card-body col-lg-7 pt-3 pb-0 pl-lg-3 pt-lg-0">

@@ -4,7 +4,7 @@ from django.utils.safestring import mark_safe
 from django.urls import path
 from django.template.response import TemplateResponse
 from django_summernote.admin import SummernoteModelAdmin, SummernoteInlineModelAdmin
-from .models import Base, Post, Category, Tag, SiteDetail, AboutSite, PrivacyPolicy, Snippet, Image, Link, PopularPost, CategoryPost, CategoryTag, TagPost, MonthPost, WordCloud
+from .models import Base, Post, Category, Tag, SiteDetail, AboutSite, PrivacyPolicy, Snippet, Image, Video, Link, PopularPost, CategoryPost, CategoryTag, TagPost, MonthPost, WordCloud
 
 class SiteDetailInline(admin.StackedInline):
     model = SiteDetail
@@ -62,6 +62,12 @@ class ImageInline(admin.StackedInline):
     extra = 1
     readonly_fields = ('created_at', 'updated_at')
 
+class VideoInline(admin.StackedInline):
+    model = Video
+    ordering = ('index',)
+    extra = 1
+    readonly_fields = ('id', 'created_at', 'updated_at')
+
 class LinkInline(admin.StackedInline):
     model = Link
     ordering = ('index',)
@@ -70,7 +76,7 @@ class LinkInline(admin.StackedInline):
 
 class PostAdmin(SummernoteModelAdmin):
     model = Post
-    inlines = [ImageInline, LinkInline]
+    inlines = [ImageInline, VideoInline, LinkInline]
     list_display = ('is_public', 'id', 'created_at', 'updated_at', 'published_at', 'category', 'title', 'subtitle', 'truncate_desc', 'preview')
     list_display_links = ('id', 'preview')
     ordering = ('-created_at',)

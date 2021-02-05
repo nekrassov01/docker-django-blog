@@ -8,6 +8,7 @@ __pycache__
 db.sqlite3
 client_secrets.p12
 /tmp
+/backup
 /recovery
 /django/.env
 /django/log/*
