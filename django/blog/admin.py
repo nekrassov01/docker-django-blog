@@ -95,7 +95,8 @@ class PostAdmin(SummernoteModelAdmin):
         return super().formfield_for_manytomany(db_field, request, **kwargs)
 
     def preview(self, obj):
-        return mark_safe('<img src="{}" style="width:120px;height:auto;">'.format(obj.eyecatch.url))
+        if obj.eyecatch:
+            return mark_safe('<img src="{}" style="width:120px;height:auto;">'.format(obj.eyecatch.url))
 
     def truncate_desc(self, obj):
         count = 48
