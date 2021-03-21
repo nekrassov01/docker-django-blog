@@ -4,6 +4,7 @@ from .base import *
 SECRET_KEY = env('SECRET_KEY')
 DEBUG = False
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
+#ALLOWED_HOSTS = ['*']
 
 # SecurityMiddleware
 SECURE_SSL_REDIRECT = env.get_value('SECURE_SSL_REDIRECT', bool)

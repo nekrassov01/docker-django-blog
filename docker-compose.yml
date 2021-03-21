@@ -31,7 +31,7 @@ services:
       - ./nginx/uwsgi_params:/etc/nginx/uwsgi_params
       - ./nginx/templates:/etc/nginx/templates
       - ./nginx/conf.d:/etc/nginx/conf.d
-      #- ./nginx/letsencrypt:/etc/letsencrypt
+      - ./nginx/letsencrypt:/etc/letsencrypt
       - socket_app:/var/run/uwsgi
       - static:/static
       - media:/media
