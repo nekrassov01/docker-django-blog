@@ -61,6 +61,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
 # Database
 DATABASES = {
     'default': env.db('DATABASE_URL')
@@ -96,7 +98,8 @@ MESSAGE_TAGS = {
 }
 
 # sites Framework
-SITE_ID = env('SITE_ID')
+#SITE_ID = env('SITE_ID')
+SITE_ID = env.get_value('SITE_ID', int)
 
 # ClickJacking Protection
 X_FRAME_OPTIONS = env('X_FRAME_OPTIONS')
