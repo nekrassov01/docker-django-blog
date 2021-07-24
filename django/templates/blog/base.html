@@ -44,9 +44,9 @@
           <div class="breadcrumb-block row align-items-start pb-lg-5">
             <div class="col m-0 p-0">
               <nav aria-label="breadcrumb-list">
-                <ol class="breadcrumb m-0 px-3 px-md-2 pb-2 rounded-0 bg-transparent">
+                <ol class="breadcrumb m-0 px-3 px-md-2 py-2 rounded-0 bg-transparent">
                   {% if request.path == '/' %}
-                  <li class="breadcrumb-item m-0 p-0"><span>記事一覧</span></li>
+                  <li class="breadcrumb-item"><span>記事一覧</span></li>
                   {% else %}
                   <li class="breadcrumb-item m-0 p-0"><a href="{% url 'blog:index' %}">記事一覧</a></li>
                   {% endif %}

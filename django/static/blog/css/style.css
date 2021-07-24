@@ -131,26 +131,20 @@ navbar
 breadcrumb list
 ------------------------------------------- */
 
-
 ol.breadcrumb
 {
-    display:block;
     overflow-x: auto;
     overflow-y: hidden;
     overflow: auto;
     white-space: nowrap;
-}
-
-li.breadcrumb-item
-{
-    display: inline;
+    font-size: 70%;
 }
 
 li.breadcrumb-item span,
 li.breadcrumb-item a
 {
     color: #292929;
-    font-size: 70%;
+    line-height: 1em;
 }
 
 li.breadcrumb-item a:hover
@@ -160,12 +154,11 @@ li.breadcrumb-item a:hover
 
 .breadcrumb-item + .breadcrumb-item::before
 {
-  padding-left: 0.4em;
-  padding-right: 0.6em;
-  font-family: FontAwesome;
-  font-size: 70%;
-  color: #999999;
-  content: '\f0da';
+    padding-left: 0.6em;
+    padding-right: 0.6em;
+    font-family: FontAwesome;
+    color: #999999;
+    content: '\f0da';
 }
 
 /* -------------------------------------------
