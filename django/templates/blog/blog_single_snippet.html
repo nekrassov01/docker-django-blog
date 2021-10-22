@@ -22,6 +22,6 @@
                           <button class="border d-box rounded-0 bg-light float-right m-0 px-2" id="copy-button" data-clipboard-target="#snippet-content-{{ forloop.counter }}">COPY</button>
                         </div>
                       </div>
-                      <pre class="m-0 p-0" style="line-height: 1.4;"><code class="snippet p-3"><span class="snippet-content" id="snippet-content-{{ forloop.counter }}">{{ snippet.text | linebreaksbr }}</span></code></pre>
+                      <pre class="m-0 p-0" style="line-height: 1.4;"><code class="snippet p-3" id="snippet-content-{{ forloop.counter }}">{{ snippet.text }}</code></pre>
                       {% endfor %}
                       {% endblock %}

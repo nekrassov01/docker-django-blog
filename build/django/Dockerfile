@@ -7,7 +7,7 @@ ARG DIR=/django
 RUN mkdir -p $DIR
 WORKDIR $DIR
 COPY requirements.txt $DIR/
-RUN set -xe \
+RUN set -ex \
 && apt-get update -y \
 && apt-get install -y --no-install-recommends vim git curl locales postgresql-client \
 && apt-get clean -y \

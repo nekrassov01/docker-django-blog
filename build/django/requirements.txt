@@ -1,3 +1,4 @@
+coverage==5.5
 Django==3.2.4
 django-bootstrap4==3.0.1
 django-cleanup==5.2.0
